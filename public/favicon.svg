@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <rect width="512" height="512" rx="140" fill="#14170F"/>
+  <!-- Stylized K matching input logos -->
+  <g fill="#C6F135">
+    <!-- Left Stem: vertical bar with a diagonal cutout on its right/bottom side and slanted ends -->
+    <path d="M145 140 H185 V250 L145 285 Z"/>
+    <path d="M145 295 L185 260 V372 H145 Z"/>
+    <!-- Right Upper Arm: slanted arm going up-right -->
+    <path d="M185 240 L310 140 H365 L225 252 Z"/>
+    <!-- Right Lower Leg: slanted leg going down-right -->
+    <path d="M225 260 L370 372 H315 L185 272 Z"/>
+  </g>
+</svg>
