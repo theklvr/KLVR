@@ -18,19 +18,19 @@ import {
 
 export const BRAND_PORTFOLIO_DATA = [
   {
-    id: "w1",
-    title: "Cloverhimself",
-    description: "An immersive developer CV showcasing interactive skills and timeline logs.",
-    tag: "Developer CV",
-    href: "https://cloverhimself.cv",
-    url: "https://cloverhimself.cv",
-    beforeCaption: "Initial sketch: Clover envisioned a modern, lightning-fast text terminal interface for his portfolio.",
-    afterCaption: "The final live developer folio, packed with terminal aesthetics and detailed engineering logs.",
-    founderName: "Clover",
-    founderRole: "Lead Developer",
-    founderImage: "https://images.unsplash.com/photo-1607799279861-4dd421887fb3?auto=format&fit=crop&w=600&h=450&q=80",
-    logoText: "♣",
-    logoBg: "bg-[#C6F135]/10 border-[#C6F135]/30 text-[#C6F135]"
+    id: "w7",
+    title: "Vallot",
+    description: "Premium visual solutions and digital interface agency.",
+    tag: "Digital Agency",
+    href: "https://vallot.vercel.app/",
+    url: "https://vallot.vercel.app/",
+    beforeCaption: "Before: Manual client proposals and low-fidelity Wireframes drawn by hand.",
+    afterCaption: "Now: A stunning high-conversion landing layout with premium visual aesthetics.",
+    founderName: "David Vallot",
+    founderRole: "Design Principal",
+    founderImage: "https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&w=600&h=450&q=80",
+    logoText: "VL",
+    logoBg: "bg-sky-500/10 border-sky-500/20 text-sky-400"
   },
   {
     id: "w2",
@@ -50,8 +50,8 @@ export const BRAND_PORTFOLIO_DATA = [
   {
     id: "w4",
     title: "Rapid Alex",
-    description: "A supercharged developer sandbox and quick launchpad.",
-    tag: "SaaS Launch",
+    description: "A bold personal site for musician Rapid Alex, built to showcase his music, visuals, and updates in one place.",
+    tag: "Musician Website",
     href: "https://rapid-alex.vercel.app/",
     url: "https://rapid-alex.vercel.app/",
     beforeCaption: "Before: A series of hardcoded scripts and manual deployments that took hours to launch.",
@@ -63,10 +63,25 @@ export const BRAND_PORTFOLIO_DATA = [
     logoBg: "bg-teal-500/10 border-teal-500/20 text-teal-400"
   },
   {
+    id: "w1",
+    title: "Cloverhimself",
+    description: "An immersive developer CV showcasing interactive skills and timeline logs.",
+    tag: "Developer CV",
+    href: "https://cloverhimself.cv",
+    url: "https://cloverhimself.cv",
+    beforeCaption: "Initial sketch: Clover envisioned a modern, lightning-fast text terminal interface for his portfolio.",
+    afterCaption: "The final live developer folio, packed with terminal aesthetics and detailed engineering logs.",
+    founderName: "Clover",
+    founderRole: "Lead Developer",
+    founderImage: "https://images.unsplash.com/photo-1607799279861-4dd421887fb3?auto=format&fit=crop&w=600&h=450&q=80",
+    logoText: "♣",
+    logoBg: "bg-[#C6F135]/10 border-[#C6F135]/30 text-[#C6F135]"
+  },
+  {
     id: "w5",
     title: "Treasurense",
-    description: "Next-generation asset tracking and currency visualizer.",
-    tag: "FinTech App",
+    description: "A striking personal portfolio for model Treasure, designed to showcase her portfolio and bookings.",
+    tag: "Model Website",
     href: "https://treasurense.vercel.app/",
     url: "https://treasurense.vercel.app/",
     beforeCaption: "Before: Reconciling ledger values manually using fragmented CSV sheets and emails.",
@@ -80,8 +95,8 @@ export const BRAND_PORTFOLIO_DATA = [
   {
     id: "w6",
     title: "Cece the Designer",
-    description: "Editorial layout showcasing immersive fashion and identity design.",
-    tag: "Brand Studio",
+    description: "An editorial portfolio site for designer Cece, showcasing her creative and visual identity work.",
+    tag: "Designer Portfolio",
     href: "https://cece-the-desinger.vercel.app/",
     url: "https://cece-the-desinger.vercel.app/",
     beforeCaption: "Before: Brand guidelines and mood notes dispersed across local folders.",
@@ -91,21 +106,6 @@ export const BRAND_PORTFOLIO_DATA = [
     founderImage: "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=600&h=450&q=80",
     logoText: "CC",
     logoBg: "bg-orange-500/10 border-orange-500/20 text-orange-400"
-  },
-  {
-    id: "w7",
-    title: "Vallot",
-    description: "Premium visual solutions and digital interface agency.",
-    tag: "Digital Agency",
-    href: "https://vallot.vercel.app/",
-    url: "https://vallot.vercel.app/",
-    beforeCaption: "Before: Manual client proposals and low-fidelity Wireframes drawn by hand.",
-    afterCaption: "Now: A stunning high-conversion landing layout with premium visual aesthetics.",
-    founderName: "David Vallot",
-    founderRole: "Design Principal",
-    founderImage: "https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&w=600&h=450&q=80",
-    logoText: "VL",
-    logoBg: "bg-sky-500/10 border-sky-500/20 text-sky-400"
   },
   {
     id: "w8",
@@ -240,6 +240,28 @@ export default function App() {
   const [activeBlogIndex, setActiveBlogIndex] = useState(0);
   const [footerEmail, setFooterEmail] = useState("");
   const [footerMessage, setFooterMessage] = useState("");
+
+  // Only mount the live-preview iframe once the showcase section is actually
+  // scrolled into view. Third-party sites can call window.focus() on load,
+  // which makes the browser auto-scroll the parent page to reveal the iframe.
+  // Deferring the mount until the user is already there neutralizes that.
+  const showcaseRef = useRef<HTMLDivElement>(null);
+  const [showcaseInView, setShowcaseInView] = useState(false);
+  useEffect(() => {
+    const el = showcaseRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setShowcaseInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const handlePrevSlide = () => {
     setPortfolioActiveIndex((prev) => (prev - 1 + BRAND_PORTFOLIO_DATA.length) % BRAND_PORTFOLIO_DATA.length);
@@ -990,9 +1012,10 @@ export default function App() {
               >
                 <div className="team-member-custom w-full aspect-[4/5] rounded-xl overflow-hidden shadow-md group relative">
                   <div className="team-img w-full h-full">
-                    <img 
-                      src={member.image} 
-                      alt={member.name} 
+                    <img
+                      src={member.image}
+                      alt={`${member.name}, ${member.role} at klvr`}
+                      loading="lazy"
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       referrerPolicy="no-referrer"
                     />
@@ -1021,7 +1044,7 @@ export default function App() {
       </section>
 
       {/* PRODUCT SHOWCASE CAROUSEL (SHIPPED PROJECTS) */}
-      <section className="relative py-24 bg-[#D4ED31] border-b border-line overflow-hidden" id="projects">
+      <section ref={showcaseRef} className="relative py-24 bg-[#D4ED31] border-b border-line overflow-hidden" id="projects">
         <div className="max-w-6xl mx-auto px-6">
           
           {/* Section Header */}
@@ -1078,13 +1101,18 @@ export default function App() {
             {/* RIGHT COLUMN: Stationary Live Browser Preview (60% width on desktop, 100% on mobile) */}
             <div className="w-full md:w-[60%] h-[240px] sm:h-[300px] md:h-full bg-paper-dim relative overflow-hidden order-1 md:order-2">
               <div className="absolute inset-0 w-[166.66%] h-[166.66%] origin-top-left scale-[0.6]">
-                <iframe
-                  key="showcase-iframe"
-                  title={`${BRAND_PORTFOLIO_DATA[portfolioActiveIndex].title} live view`}
-                  src={`${BRAND_PORTFOLIO_DATA[portfolioActiveIndex].url}?muted=1`}
-                  className="w-full h-full border-0 bg-white"
-                  sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
-                />
+                {showcaseInView ? (
+                  <iframe
+                    key="showcase-iframe"
+                    title={`${BRAND_PORTFOLIO_DATA[portfolioActiveIndex].title} live view`}
+                    src={`${BRAND_PORTFOLIO_DATA[portfolioActiveIndex].url}?muted=1`}
+                    loading="lazy"
+                    className="w-full h-full border-0 bg-white"
+                    sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-paper-dim animate-pulse" />
+                )}
               </div>
             </div>
 
@@ -1145,9 +1173,10 @@ export default function App() {
                 className="w-full flex flex-col md:flex-row items-center"
               >
                 <div className="blog-slider-custom__img">
-                  <img 
-                    src={DETAILED_BLOG_POSTS_DATA[activeBlogIndex].image} 
+                  <img
+                    src={DETAILED_BLOG_POSTS_DATA[activeBlogIndex].image}
                     alt={DETAILED_BLOG_POSTS_DATA[activeBlogIndex].title}
+                    loading="lazy"
                     referrerPolicy="no-referrer"
                   />
                 </div>
