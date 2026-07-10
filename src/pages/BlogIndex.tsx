@@ -9,7 +9,7 @@ export default function BlogIndex() {
   return (
     <div className="min-h-screen bg-paper text-ink selection:bg-klvr selection:text-ink relative overflow-x-hidden">
       <Seo
-        title="klvr Blog"
+        title="Theklvr Blog"
         description="Notes on growth, technology, and brand from the team at klvr. Practical, no-fluff articles for anyone building a business."
         canonical="https://www.theklvr.com/blog"
         image="https://www.theklvr.com/og-image.png"

@@ -216,8 +216,8 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-paper text-ink selection:bg-klvr selection:text-ink relative overflow-x-hidden">
       <Seo
-        title="klvr: Web Development, Software & Brand Agency in Abuja, Nigeria"
-        description="klvr is a web development, software, and brand agency based in Abuja, Nigeria. One team for websites, apps, automation, and marketing that stays after launch."
+        title="Theklvr | Web Development, Software & Brand Agency"
+        description="klvr is a web development, software, and brand agency for startups, schools, real estate, e-commerce, and growing businesses. One team, from launch onward."
         canonical="https://www.theklvr.com/"
         image="https://www.theklvr.com/og-image.png"
       />
@@ -348,7 +348,7 @@ export default function Home() {
           >
             <div>
               <h2 className="font-space font-semibold text-[26px] sm:text-[34px] md:text-[38px] leading-tight tracking-tight">
-                You shouldn't need six freelancers to launch one business.
+                You shouldn't need a handful of freelancers to launch one business.
               </h2>
             </div>
             <div className="space-y-6 text-[15px] sm:text-[16px] text-moss leading-relaxed">

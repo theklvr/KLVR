@@ -20,7 +20,7 @@ export default function BlogPost() {
   return (
     <div className="min-h-screen bg-paper text-ink selection:bg-klvr selection:text-ink relative overflow-x-hidden">
       <Seo
-        title={`${post.title} | klvr Blog`}
+        title={`${post.title} | Theklvr Blog`}
         description={post.description}
         canonical={canonical}
         image={post.image}

@@ -48,14 +48,14 @@ export const STATS_DATA: StatItem[] = [
   { number: 2, label: "Founders" },
   { number: 1, label: "Point of contact, always" },
   { number: 2026, label: "Founded" },
-  { number: 0, label: "Based in Abuja, working anywhere", isCustom: true, customValue: "NG" }
+  { number: 0, label: "Working with clients worldwide", isCustom: true, customValue: "24/7" }
 ];
 
 export const VALUES_DATA: ValueCardItem[] = [
   {
     id: "v1",
     number: "01",
-    title: "One team, not six",
+    title: "One team, not many",
     description: "No more coordinating separate freelancers for your site, your app, and your socials, hoping none of them vanish halfway through."
   },
   {

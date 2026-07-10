@@ -1,6 +1,6 @@
 # klvr
 
-> klvr is a web development, software, and brand agency based in Abuja, Nigeria. We are one team that replaces the six freelancers a growing business usually needs (website developer, app developer, social media manager, and more), and we stay on as a long-term technology and creative partner after launch.
+> klvr is a web development, software, and brand agency serving startups, schools, real estate firms, e-commerce brands, and professional service businesses worldwide. We are one team that replaces the freelancers a growing business usually needs (website developer, app developer, social media manager, and more), and we stay on as a long-term technology and creative partner after launch.
 
 ## What we do
 
@@ -14,7 +14,7 @@
 
 ## Who we serve
 
-Small and medium-sized businesses (5-200 employees), venture-backed startups, private schools, real estate companies, and automotive dealerships in Nigeria and worldwide. Secondary: churches and faith-based organizations, e-commerce brands, logistics companies, and professional service firms (law, accounting, consulting, healthcare).
+Small and medium-sized businesses (5-200 employees), venture-backed startups, private schools, real estate companies, and automotive dealerships, worldwide. Secondary: churches and faith-based organizations, e-commerce brands, logistics companies, and professional service firms (law, accounting, consulting, healthcare).
 
 ## Contact
 
