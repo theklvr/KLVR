@@ -172,7 +172,7 @@ export const FAQ_DATA: FaqItem[] = [
   {
     id: "faq1",
     question: "How much does this cost?",
-    answer: "It depends on scope, so we won't put a number here that would probably be wrong for your situation. Say hello, tell us what you're building, and we'll scope it properly before quoting anything."
+    answer: "It depends on scope, so we won't put a number here that would probably be wrong for your situation. We don't compete by being the cheapest option, our pricing reflects the value we create for your business, and we'd rather package a solution than nickel-and-dime you for every small piece. Say hello, tell us what you're building, and we'll scope it properly before quoting anything."
   },
   {
     id: "faq2",

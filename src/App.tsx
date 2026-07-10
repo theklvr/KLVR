@@ -767,9 +767,9 @@ export default function App() {
                 </p>
                 <ul className="space-y-3">
                   {[
-                    "Custom Software & Multi-Tenant Platforms",
-                    "High-Conversion Business Portals",
-                    "Workflow & Automation Engines",
+                    "Custom Software, CRM & School/Business Management Systems",
+                    "High-Conversion Websites & E-Commerce",
+                    "Workflow Automation & AI Integration",
                     "Secure API & Database Architecture"
                   ].map((cap, cidx) => (
                     <li key={cidx} className="flex items-start gap-2 text-[13.5px] text-ink font-sans">
@@ -802,10 +802,10 @@ export default function App() {
                 </p>
                 <ul className="space-y-3">
                   {[
-                    "Brand Positioning & Identity Design",
-                    "Strategic Communication Systems",
+                    "Brand Positioning & Visual Identity",
+                    "Content, Photography & Videography",
                     "User Interface & Experience (UI/UX)",
-                    "Strategic Marketing Copy & Socials"
+                    "Marketing Strategy & Growth Campaigns"
                   ].map((cap, cidx) => (
                     <li key={cidx} className="flex items-start gap-2 text-[13.5px] text-ink font-sans">
                       <span className="text-moss mt-1 text-[10px]">■</span>
