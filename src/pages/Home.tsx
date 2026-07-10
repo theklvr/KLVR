@@ -211,7 +211,7 @@ export default function Home() {
     setPortfolioActiveIndex((prev) => (prev + 1) % BRAND_PORTFOLIO_DATA.length);
   };
 
-  const latestPosts = DETAILED_BLOG_POSTS_DATA.slice(0, 3);
+  const [blogActiveIndex, setBlogActiveIndex] = useState(0);
 
   return (
     <div className="min-h-screen bg-paper text-ink selection:bg-klvr selection:text-ink relative overflow-x-hidden">
@@ -793,37 +793,56 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {latestPosts.map((post, idx) => (
+          <div className="blog-slider-custom select-none">
+            <AnimatePresence mode="wait">
               <motion.div
-                key={post.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                key={blogActiveIndex}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.4 }}
+                className="w-full flex flex-col md:flex-row items-center"
               >
-                <Link to={`/blog/${post.slug}`} className="block group">
-                  <div className="w-full aspect-[16/10] rounded-xl overflow-hidden mb-5 border border-line">
-                    <img
-                      src={post.image}
-                      alt={post.title}
-                      loading="lazy"
-                      referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  </div>
-                  <span className="font-mono text-[10px] uppercase tracking-widest text-moss font-bold block mb-2">
-                    {post.category} • {post.date}
+                <div className="blog-slider-custom__img">
+                  <img
+                    src={DETAILED_BLOG_POSTS_DATA[blogActiveIndex].image}
+                    alt={DETAILED_BLOG_POSTS_DATA[blogActiveIndex].title}
+                    loading="lazy"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <div className="blog-slider-custom__content">
+                  <span className="blog-slider-custom__tag">
+                    {DETAILED_BLOG_POSTS_DATA[blogActiveIndex].category} • {DETAILED_BLOG_POSTS_DATA[blogActiveIndex].date}
                   </span>
-                  <h3 className="font-space font-bold text-[18px] text-ink leading-snug mb-2 group-hover:text-moss transition-colors">
-                    {post.title}
-                  </h3>
-                  <p className="text-[13.5px] text-moss leading-relaxed">
-                    {post.description}
+                  <div className="blog-slider-custom__title">
+                    {DETAILED_BLOG_POSTS_DATA[blogActiveIndex].title}
+                  </div>
+                  <p className="blog-slider-custom__text">
+                    {DETAILED_BLOG_POSTS_DATA[blogActiveIndex].description}
                   </p>
-                </Link>
+                  <Link
+                    to={`/blog/${DETAILED_BLOG_POSTS_DATA[blogActiveIndex].slug}`}
+                    className="blog-slider-custom__button text-center"
+                  >
+                    READ MORE
+                  </Link>
+                </div>
               </motion.div>
-            ))}
+            </AnimatePresence>
+
+            <div className="blog-slider-custom__pagination">
+              {DETAILED_BLOG_POSTS_DATA.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setBlogActiveIndex(idx)}
+                  className={`blog-slider-custom__bullet ${
+                    idx === blogActiveIndex ? "blog-slider-custom__bullet-active" : ""
+                  }`}
+                  aria-label={`Go to slide ${idx + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
