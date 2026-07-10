@@ -354,7 +354,7 @@ export const CAREER_ROLES_DATA: CareerRole[] = [
       "Expertise in React, Vite, Node.js, and type-safe systems (TypeScript)",
       "Obsessive attention to UI fidelity, responsive layouts, and clean animations",
       "Experience with database architectures, secure API proxying, and cloud systems",
-      "A growth-focused mindset—you treat code as a tool to solve human business problems"
+      "A growth-focused mindset: you treat code as a tool to solve human business problems"
     ]
   },
   {
@@ -365,7 +365,7 @@ export const CAREER_ROLES_DATA: CareerRole[] = [
     description: "James leads our creative division, but as our client engagements compound, we will expand our strategic brand circle. We seek minds that can translate operational excellence into stunning visual narratives and brand positions.",
     requirements: [
       "Stellar portfolio covering typographic design, UI/UX systems, and brand books",
-      "Ability to write human, high-impact copywriting—absolutely free from generic AI-generated cliches",
+      "Ability to write human, high-impact copywriting, absolutely free from generic AI-generated cliches",
       "Strategic grasp of customer retention, conversion funnels, and communication frameworks",
       "Fluency with design, prototyping, and asset curation tools"
     ]

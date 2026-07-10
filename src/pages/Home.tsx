@@ -216,7 +216,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-paper text-ink selection:bg-klvr selection:text-ink relative overflow-x-hidden">
       <Seo
-        title="klvr — Web Development, Software & Brand Agency in Abuja, Nigeria"
+        title="klvr: Web Development, Software & Brand Agency in Abuja, Nigeria"
         description="klvr is a web development, software, and brand agency based in Abuja, Nigeria. One team for websites, apps, automation, and marketing that stays after launch."
         canonical="https://www.theklvr.com/"
         image="https://www.theklvr.com/og-image.png"
