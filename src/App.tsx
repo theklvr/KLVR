@@ -1118,18 +1118,36 @@ export default function App() {
 
           </div>
 
-          {/* Indicator Dots Below Slide Box */}
-          <div className="flex justify-center gap-2 mt-8 select-none">
-            {BRAND_PORTFOLIO_DATA.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => setPortfolioActiveIndex(idx)}
-                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
-                  idx === portfolioActiveIndex ? "w-8 bg-ink" : "bg-ink/25 hover:bg-ink/50"
-                }`}
-                title={`Go to Slide ${idx + 1}`}
-              />
-            ))}
+          {/* Prev/Next Arrows + Indicator Dots Below Slide Box */}
+          <div className="flex justify-center items-center gap-6 mt-8 select-none">
+            <button
+              onClick={handlePrevSlide}
+              aria-label="Previous project"
+              className="w-9 h-9 rounded-full border border-ink/20 bg-white flex items-center justify-center text-ink hover:bg-ink hover:text-white hover:border-ink transition-all duration-200 cursor-pointer"
+            >
+              <ArrowLeft className="w-4 h-4" />
+            </button>
+
+            <div className="flex justify-center gap-2">
+              {BRAND_PORTFOLIO_DATA.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setPortfolioActiveIndex(idx)}
+                  className={`w-2.5 h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
+                    idx === portfolioActiveIndex ? "w-8 bg-ink" : "bg-ink/25 hover:bg-ink/50"
+                  }`}
+                  title={`Go to Slide ${idx + 1}`}
+                />
+              ))}
+            </div>
+
+            <button
+              onClick={handleNextSlide}
+              aria-label="Next project"
+              className="w-9 h-9 rounded-full border border-ink/20 bg-white flex items-center justify-center text-ink hover:bg-ink hover:text-white hover:border-ink transition-all duration-200 cursor-pointer"
+            >
+              <ArrowRight className="w-4 h-4" />
+            </button>
           </div>
 
         </div>
