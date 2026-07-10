@@ -200,3 +200,216 @@ export const FAQ_DATA: FaqItem[] = [
     answer: "We don't disappear. Most clients move to a simple monthly plan so the system keeps running well and gets small improvements over time, with regular check-ins rather than radio silence."
   }
 ];
+
+export interface TeamMember {
+  name: string;
+  role: string;
+  initial: string;
+  colorClass: string;
+  bio: string;
+  focus: string[];
+  image: string;
+  hoverTitle: string;
+  hoverText: string;
+}
+
+export interface Division {
+  id: string;
+  name: string;
+  description: string;
+  capabilities: string[];
+}
+
+export interface ClientGroup {
+  title: string;
+  subtitle: string;
+  items: string[];
+  type: 'primary' | 'secondary' | 'avoid';
+}
+
+export interface CareerRole {
+  id: string;
+  title: string;
+  division: string;
+  type: string;
+  description: string;
+  requirements: string[];
+}
+
+export interface BlogArticle {
+  id: string;
+  title: string;
+  category: string;
+  description: string;
+  readTime: string;
+  date: string;
+  content: string[];
+  image: string;
+}
+
+export const TEAM_MEMBERS_DATA: TeamMember[] = [
+  {
+    name: "Saviour",
+    role: "Co-founder & Technical Lead",
+    initial: "S",
+    colorClass: "bg-ink text-paper",
+    bio: "Architecting software platforms, custom automation flows, and business portals that make operations lean and secure. Saviour bridges the gap between raw code and long-term business growth, building products that scale gracefully under pressure.",
+    focus: ["System Architecture", "Custom Automation & Workflow Engines", "Full-Stack Software Development", "Product Integrity & Technical Execution"],
+    image: "/team/saviour.jpg",
+    hoverTitle: "Hi There !",
+    hoverText: "I'm a hardcore software lead and systems architect dedicated to clean code."
+  },
+  {
+    name: "James",
+    role: "Co-founder & Creative Director",
+    initial: "J",
+    colorClass: "bg-moss text-paper",
+    bio: "Developing custom brand strategies, visual communications, and cohesive client engagement frameworks. James transforms complex technical utilities into relatable, trusted brands that attract, convert, and sustainably retain high-value customers.",
+    focus: ["Brand Positioning & Identity Design", "Strategic Communication Systems", "User Interface & Experience (UI/UX)", "Growth & Customer Retention Strategy"],
+    image: "/team/james.jpg",
+    hoverTitle: "Hello World",
+    hoverText: "I craft premium strategic brand systems and high-converting user interfaces."
+  }
+];
+
+export const DIVISIONS_DATA: Division[] = [
+  {
+    id: "tech-div",
+    name: "Technical Division",
+    description: "Designing and engineering robust digital products that streamline operations and secure transactions.",
+    capabilities: [
+      "Custom Software & Multi-Tenant Platforms",
+      "High-Conversion Business Websites",
+      "Workflow & Automation Engines",
+      "AI Implementations & Semantic Search",
+      "Secure API Integrations & Database Architecture"
+    ]
+  },
+  {
+    id: "creative-div",
+    name: "Creative Division",
+    description: "Developing pristine visual languages and strategic message systems that command market authority.",
+    capabilities: [
+      "Brand Positioning & Corporate Identity Design",
+      "UI/UX Design Systems & Motion Prototypes",
+      "Multi-Channel Communication & Copywriting",
+      "Launch Campaigns & Customer Acquisition Strategy",
+      "Long-term Engagement & Community Infrastructure"
+    ]
+  }
+];
+
+export const CLIENTS_AUDIENCE_DATA: ClientGroup[] = [
+  {
+    title: "Primary Partners (Year 1)",
+    subtitle: "Organizations primed for active expansion and modernization.",
+    type: "primary",
+    items: [
+      "Small & medium enterprises (SMEs) seeking high efficiency (5–200 employees)",
+      "Venture-backed startups preparing to launch or scale fast",
+      "Private schools & educational institutions modernizing their portals",
+      "Real estate firms looking to dominate with clean custom systems",
+      "Automotive dealerships automating their inventory & CRM"
+    ]
+  },
+  {
+    title: "Secondary Sectors",
+    subtitle: "Highly targeted custom projects demanding high security and trust.",
+    type: "secondary",
+    items: [
+      "Churches & faith-based organizations building custom platforms",
+      "E-commerce stores needing advanced custom logic and performance",
+      "Logistics & delivery companies requiring real-time tracking systems",
+      "Professional service firms (law, accounting, consulting, healthcare) modernizing client portals"
+    ]
+  },
+  {
+    title: "Out of Scope (Year 1)",
+    subtitle: "Projects where we cannot deliver maximum speed or align incentives.",
+    type: "avoid",
+    items: [
+      "Government procurement contracts with long bureaucratic cycles",
+      "Legacy enterprises bound by multi-stage committee decision making",
+      "Small gigs where the absolute lowest price is the only deciding factor",
+      "Projects requiring technologies outside of our active operational expertise"
+    ]
+  }
+];
+
+export const CAREER_ROLES_DATA: CareerRole[] = [
+  {
+    id: "future-fullstack",
+    title: "Full-Stack Software Engineer",
+    division: "Technical Division",
+    type: "Future Role // Talent Pipeline",
+    description: "We are currently a high-performance team of two co-founders (Saviour & James). However, we are actively mapping our talent pipeline for future growth. If you are an elite developer with absolute code mastery, we want to know you.",
+    requirements: [
+      "Expertise in React, Vite, Node.js, and type-safe systems (TypeScript)",
+      "Obsessive attention to UI fidelity, responsive layouts, and clean animations",
+      "Experience with database architectures, secure API proxying, and cloud systems",
+      "A growth-focused mindset—you treat code as a tool to solve human business problems"
+    ]
+  },
+  {
+    id: "future-creative",
+    title: "Creative & Brand Strategy Lead",
+    division: "Creative Division",
+    type: "Future Role // Talent Pipeline",
+    description: "James leads our creative division, but as our client engagements compound, we will expand our strategic brand circle. We seek minds that can translate operational excellence into stunning visual narratives and brand positions.",
+    requirements: [
+      "Stellar portfolio covering typographic design, UI/UX systems, and brand books",
+      "Ability to write human, high-impact copywriting—absolutely free from generic AI-generated cliches",
+      "Strategic grasp of customer retention, conversion funnels, and communication frameworks",
+      "Fluency with design, prototyping, and asset curation tools"
+    ]
+  }
+];
+
+export const DETAILED_BLOG_POSTS_DATA: BlogArticle[] = [
+  {
+    id: "blog-boutique",
+    title: "Why Boutique Technical Partners Outperform Freelance Teams",
+    category: "ENGINEERING / STRATEGY",
+    description: "A deep dive into the hidden costs of agency and freelance coordination, and how the boutique dedicated team model fixes aligned incentives.",
+    readTime: "5 min read",
+    date: "Jul 8, 2026",
+    content: [
+      "When a business sets out to build a new digital product, the default move is either to hire a large agency or piece together a team of independent freelancers. On paper, both sound reasonable. In practice, both models are plagued by misaligned incentives, coordination overhead, and single-point-of-failure risks.",
+      "With freelancers, you are the coordinator. You are the project manager tasked with aligning five different people who do not know each other, do not share a common process, and have zero long-term commitment to your business. If your mobile developer disagrees with your API developer, they do not resolve it among themselves—they escalate it to you, costing you time and operational focus. If one of them vanishes or takes a higher-paying gig, you are left with half-finished, un-integrated code and a dead timeline.",
+      "Large agencies solve the coordination problem, but introduce a relationship gap. You might sell to the senior partners, but your project is ultimately handed off to junior developers and account managers who treat your business as a check-the-box checklist. Once the contract term ends, they hand you a zip file, clear the invoice, and move on. There is no historical memory of why decisions were made, and no continuous evolution.",
+      "We built our company to bridge this exact gap. As a boutique technical and creative partner, Saviour and James work as one coordinated unit. We don't just build systems; we live inside them, learning how you operate. When you have a single team managing both your engineering stack and your brand positioning, everything aligns. Your UI feels premium because the creative team and technical team sit in the same room. Your system scales because the co-founders who designed it are still there, committed to your long-term expansion."
+    ],
+    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: "blog-mvp",
+    title: "The Abuja Tech Emergence: Building World-Class MVPs in Record Time",
+    category: "VENTURES / COMMUNITY",
+    description: "Insights from our engineering hub on how we achieve 4.8-day average MVP launches without sacrificing system security or scalability.",
+    readTime: "4 min read",
+    date: "Jun 24, 2026",
+    content: [
+      "There is a toxic myth in product development that speed requires sacrifice. Teams assume that if you want to build a product in days instead of months, you must compromise on type-safety, design precision, or data security. We believe that is a false choice.",
+      "The secret to rapid, secure delivery isn't cutting corners—it's high-fidelity modularity and absolute clarity of scope. Our development pipeline relies on pre-staged architectural blueprints, automated type generation, and strict linting. This allows us to focus entirely on the custom business logic and unique brand details of your project rather than re-engineering the foundational plumbing from scratch.",
+      "Working from our base in Abuja, we are tapped into a vibrant, high-tempo talent hub that demands rapid execution. But speed is nothing without a stable foundation. By keeping our team small, Saviour can review every single line of code for performance, security, and schema soundness, while James ensures every user flow, transition, and micro-interaction is polished to consumer standards.",
+      "An MVP should not feel like a toy; it should feel like the first chapter of an enterprise. By building with modern TypeScript stacks and secure cloud persistence from day one, we guarantee that the MVP we ship next week will still be the production engine supporting your first ten thousand users next year."
+    ],
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: "blog-growth",
+    title: "Aligning Brand, Tech, & Operations for Sustainable Growth",
+    category: "GROWTH / OPERATIONS",
+    description: "Introducing our integrated system framework for combining software architecture with brand narrative to eliminate conversion leaks.",
+    readTime: "6 min read",
+    date: "May 12, 2026",
+    content: [
+      "Many businesses have exceptional products and services but struggle to grow. When you look under the hood, the root cause is almost always the same: their technology, their branding, and their operations do not speak to each other.",
+      "A marketing team might launch a gorgeous campaign that brings ten thousand users to a landing page. But if the website is slow, or if the checkout flow is confusing, or if the database fails to capture the lead, that creative effort is entirely wasted. Conversely, an engineering team might build a incredibly complex, highly performant automation system, but if the branding looks outdated and the copy is written in cold, robotic language, customers will not trust it enough to enter their details.",
+      "To achieve sustainable growth, you must treat your tech stack and your brand narrative as a single, coordinated engine. The technical division and the creative division must work hand-in-hand.",
+      "This is why we serve our clients not as a vendor, but as a long-term partner. When we re-design a client's system, Saviour ensures the API proxy runs with sub-100ms latency and zero client-exposed credentials, while James aligns the visual typography and writes human, high-converting copy that builds immediate trust. By eliminating the friction between creative expression and technical execution, we unlock true business velocity."
+    ],
+    image: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=800"
+  }
+];
+
