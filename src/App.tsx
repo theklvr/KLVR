@@ -660,12 +660,12 @@ export default function App() {
               className="space-y-6 lg:pb-6"
             >
               <h1 className="font-space font-medium text-[38px] sm:text-[48px] md:text-[54px] lg:text-[58px] leading-[1.1] tracking-[-0.02em] text-white">
-                Digital Product &amp;<br />
-                Venture Engineering
+                One Team,<br />
+                Everything You Need
               </h1>
 
               <p className="text-[14px] sm:text-[15px] md:text-[16px] max-w-lg text-[#99A28E] leading-relaxed font-sans font-light">
-                Most startups end up hiring a website developer, an app developer, a social media handler, a few KOLs, and hoping none of them disappear. <strong className="font-semibold text-white border-b border-klvr/60 pb-0.5">klvr</strong> replaces all of that fragmentation with one elite, dedicated engineering team that actually stays.
+                Most growing businesses end up juggling a website developer, an app developer, a social media manager, and a handful of freelancers, hoping none of them disappear. <strong className="font-semibold text-white border-b border-klvr/60 pb-0.5">klvr</strong> is the one team that handles all of it, and sticks around long after launch.
               </p>
 
               <div className="flex flex-wrap items-center gap-5 pt-2">
@@ -693,7 +693,7 @@ export default function App() {
                     10+
                   </div>
                   <div className="font-mono text-[10px] sm:text-[10.5px] text-[#7C8370] uppercase tracking-wider leading-relaxed">
-                    high-performance products delivered
+                    products shipped and running
                   </div>
                 </motion.div>
 
@@ -706,7 +706,7 @@ export default function App() {
                     24/7/365
                   </div>
                   <div className="font-mono text-[10px] sm:text-[10.5px] text-[#7C8370] uppercase tracking-wider leading-relaxed">
-                    active support &amp; launch readiness
+                    here whenever you need us
                   </div>
                 </motion.div>
               </div>
