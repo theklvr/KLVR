@@ -282,7 +282,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
-            className="text-ink text-[17px] sm:text-[19px] leading-relaxed max-w-3xl mx-auto text-center font-sans first-letter:font-space first-letter:font-bold first-letter:text-[40px] sm:first-letter:text-[48px] first-letter:text-ink"
+            className="text-ink text-[17px] sm:text-[19px] leading-relaxed max-w-3xl mx-auto text-justify font-sans first-letter:font-space first-letter:font-bold first-letter:text-[40px] sm:first-letter:text-[48px] first-letter:text-ink"
           >
             In 2026, we set out to fix a broken model. Most growing businesses juggle a website developer, a brand designer, and a handful of freelancers who disappear the moment the invoice clears. We built klvr to be the one team that stays, handling the build and the brand together, and sticking around long after launch.
           </motion.p>
@@ -737,7 +737,7 @@ function ServiceAccordionItem({ service, index }: { service: typeof SERVICES_DAT
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <div className="pb-8 md:pb-10 -mt-2 grid grid-cols-[40px_1fr] md:grid-cols-[80px_1fr] gap-4 md:gap-10">
+            <div className="pt-1 pb-8 md:pb-10 grid grid-cols-[40px_1fr] md:grid-cols-[80px_1fr] gap-4 md:gap-10">
               <div aria-hidden="true" />
               <div className="min-w-0 pr-4 md:pr-16 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
               <p className="text-neutral-500 text-[14px] leading-relaxed min-w-0">
