@@ -191,7 +191,7 @@ export function Header() {
                     }`}
                   >
                     <a
-                      href={homeAnchor("#why-choose-us")}
+                      href={homeAnchor("#about")}
                       className={`block p-3 rounded-lg transition-colors duration-200 ${
                         isPastHero ? "hover:bg-ink/5" : "hover:bg-white/5"
                       }`}
@@ -319,7 +319,7 @@ export function Header() {
                   </span>
                   <div className="pl-4 space-y-2.5 mt-1">
                     <a
-                      href={homeAnchor("#why-choose-us")}
+                      href={homeAnchor("#about")}
                       className="block text-white/60 hover:text-white transition-colors"
                       onClick={() => setMobileMenuOpen(false)}
                     >

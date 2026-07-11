@@ -274,67 +274,93 @@ export default function Home() {
 
       <hr className="border-line" />
 
+      {/* ABOUT SECTION (brief writeup) */}
+      <section className="py-20 border-b border-line bg-paper" id="about">
+        <div className="max-w-6xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="bg-white border border-line rounded-2xl p-8 md:p-10"
+          >
+            <span className="text-mist text-[13px] font-sans block mb-3">About us</span>
+            <p className="text-ink text-[16px] sm:text-[18px] leading-relaxed max-w-2xl font-sans">
+              We're a business growth company that becomes the long-term technology and creative partner for growing businesses, one coordinated team handling the build, the brand, and everything in between, so founders can focus on running the business instead of managing freelancers.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
       {/* WHY CHOOSE US SECTION */}
       <section className="py-24 border-b border-line bg-paper-dim" id="why-choose-us">
         <div className="max-w-6xl mx-auto px-6">
 
-          <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 items-stretch">
+          {/* Top row: eyebrow + heading, same line */}
+          <div className="grid grid-cols-1 lg:grid-cols-[0.22fr_0.78fr] gap-3 lg:gap-8 items-start mb-16">
+            <motion.span
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5 }}
+              className="text-mist text-[13px] font-sans block lg:pt-2"
+            >
+              Why choose us
+            </motion.span>
+            <motion.h2
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="font-space font-semibold text-[28px] sm:text-[36px] md:text-[42px] leading-[1.15] tracking-tight"
+            >
+              <span className="text-ink">We build for outcomes</span>{" "}
+              <span className="text-mist">- not just launch day.</span>
+            </motion.h2>
+          </div>
 
-            {/* LEFT: label + video */}
+          {/* Bottom row: video (left) + description/stats (right) */}
+          <div className="grid grid-cols-1 lg:grid-cols-[0.34fr_0.66fr] gap-8 lg:gap-20 lg:items-stretch">
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.6 }}
-              className="lg:w-[30%] flex flex-col"
+              className="relative w-full aspect-[3/4] lg:h-[560px] lg:aspect-auto rounded-3xl overflow-hidden bg-ink"
             >
-              <span className="text-mist text-[13px] font-sans block mb-4">Why choose us</span>
-              <div className="relative flex-1 min-h-[320px] rounded-3xl overflow-hidden bg-ink">
-                <video
-                  src="/Assets/Klvrvid.mp4"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-              </div>
+              <video
+                src="/Assets/Klvrvid.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover"
+              />
             </motion.div>
 
-            {/* RIGHT: heading + description + stats */}
-            <div className="lg:w-[70%]">
-              <motion.h2
-                initial={{ opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.6 }}
-                className="font-space font-semibold text-[28px] sm:text-[36px] md:text-[42px] leading-[1.15] tracking-tight mb-6"
-              >
-                <span className="text-ink">We build for outcomes</span>{" "}
-                <span className="text-mist">- not just launch day.</span>
-              </motion.h2>
-
+            <div className="lg:h-full flex flex-col">
               <motion.p
                 initial={{ opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="text-moss text-[15px] leading-relaxed max-w-sm mb-10"
+                className="text-moss text-[15px] leading-relaxed max-w-sm mt-2 mb-12"
               >
                 Direct founder access, weekly live builds, and systems built to compound are why partners stay long after the first launch.
               </motion.p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div className="grid grid-cols-2 gap-3 lg:flex-1">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-80px" }}
                   transition={{ duration: 0.6, delay: 0.1 }}
-                  className="bg-white border border-line rounded-2xl p-6"
+                  className="bg-white border border-line rounded-2xl p-6 flex flex-col lg:h-full"
                 >
                   <div className="font-space font-bold text-[32px] text-ink tracking-tight leading-none mb-2">10+</div>
                   <p className="text-ink text-[13.5px] font-semibold mb-3">Successful projects completed</p>
-                  <p className="text-mist text-[12.5px] leading-relaxed">
+                  <p className="text-mist text-[12.5px] leading-relaxed mt-auto">
                     We've helped launch products and platforms that make growing businesses run smoother and look sharper.
                   </p>
                 </motion.div>
@@ -344,11 +370,11 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-80px" }}
                   transition={{ duration: 0.6, delay: 0.2 }}
-                  className="bg-white border border-line rounded-2xl p-6"
+                  className="bg-white border border-line rounded-2xl p-6 flex flex-col lg:h-full"
                 >
                   <div className="font-space font-bold text-[32px] text-ink tracking-tight leading-none mb-2">100%</div>
                   <p className="text-ink text-[13.5px] font-semibold mb-3">Customer satisfaction</p>
-                  <div className="flex items-center gap-2.5">
+                  <div className="flex items-center gap-2.5 mt-auto">
                     <div className="flex -space-x-2 select-none">
                       <div className="w-7 h-7 rounded-full bg-ink text-paper font-space font-bold text-[10px] flex items-center justify-center border-2 border-white">S</div>
                       <div className="w-7 h-7 rounded-full bg-moss text-paper font-space font-bold text-[10px] flex items-center justify-center border-2 border-white">J</div>
@@ -700,13 +726,9 @@ function ServiceAccordionItem({ service, index }: { service: typeof SERVICES_DAT
         <h3 className="font-space font-bold text-[20px] md:text-[26px] text-ink leading-tight group-hover:text-moss transition-colors">
           {service.title}
         </h3>
-        <motion.span
-          animate={{ rotate: isOpen ? 45 : 0 }}
-          transition={{ duration: 0.25 }}
-          className="w-9 h-9 rounded-full border border-line flex items-center justify-center text-ink flex-shrink-0 group-hover:border-ink/40 transition-colors"
-        >
-          <Plus className="w-4 h-4" />
-        </motion.span>
+        <span className="w-9 h-9 rounded-full border border-line flex items-center justify-center text-ink flex-shrink-0 group-hover:border-ink/40 transition-colors">
+          {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
+        </span>
       </button>
 
       <AnimatePresence initial={false}>
@@ -718,17 +740,23 @@ function ServiceAccordionItem({ service, index }: { service: typeof SERVICES_DAT
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <div className="pb-8 md:pb-10 pl-[56px] md:pl-[120px] pr-4 md:pr-16 -mt-2">
-              <p className="text-moss text-[14px] leading-relaxed mb-4 max-w-md">
+            <div className="pb-8 md:pb-10 pl-[56px] md:pl-[120px] pr-4 md:pr-16 -mt-2 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
+              <p className="text-moss text-[14px] leading-relaxed">
                 {service.description}
               </p>
-              <ul className="flex flex-wrap gap-x-4 gap-y-1.5">
-                {service.categories.map((cat) => (
-                  <li key={cat} className="text-[11.5px] font-mono uppercase tracking-wide text-mist">
-                    {cat}
-                  </li>
-                ))}
-              </ul>
+              <div>
+                <span className="text-mist text-[11px] font-mono uppercase tracking-wider block mb-3">Categories</span>
+                <div className="flex flex-wrap gap-2">
+                  {service.categories.map((cat) => (
+                    <span
+                      key={cat}
+                      className="text-[12px] font-sans text-ink bg-white border border-line rounded-full px-3.5 py-1.5"
+                    >
+                      {cat}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
           </motion.div>
         )}
