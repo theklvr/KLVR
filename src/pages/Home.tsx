@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
-import { ArrowLeft, ArrowRight, ArrowUpRight, ExternalLink, Plus, Minus, Check, Briefcase, Twitter, Code2, PenTool, Quote } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, ExternalLink, Plus, Minus, Check, Twitter, Quote } from "lucide-react";
 import { SpaceBackground } from "../components/SpaceBackground";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
@@ -141,6 +141,49 @@ const WHAT_CHANGES_DATA = [
   }
 ];
 
+const HERO_BUILD_WORDS = ["Websites", "Software", "Brand Kits", "Automation", "Platforms"];
+const HERO_FOR_WORDS = ["Startups", "Schools", "Real Estate", "E-Commerce", "SMEs"];
+
+const SERVICES_DATA = [
+  {
+    num: "01",
+    anchorId: "pillar-build",
+    title: "Engineering & Build",
+    description: "We design and build the software a growing business runs on: websites, custom platforms, and the systems that keep everything moving.",
+    categories: [
+      "Custom Software & CRM Systems",
+      "School & Business Management Platforms",
+      "High-Conversion Websites & E-Commerce",
+      "Workflow Automation & AI Integration",
+      "Secure API & Database Architecture"
+    ]
+  },
+  {
+    num: "02",
+    anchorId: "pillar-brand",
+    title: "Brand & Creative",
+    description: "We turn what a business does into a brand people trust and remember, then keep it consistent everywhere it shows up.",
+    categories: [
+      "Brand Positioning & Visual Identity",
+      "Content, Photography & Videography",
+      "User Interface & Experience (UI/UX)",
+      "Marketing Strategy & Growth Campaigns"
+    ]
+  },
+  {
+    num: "03",
+    anchorId: "pillar-partnership",
+    title: "Ongoing Partnership",
+    description: "We don't disappear after launch. We stay on as a long-term technology and creative partner, growing alongside the business.",
+    categories: [
+      "Direct Founder-to-Founder Thread",
+      "Monthly Retainers & Growth Partnerships",
+      "Weekly Live Builds & Launch Readiness",
+      "Business & Technology Consulting"
+    ]
+  }
+];
+
 export default function Home() {
   const location = useLocation();
 
@@ -268,75 +311,157 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="max-w-6xl mx-auto px-6 relative z-10 w-full flex-grow flex flex-col justify-center">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-end w-full">
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="space-y-6 lg:pb-6"
-            >
-              <h1 className="font-space font-medium text-[38px] sm:text-[48px] md:text-[54px] lg:text-[58px] leading-[1.1] tracking-[-0.02em] text-white">
-                One Team,<br />
-                Everything You Need
-              </h1>
-
-              <p className="text-[14px] sm:text-[15px] md:text-[16px] max-w-lg text-[#99A28E] leading-relaxed font-sans font-light">
-                Most growing businesses end up juggling a website developer, an app developer, a social media manager, and a handful of freelancers, hoping none of them disappear. <strong className="font-semibold text-white border-b border-klvr/60 pb-0.5">klvr</strong> is the one team that handles all of it, and sticks around long after launch.
-              </p>
-
-              <div className="flex flex-wrap items-center gap-5 pt-2">
-                <a
-                  href="#contact"
-                  className="bg-white text-[#020504] hover:bg-klvr hover:shadow-[0_0_40px_rgba(198,241,53,0.5)] text-[14px] pl-6 pr-2 py-2.5 rounded-full font-semibold transition-all duration-300 flex items-center gap-3 group hover:scale-[1.02]"
-                >
-                  Get in contact
-                  <span className="w-7 h-7 rounded-full bg-[#020504] text-white flex items-center justify-center transition-all duration-300 group-hover:scale-105 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                    <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
-                  </span>
-                </a>
-              </div>
-            </motion.div>
-
-            <div className="w-full lg:pb-6">
-              <div className="grid grid-cols-2 gap-8 md:gap-12 pt-8 lg:pt-0 border-t lg:border-t-0 border-white/10 lg:pl-6">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
-                >
-                  <div className="font-space font-medium text-[42px] sm:text-[46px] md:text-[50px] text-white tracking-tight leading-none mb-2">
-                    10+
-                  </div>
-                  <div className="font-mono text-[10px] sm:text-[10.5px] text-[#7C8370] uppercase tracking-wider leading-relaxed">
-                    products shipped and running
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.5 }}
-                >
-                  <div className="font-space font-medium text-[34px] sm:text-[40px] md:text-[44px] lg:text-[48px] text-white tracking-tight leading-none mb-2">
-                    24/7/365
-                  </div>
-                  <div className="font-mono text-[10px] sm:text-[10.5px] text-[#7C8370] uppercase tracking-wider leading-relaxed">
-                    here whenever you need us
-                  </div>
-                </motion.div>
-              </div>
-            </div>
-
-          </div>
+        <div className="max-w-6xl mx-auto px-6 relative z-10 w-full flex-grow flex flex-col items-center justify-center text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <h1 className="font-space font-medium text-[34px] sm:text-[44px] md:text-[54px] lg:text-[60px] leading-[1.2] tracking-[-0.02em] text-white">
+              We build <RotatingWord words={HERO_BUILD_WORDS} colorClass="text-klvr" /><br />
+              for <RotatingWord words={HERO_FOR_WORDS} colorClass="text-white" />.
+            </h1>
+          </motion.div>
         </div>
       </section>
 
       <hr className="border-line" />
 
-      {/* ABOUT SECTION */}
-      <section className="py-24 border-b border-line" id="about">
+      {/* WHY CHOOSE US SECTION */}
+      <section className="py-24 border-b border-line bg-paper-dim" id="why-choose-us">
+        <div className="max-w-6xl mx-auto px-6">
+
+          {/* Who We Serve */}
+          <div className="mb-16 pb-16 border-b border-line/60">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
+              <div>
+                <h3 className="font-space font-bold text-[22px] text-ink">Who We Serve</h3>
+                <p className="text-mist text-[13px] font-sans mt-1">Our primary and secondary target alignment for Year 1 partnerships.</p>
+              </div>
+
+              <div className="flex flex-wrap gap-2 select-none">
+                {(['primary', 'secondary', 'avoid'] as const).map((tab) => {
+                  const label = tab === 'primary' ? "Primary Partners" : tab === 'secondary' ? "Secondary Sectors" : "Clients We Avoid";
+                  const isActive = activeAudienceTab === tab;
+                  return (
+                    <button
+                      key={tab}
+                      onClick={() => setActiveAudienceTab(tab)}
+                      className={`px-4 py-2 rounded-full font-space font-bold text-[11px] tracking-wide uppercase transition-all duration-200 cursor-pointer border ${
+                        isActive
+                          ? "bg-ink text-white border-ink"
+                          : "bg-white text-moss border-line hover:border-ink/20"
+                      }`}
+                    >
+                      {label}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeAudienceTab}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.25 }}
+              >
+                {CLIENTS_AUDIENCE_DATA.map((group) => {
+                  if (group.type !== activeAudienceTab) return null;
+                  return (
+                    <div key={group.type} className="space-y-4">
+                      <div className="mb-4">
+                        <span className="font-space font-semibold text-[15px] text-ink block mb-0.5">
+                          {group.title}
+                        </span>
+                        <p className="text-[12.5px] font-mono text-moss">{group.subtitle}</p>
+                      </div>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {group.items.map((item, idx) => {
+                          const isAvoid = group.type === 'avoid';
+                          return (
+                            <div
+                              key={idx}
+                              className={`p-4 rounded-xl border flex items-start gap-3 transition-colors duration-200 ${
+                                isAvoid
+                                  ? "bg-rose-500/[0.02] border-rose-500/10 hover:border-rose-500/20"
+                                  : "bg-white border-line hover:border-ink/10"
+                              }`}
+                            >
+                              <div className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 ${
+                                isAvoid ? "bg-rose-100 text-rose-600" : "bg-emerald-50 text-emerald-600"
+                              }`}>
+                                {isAvoid ? <Minus className="w-3 h-3" /> : <Check className="w-3 h-3" />}
+                              </div>
+                              <span className="text-[13.5px] text-ink leading-relaxed font-sans">{item}</span>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  );
+                })}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Why Choose Us */}
+          <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-12 lg:gap-16 items-start">
+
+            <div className="lg:sticky lg:top-28 space-y-6">
+              <div>
+                <h2 className="font-space font-semibold text-[26px] sm:text-[34px] md:text-[38px] leading-tight tracking-tight text-ink uppercase">
+                  Why Choose Us
+                </h2>
+              </div>
+              <p className="text-[14.5px] text-moss leading-relaxed font-sans">
+                The traditional agency model thrives on communication layers, slow delivery, and billable hours. We built our partnership structure to be the absolute opposite.
+              </p>
+              <p className="text-[14px] text-mist leading-relaxed font-sans">
+                We transform typical development headaches into streamlined, compounding business outcomes.
+              </p>
+            </div>
+
+            <div className="overflow-hidden relative w-full rounded-xl" style={{ maskImage: 'linear-gradient(to right, transparent, black 5%, black 95%, transparent)' }}>
+              <motion.div
+                className="flex gap-6 w-max"
+                animate={{ x: ["0%", "-50%"] }}
+                transition={{ repeat: Infinity, ease: "linear", duration: 25 }}
+              >
+                {[...WHAT_CHANGES_DATA, ...WHAT_CHANGES_DATA].map((item, idx) => (
+                  <div
+                    key={`${item.num}-${idx}`}
+                    className="w-[320px] sm:w-[380px] shrink-0 rounded-xl border border-line bg-white p-6 flex flex-col"
+                  >
+                    <div className="flex items-center gap-3 mb-5 pb-3 border-b border-line/40">
+                      <span className="font-space font-bold text-[18px] text-[#D4ED31]">{item.num}</span>
+                      <h4 className="font-space font-bold text-[16px] text-ink">{item.title}</h4>
+                    </div>
+
+                    <div className="space-y-4">
+                      <div>
+                        <span className="text-[10px] font-mono font-bold text-mist uppercase tracking-wider block mb-1.5">Traditional Agency</span>
+                        <p className="text-[13px] text-moss leading-relaxed font-sans">{item.before}</p>
+                      </div>
+                      <div className="pt-4 border-t border-line/40">
+                        <span className="text-[10px] font-mono font-bold text-ink uppercase tracking-wider block mb-1.5">Our Approach</span>
+                        <p className="text-[13px] text-ink leading-relaxed font-sans font-medium">{item.after}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* SERVICES SECTION */}
+      <section className="py-24 border-b border-line bg-white" id="services">
         <div className="max-w-6xl mx-auto px-6">
 
           <motion.div
@@ -344,254 +469,55 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
-            className="grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-10 lg:gap-16 mb-20"
+            className="mb-16 max-w-xl"
           >
-            <div>
-              <h2 className="font-space font-semibold text-[26px] sm:text-[34px] md:text-[38px] leading-tight tracking-tight">
-                You shouldn't need a handful of freelancers to launch one business.
-              </h2>
-            </div>
-            <div className="space-y-6 text-[15px] sm:text-[16px] text-moss leading-relaxed">
-              <p>
-                We are a business growth company that becomes the long-term technology and creative partner for businesses. We help organizations manage, improve, and grow through one coordinated team, allowing them to focus on running their business while we help them build, market, automate, and scale their operations.
-              </p>
-              <p>
-                Instead of treating technology, branding, marketing, and business operations as separate services, we align them into one comprehensive strategy that supports sustainable growth. Whether a client needs a website today, automation next month, a rebrand next year, or strategic guidance as they grow, they continue working with the same team that already understands their business.
-              </p>
-            </div>
+            <h2 className="font-space font-semibold text-[26px] sm:text-[34px] md:text-[38px] tracking-tight text-ink leading-tight mb-3">
+              What We Do
+            </h2>
+            <p className="text-moss text-[15px] leading-relaxed">
+              One team, two divisions, and a partnership that doesn't end at launch.
+            </p>
           </motion.div>
 
-          {/* BENTO SERVICES HUB */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
-            <motion.div
-              id="about-build"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: 0 }}
-              className="bg-white border border-line rounded-xl p-8 hover:shadow-lg transition-all duration-300 relative overflow-hidden flex flex-col justify-between"
-            >
-              <div>
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="w-10 h-10 rounded-lg bg-[#D4ED31]/20 flex items-center justify-center text-ink">
-                    <Code2 className="w-5 h-5" />
-                  </div>
-                  <h3 className="font-space font-bold text-[18px] text-ink">Engineering &amp; Build</h3>
+          <div className="border-t border-line">
+            {SERVICES_DATA.map((service, idx) => (
+              <motion.div
+                key={service.num}
+                id={service.anchorId}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, delay: idx * 0.06 }}
+                className="border-b border-line py-10 md:py-12 grid grid-cols-1 md:grid-cols-[80px_1fr_1.4fr] gap-4 md:gap-10 items-start scroll-mt-28"
+              >
+                <span className="font-mono text-[13px] text-moss">{service.num}</span>
+                <h3 className="font-space font-bold text-[22px] md:text-[26px] text-ink leading-tight">
+                  {service.title}
+                </h3>
+                <div>
+                  <p className="text-moss text-[14px] leading-relaxed mb-4 max-w-md">
+                    {service.description}
+                  </p>
+                  <ul className="flex flex-wrap gap-x-4 gap-y-1.5">
+                    {service.categories.map((cat) => (
+                      <li key={cat} className="text-[11.5px] font-mono uppercase tracking-wide text-mist">
+                        {cat}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <p className="text-[14px] text-moss leading-relaxed mb-6 font-sans">
-                  Designing and engineering robust digital products that streamline operations and secure transactions.
-                </p>
-                <ul className="space-y-3">
-                  {[
-                    "Custom Software, CRM & School/Business Management Systems",
-                    "High-Conversion Websites & E-Commerce",
-                    "Workflow Automation & AI Integration",
-                    "Secure API & Database Architecture"
-                  ].map((cap, cidx) => (
-                    <li key={cidx} className="flex items-start gap-2 text-[13.5px] text-ink font-sans">
-                      <span className="text-moss mt-1 text-[10px]">■</span>
-                      <span>{cap}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </motion.div>
-
-            <motion.div
-              id="about-brand"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="bg-white border border-line rounded-xl p-8 hover:shadow-lg transition-all duration-300 relative overflow-hidden flex flex-col justify-between"
-            >
-              <div>
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="w-10 h-10 rounded-lg bg-[#D4ED31]/20 flex items-center justify-center text-ink">
-                    <PenTool className="w-5 h-5" />
-                  </div>
-                  <h3 className="font-space font-bold text-[18px] text-ink">Brand &amp; Creative</h3>
-                </div>
-                <p className="text-[14px] text-moss leading-relaxed mb-6 font-sans">
-                  Transforming complex services into trusted brands that attract, convert, and sustainably retain high-value customers.
-                </p>
-                <ul className="space-y-3">
-                  {[
-                    "Brand Positioning & Visual Identity",
-                    "Content, Photography & Videography",
-                    "User Interface & Experience (UI/UX)",
-                    "Marketing Strategy & Growth Campaigns"
-                  ].map((cap, cidx) => (
-                    <li key={cidx} className="flex items-start gap-2 text-[13.5px] text-ink font-sans">
-                      <span className="text-moss mt-1 text-[10px]">■</span>
-                      <span>{cap}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </motion.div>
-
-            <motion.div
-              id="about-partnership"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-white border border-line rounded-xl p-8 hover:shadow-lg transition-all duration-300 relative overflow-hidden flex flex-col justify-between"
-            >
-              <div>
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="w-10 h-10 rounded-lg bg-[#D4ED31]/20 flex items-center justify-center text-ink">
-                    <Briefcase className="w-5 h-5" />
-                  </div>
-                  <h3 className="font-space font-bold text-[18px] text-ink">Ongoing Partnership</h3>
-                </div>
-                <p className="text-[14px] text-moss leading-relaxed mb-6 font-sans">
-                  Operating with continuous alignment, zero management layers, and ongoing support designed to compound over time.
-                </p>
-                <ul className="space-y-3">
-                  {[
-                    "Direct Founder-to-Founder Thread",
-                    "Ongoing Retainer Optimization Loops",
-                    "Weekly Live Builds & Launch Readiness",
-                    "No Middlemen, Full-Service Agility"
-                  ].map((cap, cidx) => (
-                    <li key={cidx} className="flex items-start gap-2 text-[13.5px] text-ink font-sans">
-                      <span className="text-moss mt-1 text-[10px]">■</span>
-                      <span>{cap}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </motion.div>
+              </motion.div>
+            ))}
           </div>
 
-          {/* APPROACH & AUDIENCE */}
-          <div className="bg-paper-dim border border-line rounded-2xl p-8 mb-20 relative overflow-hidden" id="why-choose-us">
-
-            <div className="mb-12 border-b border-line/60 pb-12">
-              <div className="flex items-center justify-between mb-8">
-                <div>
-                  <h3 className="font-space font-bold text-[22px] text-ink">Who We Serve</h3>
-                  <p className="text-mist text-[13px] font-sans mt-1">Our primary and secondary target alignment for Year 1 partnerships.</p>
-                </div>
-
-                <div className="flex flex-wrap gap-2 select-none">
-                  {(['primary', 'secondary', 'avoid'] as const).map((tab) => {
-                    const label = tab === 'primary' ? "Primary Partners" : tab === 'secondary' ? "Secondary Sectors" : "Clients We Avoid";
-                    const isActive = activeAudienceTab === tab;
-                    return (
-                      <button
-                        key={tab}
-                        onClick={() => setActiveAudienceTab(tab)}
-                        className={`px-4 py-2 rounded-full font-space font-bold text-[11px] tracking-wide uppercase transition-all duration-200 cursor-pointer border ${
-                          isActive
-                            ? "bg-ink text-white border-ink"
-                            : "bg-white text-moss border-line hover:border-ink/20"
-                        }`}
-                      >
-                        {label}
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeAudienceTab}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.25 }}
-                >
-                  {CLIENTS_AUDIENCE_DATA.map((group) => {
-                    if (group.type !== activeAudienceTab) return null;
-                    return (
-                      <div key={group.type} className="space-y-4">
-                        <div className="mb-4">
-                          <span className="font-space font-semibold text-[15px] text-ink block mb-0.5">
-                            {group.title}
-                          </span>
-                          <p className="text-[12.5px] font-mono text-moss">{group.subtitle}</p>
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                          {group.items.map((item, idx) => {
-                            const isAvoid = group.type === 'avoid';
-                            return (
-                              <div
-                                key={idx}
-                                className={`p-4 rounded-xl border flex items-start gap-3 transition-colors duration-200 ${
-                                  isAvoid
-                                    ? "bg-rose-500/[0.02] border-rose-500/10 hover:border-rose-500/20"
-                                    : "bg-white border-line hover:border-ink/10"
-                                }`}
-                              >
-                                <div className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 ${
-                                  isAvoid ? "bg-rose-100 text-rose-600" : "bg-emerald-50 text-emerald-600"
-                                }`}>
-                                  {isAvoid ? <Minus className="w-3 h-3" /> : <Check className="w-3 h-3" />}
-                                </div>
-                                <span className="text-[13.5px] text-ink leading-relaxed font-sans">{item}</span>
-                              </div>
-                            );
-                          })}
-                        </div>
-                      </div>
-                    );
-                  })}
-                </motion.div>
-              </AnimatePresence>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-12 lg:gap-16 items-start">
-
-              <div className="lg:sticky lg:top-28 space-y-6">
-                <div>
-                  <h3 className="font-space font-semibold text-[26px] sm:text-[34px] md:text-[38px] leading-tight tracking-tight text-ink uppercase">
-                    Why Choose Us
-                  </h3>
-                </div>
-                <p className="text-[14.5px] text-moss leading-relaxed font-sans">
-                  The traditional agency model thrives on communication layers, slow delivery, and billable hours. We built our partnership structure to be the absolute opposite.
-                </p>
-                <p className="text-[14px] text-mist leading-relaxed font-sans">
-                  We transform typical development headaches into streamlined, compounding business outcomes.
-                </p>
-              </div>
-
-              <div className="overflow-hidden relative w-full rounded-xl" style={{ maskImage: 'linear-gradient(to right, transparent, black 5%, black 95%, transparent)' }}>
-                <motion.div
-                  className="flex gap-6 w-max"
-                  animate={{ x: ["0%", "-50%"] }}
-                  transition={{ repeat: Infinity, ease: "linear", duration: 25 }}
-                >
-                  {[...WHAT_CHANGES_DATA, ...WHAT_CHANGES_DATA].map((item, idx) => (
-                    <div
-                      key={`${item.num}-${idx}`}
-                      className="w-[320px] sm:w-[380px] shrink-0 rounded-xl border border-line bg-white p-6 flex flex-col"
-                    >
-                      <div className="flex items-center gap-3 mb-5 pb-3 border-b border-line/40">
-                        <span className="font-space font-bold text-[18px] text-[#D4ED31]">{item.num}</span>
-                        <h4 className="font-space font-bold text-[16px] text-ink">{item.title}</h4>
-                      </div>
-
-                      <div className="space-y-4">
-                        <div>
-                          <span className="text-[10px] font-mono font-bold text-mist uppercase tracking-wider block mb-1.5">Traditional Agency</span>
-                          <p className="text-[13px] text-moss leading-relaxed font-sans">{item.before}</p>
-                        </div>
-                        <div className="pt-4 border-t border-line/40">
-                          <span className="text-[10px] font-mono font-bold text-ink uppercase tracking-wider block mb-1.5">Our Approach</span>
-                          <p className="text-[13px] text-ink leading-relaxed font-sans font-medium">{item.after}</p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </motion.div>
-              </div>
-
-            </div>
+          <div className="mt-12">
+            <a
+              href="#contact"
+              className="bg-ink text-white hover:bg-moss text-[13px] px-6 py-3 rounded-full font-space font-bold tracking-wide inline-flex items-center gap-2 transition-all duration-300 hover:-translate-y-[1.5px]"
+            >
+              Get in contact
+              <ArrowUpRight className="w-4 h-4" />
+            </a>
           </div>
 
         </div>
@@ -952,6 +878,35 @@ export default function Home() {
 
       <Footer />
     </div>
+  );
+}
+
+/* ROTATING WORD (auto-cycling hero headline slot) */
+function RotatingWord({ words, colorClass }: { words: string[]; colorClass: string }) {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((i) => (i + 1) % words.length);
+    }, 2400);
+    return () => clearInterval(interval);
+  }, [words.length]);
+
+  return (
+    <span className="inline-block overflow-hidden align-top">
+      <AnimatePresence mode="wait">
+        <motion.span
+          key={words[index]}
+          initial={{ y: 16, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: -16, opacity: 0 }}
+          transition={{ duration: 0.35, ease: "easeOut" }}
+          className={`inline-block whitespace-nowrap ${colorClass}`}
+        >
+          {words[index]}
+        </motion.span>
+      </AnimatePresence>
+    </span>
   );
 }
 
