@@ -10,8 +10,9 @@
   --color-paper-dim: #E8E9DF;
 
   --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-space: "Space Grotesk", sans-serif;
+  --font-space: "Inter", ui-sans-serif, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-serif: "Times New Roman", Times, serif;
 
   --animate-sweep: sweep 4s infinite ease-in-out;
 

@@ -282,7 +282,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
-            className="text-ink text-[17px] sm:text-[19px] leading-relaxed max-w-3xl mx-auto text-justify font-sans first-letter:font-space first-letter:font-bold first-letter:text-[40px] sm:first-letter:text-[48px] first-letter:text-ink"
+            className="font-serif text-ink text-[17px] sm:text-[19px] leading-relaxed max-w-3xl mx-auto text-justify first-letter:font-serif first-letter:font-bold first-letter:text-[40px] sm:first-letter:text-[48px] first-letter:text-ink"
           >
             In 2026, we set out to fix a broken model. Most growing businesses juggle a website developer, a brand designer, and a handful of freelancers who disappear the moment the invoice clears. We built klvr to be the one team that stays, handling the build and the brand together, and sticking around long after launch.
           </motion.p>
