@@ -1,17 +1,12 @@
 import { useState, useEffect, useRef } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
-import { ArrowLeft, ArrowRight, ArrowUpRight, ExternalLink, Plus, Minus, Check, Twitter, Quote } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, ExternalLink, Plus, Minus, Twitter, Quote } from "lucide-react";
 import { SpaceBackground } from "../components/SpaceBackground";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { Seo } from "../components/Seo";
-import {
-  FAQ_DATA,
-  TEAM_MEMBERS_DATA,
-  CLIENTS_AUDIENCE_DATA,
-  DETAILED_BLOG_POSTS_DATA
-} from "../data";
+import { FAQ_DATA, TEAM_MEMBERS_DATA } from "../data";
 
 const BRAND_PORTFOLIO_DATA = [
   {
@@ -222,7 +217,6 @@ export default function Home() {
   }, []);
 
   const [portfolioActiveIndex, setPortfolioActiveIndex] = useState(0);
-  const [activeAudienceTab, setActiveAudienceTab] = useState<'primary' | 'secondary' | 'avoid'>('primary');
 
   // Only mount the live-preview iframe once the showcase section is actually
   // scrolled into view. Third-party sites can call window.focus() on load,
@@ -253,8 +247,6 @@ export default function Home() {
   const handleNextSlide = () => {
     setPortfolioActiveIndex((prev) => (prev + 1) % BRAND_PORTFOLIO_DATA.length);
   };
-
-  const [blogActiveIndex, setBlogActiveIndex] = useState(0);
 
   return (
     <div className="min-h-screen bg-paper text-ink selection:bg-klvr selection:text-ink relative overflow-x-hidden">
@@ -331,82 +323,6 @@ export default function Home() {
       <section className="py-24 border-b border-line bg-paper-dim" id="why-choose-us">
         <div className="max-w-6xl mx-auto px-6">
 
-          {/* Who We Serve */}
-          <div className="mb-16 pb-16 border-b border-line/60">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
-              <div>
-                <h3 className="font-space font-bold text-[22px] text-ink">Who We Serve</h3>
-                <p className="text-mist text-[13px] font-sans mt-1">Our primary and secondary target alignment for Year 1 partnerships.</p>
-              </div>
-
-              <div className="flex flex-wrap gap-2 select-none">
-                {(['primary', 'secondary', 'avoid'] as const).map((tab) => {
-                  const label = tab === 'primary' ? "Primary Partners" : tab === 'secondary' ? "Secondary Sectors" : "Clients We Avoid";
-                  const isActive = activeAudienceTab === tab;
-                  return (
-                    <button
-                      key={tab}
-                      onClick={() => setActiveAudienceTab(tab)}
-                      className={`px-4 py-2 rounded-full font-space font-bold text-[11px] tracking-wide uppercase transition-all duration-200 cursor-pointer border ${
-                        isActive
-                          ? "bg-ink text-white border-ink"
-                          : "bg-white text-moss border-line hover:border-ink/20"
-                      }`}
-                    >
-                      {label}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeAudienceTab}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.25 }}
-              >
-                {CLIENTS_AUDIENCE_DATA.map((group) => {
-                  if (group.type !== activeAudienceTab) return null;
-                  return (
-                    <div key={group.type} className="space-y-4">
-                      <div className="mb-4">
-                        <span className="font-space font-semibold text-[15px] text-ink block mb-0.5">
-                          {group.title}
-                        </span>
-                        <p className="text-[12.5px] font-mono text-moss">{group.subtitle}</p>
-                      </div>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {group.items.map((item, idx) => {
-                          const isAvoid = group.type === 'avoid';
-                          return (
-                            <div
-                              key={idx}
-                              className={`p-4 rounded-xl border flex items-start gap-3 transition-colors duration-200 ${
-                                isAvoid
-                                  ? "bg-rose-500/[0.02] border-rose-500/10 hover:border-rose-500/20"
-                                  : "bg-white border-line hover:border-ink/10"
-                              }`}
-                            >
-                              <div className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 ${
-                                isAvoid ? "bg-rose-100 text-rose-600" : "bg-emerald-50 text-emerald-600"
-                              }`}>
-                                {isAvoid ? <Minus className="w-3 h-3" /> : <Check className="w-3 h-3" />}
-                              </div>
-                              <span className="text-[13.5px] text-ink leading-relaxed font-sans">{item}</span>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  );
-                })}
-              </motion.div>
-            </AnimatePresence>
-          </div>
-
           {/* Why Choose Us */}
           <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-12 lg:gap-16 items-start">
 
@@ -481,32 +397,7 @@ export default function Home() {
 
           <div className="border-t border-line">
             {SERVICES_DATA.map((service, idx) => (
-              <motion.div
-                key={service.num}
-                id={service.anchorId}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.5, delay: idx * 0.06 }}
-                className="border-b border-line py-10 md:py-12 grid grid-cols-1 md:grid-cols-[80px_1fr_1.4fr] gap-4 md:gap-10 items-start scroll-mt-28"
-              >
-                <span className="font-mono text-[13px] text-moss">{service.num}</span>
-                <h3 className="font-space font-bold text-[22px] md:text-[26px] text-ink leading-tight">
-                  {service.title}
-                </h3>
-                <div>
-                  <p className="text-moss text-[14px] leading-relaxed mb-4 max-w-md">
-                    {service.description}
-                  </p>
-                  <ul className="flex flex-wrap gap-x-4 gap-y-1.5">
-                    {service.categories.map((cat) => (
-                      <li key={cat} className="text-[11.5px] font-mono uppercase tracking-wide text-mist">
-                        {cat}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </motion.div>
+              <ServiceAccordionItem key={service.num} service={service} index={idx} />
             ))}
           </div>
 
@@ -518,62 +409,6 @@ export default function Home() {
               Get in contact
               <ArrowUpRight className="w-4 h-4" />
             </a>
-          </div>
-
-        </div>
-      </section>
-
-      {/* TEAM SECTION */}
-      <section className="py-24 border-b border-line bg-white" id="team">
-        <div className="max-w-6xl mx-auto px-6">
-
-          <div className="text-center mb-16">
-            <h2 className="font-space font-semibold text-[26px] sm:text-[34px] md:text-[38px] leading-tight tracking-tight text-ink uppercase mb-3">
-              Team
-            </h2>
-            <p className="text-moss text-[15px] max-w-xl mx-auto leading-relaxed font-sans">
-              We are Saviour, James, and our close strategic partners. We operate with zero layers of telephone or account-management overhead. When you deal with us, you deal directly with the hands doing the work.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {TEAM_MEMBERS_DATA.map((member, idx) => (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
-                className="flex flex-col items-center"
-              >
-                <div className="team-member-custom w-full aspect-[4/5] rounded-xl overflow-hidden shadow-md group relative">
-                  <div className="team-img w-full h-full">
-                    <img
-                      src={member.image}
-                      alt={`${member.name}, ${member.role} at klvr`}
-                      loading="lazy"
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      referrerPolicy="no-referrer"
-                    />
-                  </div>
-                  <div className="team-hover-custom">
-                    <div className="desk-custom">
-                      <h4 className="font-space font-bold text-[19px] text-ink mb-2">{member.hoverTitle}</h4>
-                      <p className="text-[13px] text-moss leading-relaxed px-2">{member.hoverText}</p>
-                    </div>
-                    <div className="s-link-custom flex justify-center items-center gap-4 text-ink">
-                      <a href="https://x.com/theKlvr" target="_blank" rel="noopener noreferrer" aria-label="klvr on X" className="hover:text-moss transition-colors">
-                        <Twitter className="w-5 h-5" />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div className="team-title text-center pt-6 pb-2 w-full">
-                  <h5 className="font-space font-bold text-[16px] text-ink uppercase tracking-wide mb-1">{member.name}</h5>
-                  <span className="font-mono text-[11px] text-moss uppercase tracking-widest block font-semibold">{member.role}</span>
-                </div>
-              </motion.div>
-            ))}
           </div>
 
         </div>
@@ -692,87 +527,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* BLOG TEASER SECTION */}
-      <section className="py-24 border-b border-line bg-paper" id="blog">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-6 mb-16">
-            <motion.div
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6 }}
-              className="max-w-xl"
-            >
-              <h2 className="font-space font-semibold text-[26px] sm:text-[34px] md:text-[38px] tracking-tight text-ink leading-tight mb-2">
-                From the Blog
-              </h2>
-              <p className="text-moss text-[15px] leading-relaxed">
-                Notes on growth, technology, and brand, for anyone building a business, not just ours.
-              </p>
-            </motion.div>
-            <Link
-              to="/blog"
-              className="inline-flex items-center gap-1.5 text-ink font-space font-bold text-[12px] tracking-wider uppercase hover:text-moss transition-colors duration-200 border-b-2 border-ink/30 hover:border-ink pb-0.5 cursor-pointer shrink-0"
-            >
-              View All Articles
-              <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
-            </Link>
-          </div>
-
-          <div className="blog-slider-custom select-none">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={blogActiveIndex}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.4 }}
-                className="w-full flex flex-col md:flex-row items-center"
-              >
-                <div className="blog-slider-custom__img">
-                  <img
-                    src={DETAILED_BLOG_POSTS_DATA[blogActiveIndex].image}
-                    alt={DETAILED_BLOG_POSTS_DATA[blogActiveIndex].title}
-                    loading="lazy"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-                <div className="blog-slider-custom__content">
-                  <span className="blog-slider-custom__tag">
-                    {DETAILED_BLOG_POSTS_DATA[blogActiveIndex].category} • {DETAILED_BLOG_POSTS_DATA[blogActiveIndex].date}
-                  </span>
-                  <div className="blog-slider-custom__title">
-                    {DETAILED_BLOG_POSTS_DATA[blogActiveIndex].title}
-                  </div>
-                  <p className="blog-slider-custom__text">
-                    {DETAILED_BLOG_POSTS_DATA[blogActiveIndex].description}
-                  </p>
-                  <Link
-                    to={`/blog/${DETAILED_BLOG_POSTS_DATA[blogActiveIndex].slug}`}
-                    className="blog-slider-custom__button text-center"
-                  >
-                    READ MORE
-                  </Link>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-
-            <div className="blog-slider-custom__pagination">
-              {DETAILED_BLOG_POSTS_DATA.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setBlogActiveIndex(idx)}
-                  className={`blog-slider-custom__bullet ${
-                    idx === blogActiveIndex ? "blog-slider-custom__bullet-active" : ""
-                  }`}
-                  aria-label={`Go to slide ${idx + 1}`}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* TESTIMONIALS SECTION */}
       <section className="py-24 border-b border-line bg-paper-dim">
         <div className="max-w-6xl mx-auto px-6">
@@ -822,6 +576,62 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* TEAM SECTION */}
+      <section className="py-24 border-b border-line bg-white" id="team">
+        <div className="max-w-6xl mx-auto px-6">
+
+          <div className="text-center mb-16">
+            <h2 className="font-space font-semibold text-[26px] sm:text-[34px] md:text-[38px] leading-tight tracking-tight text-ink uppercase mb-3">
+              Team
+            </h2>
+            <p className="text-moss text-[15px] max-w-xl mx-auto leading-relaxed font-sans">
+              We are Saviour, James, and our close strategic partners. We operate with zero layers of telephone or account-management overhead. When you deal with us, you deal directly with the hands doing the work.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {TEAM_MEMBERS_DATA.map((member, idx) => (
+              <motion.div
+                key={member.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6, delay: idx * 0.1 }}
+                className="flex flex-col items-center"
+              >
+                <div className="team-member-custom w-full aspect-[4/5] rounded-xl overflow-hidden shadow-md group relative">
+                  <div className="team-img w-full h-full">
+                    <img
+                      src={member.image}
+                      alt={`${member.name}, ${member.role} at klvr`}
+                      loading="lazy"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                  <div className="team-hover-custom">
+                    <div className="desk-custom">
+                      <h4 className="font-space font-bold text-[19px] text-ink mb-2">{member.hoverTitle}</h4>
+                      <p className="text-[13px] text-moss leading-relaxed px-2">{member.hoverText}</p>
+                    </div>
+                    <div className="s-link-custom flex justify-center items-center gap-4 text-ink">
+                      <a href="https://x.com/theKlvr" target="_blank" rel="noopener noreferrer" aria-label="klvr on X" className="hover:text-moss transition-colors">
+                        <Twitter className="w-5 h-5" />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div className="team-title text-center pt-6 pb-2 w-full">
+                  <h5 className="font-space font-bold text-[16px] text-ink uppercase tracking-wide mb-1">{member.name}</h5>
+                  <span className="font-mono text-[11px] text-moss uppercase tracking-widest block font-semibold">{member.role}</span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
         </div>
       </section>
 
@@ -878,6 +688,64 @@ export default function Home() {
 
       <Footer />
     </div>
+  );
+}
+
+/* SERVICE ACCORDION ITEM */
+function ServiceAccordionItem({ service, index }: { service: typeof SERVICES_DATA[number]; index: number }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <motion.div
+      id={service.anchorId}
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.5, delay: index * 0.06 }}
+      className="border-b border-line scroll-mt-28"
+    >
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full text-left py-8 md:py-10 grid grid-cols-[40px_1fr_auto] md:grid-cols-[80px_1fr_auto] gap-4 md:gap-10 items-center cursor-pointer focus:outline-none group"
+      >
+        <span className="font-mono text-[13px] text-moss">{service.num}</span>
+        <h3 className="font-space font-bold text-[20px] md:text-[26px] text-ink leading-tight group-hover:text-moss transition-colors">
+          {service.title}
+        </h3>
+        <motion.span
+          animate={{ rotate: isOpen ? 45 : 0 }}
+          transition={{ duration: 0.25 }}
+          className="w-9 h-9 rounded-full border border-line flex items-center justify-center text-ink flex-shrink-0 group-hover:border-ink/40 transition-colors"
+        >
+          <Plus className="w-4 h-4" />
+        </motion.span>
+      </button>
+
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="overflow-hidden"
+          >
+            <div className="pb-8 md:pb-10 pl-[56px] md:pl-[120px] pr-4 md:pr-16 -mt-2">
+              <p className="text-moss text-[14px] leading-relaxed mb-4 max-w-md">
+                {service.description}
+              </p>
+              <ul className="flex flex-wrap gap-x-4 gap-y-1.5">
+                {service.categories.map((cat) => (
+                  <li key={cat} className="text-[11.5px] font-mono uppercase tracking-wide text-mist">
+                    {cat}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 }
 
