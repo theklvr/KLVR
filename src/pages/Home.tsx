@@ -274,21 +274,42 @@ export default function Home() {
 
       <hr className="border-line" />
 
-      {/* ABOUT SECTION (brief writeup) */}
+      {/* ABOUT SECTION (stats) */}
       <section className="py-20 border-b border-line bg-paper" id="about">
         <div className="max-w-6xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6 }}
-            className="bg-white border border-line rounded-2xl p-8 md:p-10"
-          >
-            <span className="text-mist text-[13px] font-sans block mb-3">About us</span>
-            <p className="text-ink text-[16px] sm:text-[18px] leading-relaxed max-w-2xl font-sans">
-              We're a business growth company that becomes the long-term technology and creative partner for growing businesses, one coordinated team handling the build, the brand, and everything in between, so founders can focus on running the business instead of managing freelancers.
-            </p>
-          </motion.div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.6 }}
+              className="bg-white border border-line rounded-2xl p-6 flex flex-col min-h-[260px]"
+            >
+              <div className="font-space font-bold text-[32px] text-ink tracking-tight leading-none mb-2">10+</div>
+              <p className="text-ink text-[13.5px] font-semibold mb-3">Successful projects completed</p>
+              <p className="text-mist text-[12.5px] leading-relaxed mt-auto">
+                We've helped launch products and platforms that make growing businesses run smoother and look sharper.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="bg-white border border-line rounded-2xl p-6 flex flex-col min-h-[260px]"
+            >
+              <div className="font-space font-bold text-[32px] text-ink tracking-tight leading-none mb-2">100%</div>
+              <p className="text-ink text-[13.5px] font-semibold mb-3">Customer satisfaction</p>
+              <div className="flex items-center gap-2.5 mt-auto">
+                <div className="flex -space-x-2 select-none">
+                  <div className="w-7 h-7 rounded-full bg-ink text-paper font-space font-bold text-[10px] flex items-center justify-center border-2 border-white">S</div>
+                  <div className="w-7 h-7 rounded-full bg-moss text-paper font-space font-bold text-[10px] flex items-center justify-center border-2 border-white">J</div>
+                </div>
+                <span className="text-mist text-[11.5px] font-mono">Direct to the founders</span>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -319,15 +340,15 @@ export default function Home() {
             </motion.h2>
           </div>
 
-          {/* Bottom row: video (left) + description/stats (right) */}
-          <div className="grid grid-cols-1 lg:grid-cols-[0.34fr_0.66fr] gap-8 lg:gap-20 lg:items-stretch">
+          {/* Bottom row: video (left) + description (right) */}
+          <div className="grid grid-cols-1 lg:grid-cols-[0.34fr_0.66fr] gap-8 lg:gap-20 items-start">
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.6 }}
-              className="relative w-full aspect-[3/4] lg:h-[560px] lg:aspect-auto rounded-3xl overflow-hidden bg-ink"
+              className="relative w-full aspect-[3/4] lg:h-[440px] lg:aspect-auto rounded-3xl overflow-hidden bg-ink"
             >
               <video
                 src="/Assets/Klvrvid.mp4"
@@ -339,51 +360,15 @@ export default function Home() {
               />
             </motion.div>
 
-            <div className="lg:h-full flex flex-col">
-              <motion.p
-                initial={{ opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="text-moss text-[15px] leading-relaxed max-w-sm mt-2 mb-12"
-              >
-                Direct founder access, weekly live builds, and systems built to compound are why partners stay long after the first launch.
-              </motion.p>
-
-              <div className="grid grid-cols-2 gap-3 lg:flex-1">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-80px" }}
-                  transition={{ duration: 0.6, delay: 0.1 }}
-                  className="bg-white border border-line rounded-2xl p-6 flex flex-col lg:h-full"
-                >
-                  <div className="font-space font-bold text-[32px] text-ink tracking-tight leading-none mb-2">10+</div>
-                  <p className="text-ink text-[13.5px] font-semibold mb-3">Successful projects completed</p>
-                  <p className="text-mist text-[12.5px] leading-relaxed mt-auto">
-                    We've helped launch products and platforms that make growing businesses run smoother and look sharper.
-                  </p>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-80px" }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                  className="bg-white border border-line rounded-2xl p-6 flex flex-col lg:h-full"
-                >
-                  <div className="font-space font-bold text-[32px] text-ink tracking-tight leading-none mb-2">100%</div>
-                  <p className="text-ink text-[13.5px] font-semibold mb-3">Customer satisfaction</p>
-                  <div className="flex items-center gap-2.5 mt-auto">
-                    <div className="flex -space-x-2 select-none">
-                      <div className="w-7 h-7 rounded-full bg-ink text-paper font-space font-bold text-[10px] flex items-center justify-center border-2 border-white">S</div>
-                      <div className="w-7 h-7 rounded-full bg-moss text-paper font-space font-bold text-[10px] flex items-center justify-center border-2 border-white">J</div>
-                    </div>
-                    <span className="text-mist text-[11.5px] font-mono">Direct to the founders</span>
-                  </div>
-                </motion.div>
-              </div>
-            </div>
+            <motion.p
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="text-moss text-[15px] leading-relaxed max-w-sm mt-2"
+            >
+              Direct founder access, weekly live builds, and systems built to compound are why partners stay long after the first launch.
+            </motion.p>
 
           </div>
 
