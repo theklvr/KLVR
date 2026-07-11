@@ -91,51 +91,6 @@ const BRAND_PORTFOLIO_DATA = [
   }
 ];
 
-const WHAT_CHANGES_DATA = [
-  {
-    num: "01",
-    title: "Communication",
-    before: "Disjointed group chats, scattered emails, and ghosting freelancers.",
-    after: "One single Slack thread and a dedicated client lead. Always in sync.",
-    accent: "text-emerald-400"
-  },
-  {
-    num: "02",
-    title: "Delivery Speed",
-    before: "Months spent in stagnant planning with zero working prototypes.",
-    after: "Weekly live builds, continuous demos, and instant code commits.",
-    accent: "text-klvr"
-  },
-  {
-    num: "03",
-    title: "Product Quality",
-    before: "Slow, generic templates plagued by layout shifts and bugs.",
-    after: "Custom responsive builds with sub-second mobile load times.",
-    accent: "text-amber-400"
-  },
-  {
-    num: "04",
-    title: "Project Lifespan",
-    before: "Handover is the end. Zero support once the final invoice is paid.",
-    after: "Ongoing active retainers that evolve with real business scale.",
-    accent: "text-purple-400"
-  },
-  {
-    num: "05",
-    title: "Scope & Value",
-    before: "Rigid, hourly contracts where minor text updates incur a fee.",
-    after: "Adaptive, outcome-focused partnerships that value long-term trust.",
-    accent: "text-sky-400"
-  },
-  {
-    num: "06",
-    title: "System Flow",
-    before: "A maze of disconnected apps requiring manual double-entry.",
-    after: "Centralized, automated databases and bulletproof transaction tunnels.",
-    accent: "text-fuchsia-400"
-  }
-];
-
 const HERO_BUILD_WORDS = ["Websites", "Software", "Brand Kits", "Automation", "Platforms"];
 const HERO_FOR_WORDS = ["Startups", "Schools", "Real Estate", "E-Commerce", "SMEs"];
 
@@ -323,52 +278,85 @@ export default function Home() {
       <section className="py-24 border-b border-line bg-paper-dim" id="why-choose-us">
         <div className="max-w-6xl mx-auto px-6">
 
-          {/* Why Choose Us */}
-          <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-12 lg:gap-16 items-start">
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 items-stretch">
 
-            <div className="lg:sticky lg:top-28 space-y-6">
-              <div>
-                <h2 className="font-space font-semibold text-[26px] sm:text-[34px] md:text-[38px] leading-tight tracking-tight text-ink uppercase">
-                  Why Choose Us
-                </h2>
+            {/* LEFT: label + video */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.6 }}
+              className="lg:w-[30%] flex flex-col"
+            >
+              <span className="text-mist text-[13px] font-sans block mb-4">Why choose us</span>
+              <div className="relative flex-1 min-h-[320px] rounded-3xl overflow-hidden bg-ink">
+                <video
+                  src="/Assets/Klvrvid.mp4"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
               </div>
-              <p className="text-[14.5px] text-moss leading-relaxed font-sans">
-                The traditional agency model thrives on communication layers, slow delivery, and billable hours. We built our partnership structure to be the absolute opposite.
-              </p>
-              <p className="text-[14px] text-mist leading-relaxed font-sans">
-                We transform typical development headaches into streamlined, compounding business outcomes.
-              </p>
-            </div>
+            </motion.div>
 
-            <div className="overflow-hidden relative w-full rounded-xl" style={{ maskImage: 'linear-gradient(to right, transparent, black 5%, black 95%, transparent)' }}>
-              <motion.div
-                className="flex gap-6 w-max"
-                animate={{ x: ["0%", "-50%"] }}
-                transition={{ repeat: Infinity, ease: "linear", duration: 25 }}
+            {/* RIGHT: heading + description + stats */}
+            <div className="lg:w-[70%]">
+              <motion.h2
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6 }}
+                className="font-space font-semibold text-[28px] sm:text-[36px] md:text-[42px] leading-[1.15] tracking-tight mb-6"
               >
-                {[...WHAT_CHANGES_DATA, ...WHAT_CHANGES_DATA].map((item, idx) => (
-                  <div
-                    key={`${item.num}-${idx}`}
-                    className="w-[320px] sm:w-[380px] shrink-0 rounded-xl border border-line bg-white p-6 flex flex-col"
-                  >
-                    <div className="flex items-center gap-3 mb-5 pb-3 border-b border-line/40">
-                      <span className="font-space font-bold text-[18px] text-[#D4ED31]">{item.num}</span>
-                      <h4 className="font-space font-bold text-[16px] text-ink">{item.title}</h4>
-                    </div>
+                <span className="text-ink">We build for outcomes</span>{" "}
+                <span className="text-mist">- not just launch day.</span>
+              </motion.h2>
 
-                    <div className="space-y-4">
-                      <div>
-                        <span className="text-[10px] font-mono font-bold text-mist uppercase tracking-wider block mb-1.5">Traditional Agency</span>
-                        <p className="text-[13px] text-moss leading-relaxed font-sans">{item.before}</p>
-                      </div>
-                      <div className="pt-4 border-t border-line/40">
-                        <span className="text-[10px] font-mono font-bold text-ink uppercase tracking-wider block mb-1.5">Our Approach</span>
-                        <p className="text-[13px] text-ink leading-relaxed font-sans font-medium">{item.after}</p>
-                      </div>
+              <motion.p
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="text-moss text-[15px] leading-relaxed max-w-sm mb-10"
+              >
+                Direct founder access, weekly live builds, and systems built to compound are why partners stay long after the first launch.
+              </motion.p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{ duration: 0.6, delay: 0.1 }}
+                  className="bg-white border border-line rounded-2xl p-6"
+                >
+                  <div className="font-space font-bold text-[32px] text-ink tracking-tight leading-none mb-2">10+</div>
+                  <p className="text-ink text-[13.5px] font-semibold mb-3">Successful projects completed</p>
+                  <p className="text-mist text-[12.5px] leading-relaxed">
+                    We've helped launch products and platforms that make growing businesses run smoother and look sharper.
+                  </p>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  className="bg-white border border-line rounded-2xl p-6"
+                >
+                  <div className="font-space font-bold text-[32px] text-ink tracking-tight leading-none mb-2">100%</div>
+                  <p className="text-ink text-[13.5px] font-semibold mb-3">Customer satisfaction</p>
+                  <div className="flex items-center gap-2.5">
+                    <div className="flex -space-x-2 select-none">
+                      <div className="w-7 h-7 rounded-full bg-ink text-paper font-space font-bold text-[10px] flex items-center justify-center border-2 border-white">S</div>
+                      <div className="w-7 h-7 rounded-full bg-moss text-paper font-space font-bold text-[10px] flex items-center justify-center border-2 border-white">J</div>
                     </div>
+                    <span className="text-mist text-[11.5px] font-mono">Direct to the founders</span>
                   </div>
-                ))}
-              </motion.div>
+                </motion.div>
+              </div>
             </div>
 
           </div>
