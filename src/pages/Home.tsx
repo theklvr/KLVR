@@ -282,7 +282,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
-            className="text-ink text-[17px] sm:text-[19px] leading-relaxed max-w-3xl font-sans first-letter:font-space first-letter:font-bold first-letter:text-[64px] sm:first-letter:text-[76px] first-letter:leading-[0.75] first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:text-ink"
+            className="text-ink text-[17px] sm:text-[19px] leading-relaxed max-w-3xl mx-auto text-center font-sans first-letter:font-space first-letter:font-bold first-letter:text-[40px] sm:first-letter:text-[48px] first-letter:text-ink"
           >
             In 2026, we set out to fix a broken model. Most growing businesses juggle a website developer, a brand designer, and a handful of freelancers who disappear the moment the invoice clears. We built klvr to be the one team that stays, handling the build and the brand together, and sticking around long after launch.
           </motion.p>
@@ -388,7 +388,7 @@ export default function Home() {
       </section>
 
       {/* SERVICES SECTION */}
-      <section className="py-24 border-b border-line bg-white" id="services">
+      <section className="py-24 border-b border-neutral-200 bg-white" id="services">
         <div className="max-w-6xl mx-auto px-6">
 
           <motion.div
@@ -398,15 +398,15 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="mb-16 max-w-xl"
           >
-            <h2 className="font-space font-semibold text-[26px] sm:text-[34px] md:text-[38px] tracking-tight text-ink leading-tight mb-3">
+            <h2 className="font-space font-semibold text-[26px] sm:text-[34px] md:text-[38px] tracking-tight text-black leading-tight mb-3">
               What We Do
             </h2>
-            <p className="text-moss text-[15px] leading-relaxed">
+            <p className="text-neutral-500 text-[15px] leading-relaxed">
               One team, two divisions, and a partnership that doesn't end at launch.
             </p>
           </motion.div>
 
-          <div className="border-t border-line">
+          <div className="border-t border-neutral-200">
             {SERVICES_DATA.map((service, idx) => (
               <ServiceAccordionItem key={service.num} service={service} index={idx} />
             ))}
@@ -415,7 +415,7 @@ export default function Home() {
           <div className="mt-12">
             <a
               href="#contact"
-              className="bg-ink text-white hover:bg-moss text-[13px] px-6 py-3 rounded-full font-space font-bold tracking-wide inline-flex items-center gap-2 transition-all duration-300 hover:-translate-y-[1.5px]"
+              className="bg-black text-white hover:bg-neutral-800 text-[13px] px-6 py-3 rounded-full font-space font-bold tracking-wide inline-flex items-center gap-2 transition-all duration-300 hover:-translate-y-[1.5px]"
             >
               Get in contact
               <ArrowUpRight className="w-4 h-4" />
@@ -713,17 +713,17 @@ function ServiceAccordionItem({ service, index }: { service: typeof SERVICES_DAT
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.5, delay: index * 0.06 }}
-      className="border-b border-line scroll-mt-28"
+      className="border-b border-neutral-200 scroll-mt-28"
     >
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full text-left py-8 md:py-10 grid grid-cols-[40px_1fr_auto] md:grid-cols-[80px_1fr_auto] gap-4 md:gap-10 items-center cursor-pointer focus:outline-none group"
       >
-        <span className="font-mono text-[13px] text-moss">{service.num}</span>
-        <h3 className="font-space font-bold text-[20px] md:text-[26px] text-ink leading-tight group-hover:text-moss transition-colors">
+        <span className="font-mono text-[13px] text-neutral-400">{service.num}</span>
+        <h3 className="font-space font-bold text-[20px] md:text-[26px] text-black leading-tight group-hover:text-neutral-500 transition-colors">
           {service.title}
         </h3>
-        <span className="w-9 h-9 rounded-full border border-line flex items-center justify-center text-ink flex-shrink-0 group-hover:border-ink/40 transition-colors">
+        <span className="w-9 h-9 rounded-full border border-neutral-300 flex items-center justify-center text-black flex-shrink-0 group-hover:border-black/40 transition-colors">
           {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
         </span>
       </button>
@@ -740,16 +740,16 @@ function ServiceAccordionItem({ service, index }: { service: typeof SERVICES_DAT
             <div className="pb-8 md:pb-10 -mt-2 grid grid-cols-[40px_1fr] md:grid-cols-[80px_1fr] gap-4 md:gap-10">
               <div aria-hidden="true" />
               <div className="min-w-0 pr-4 md:pr-16 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
-              <p className="text-moss text-[14px] leading-relaxed min-w-0">
+              <p className="text-neutral-500 text-[14px] leading-relaxed min-w-0">
                 {service.description}
               </p>
               <div className="min-w-0">
-                <span className="text-mist text-[11px] font-mono uppercase tracking-wider block mb-3">Categories</span>
+                <span className="text-neutral-400 text-[11px] font-mono uppercase tracking-wider block mb-3">Categories</span>
                 <div className="flex flex-wrap gap-2">
                   {service.categories.map((cat) => (
                     <span
                       key={cat}
-                      className="text-[12px] font-sans text-ink bg-white border border-line rounded-full px-3.5 py-1.5 whitespace-nowrap"
+                      className="text-[12px] font-sans text-black bg-white border border-neutral-300 rounded-full px-3.5 py-1.5 whitespace-nowrap"
                     >
                       {cat}
                     </span>
