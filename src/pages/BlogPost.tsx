@@ -1,21 +1,37 @@
+import { useEffect, useState } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import { motion } from "motion/react";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { Seo } from "../components/Seo";
-import { DETAILED_BLOG_POSTS_DATA } from "../data";
+import { getPostBySlug, getAllPosts, type BlogPost } from "../lib/blog";
 
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
-  const post = DETAILED_BLOG_POSTS_DATA.find((p) => p.slug === slug);
+  const [post, setPost] = useState<BlogPost | null | undefined>(undefined);
+  const [otherPosts, setOtherPosts] = useState<BlogPost[]>([]);
 
-  if (!post) {
+  useEffect(() => {
+    if (!slug) return;
+    setPost(undefined);
+    getPostBySlug(slug).then(setPost);
+    getAllPosts().then((all) => setOtherPosts(all.filter((p) => p.slug !== slug).slice(0, 3)));
+  }, [slug]);
+
+  if (post === null) {
     return <Navigate to="/blog" replace />;
   }
 
+  if (post === undefined) {
+    return (
+      <div className="min-h-screen bg-paper text-ink flex items-center justify-center">
+        <p className="text-moss text-[14px] font-mono">Loading article...</p>
+      </div>
+    );
+  }
+
   const canonical = `https://www.theklvr.com/blog/${post.slug}`;
-  const otherPosts = DETAILED_BLOG_POSTS_DATA.filter((p) => p.slug !== post.slug).slice(0, 3);
 
   return (
     <div className="min-h-screen bg-paper text-ink selection:bg-klvr selection:text-ink relative overflow-x-hidden">
@@ -129,7 +145,7 @@ export default function BlogPost() {
             <h3 className="font-space font-bold text-[20px] text-ink mb-10">More from the blog</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {otherPosts.map((p) => (
-                <Link key={p.id} to={`/blog/${p.slug}`} className="block group">
+                <Link key={p._id} to={`/blog/${p.slug}`} className="block group">
                   <div className="w-full aspect-[16/10] rounded-xl overflow-hidden mb-4 border border-line">
                     <img
                       src={p.image}

@@ -1,11 +1,18 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { Seo } from "../components/Seo";
-import { DETAILED_BLOG_POSTS_DATA } from "../data";
+import { getAllPosts, type BlogPost } from "../lib/blog";
 
 export default function BlogIndex() {
+  const [posts, setPosts] = useState<BlogPost[] | null>(null);
+
+  useEffect(() => {
+    getAllPosts().then(setPosts);
+  }, []);
+
   return (
     <div className="min-h-screen bg-paper text-ink selection:bg-klvr selection:text-ink relative overflow-x-hidden">
       <Seo
@@ -33,10 +40,16 @@ export default function BlogIndex() {
 
       <section className="py-20">
         <div className="max-w-6xl mx-auto px-6">
+          {!posts && (
+            <p className="text-moss text-[14px] font-mono">Loading articles...</p>
+          )}
+          {posts && posts.length === 0 && (
+            <p className="text-moss text-[14px] font-mono">No articles published yet.</p>
+          )}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14">
-            {DETAILED_BLOG_POSTS_DATA.map((post, idx) => (
+            {posts?.map((post, idx) => (
               <motion.div
-                key={post.id}
+                key={post._id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}

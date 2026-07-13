@@ -1,16 +1,25 @@
 import { writeFileSync } from "fs";
 import { fileURLToPath } from "url";
 import { dirname, resolve } from "path";
-import { DETAILED_BLOG_POSTS_DATA } from "../src/data.ts";
+import { createClient } from "@sanity/client";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const SITE_URL = "https://www.theklvr.com";
 
+const sanity = createClient({
+  projectId: process.env.VITE_SANITY_PROJECT_ID || "bqhauaf6",
+  dataset: process.env.VITE_SANITY_DATASET || "production",
+  apiVersion: "2026-07-13",
+  useCdn: false
+});
+
+const slugs = await sanity.fetch(`*[_type == "post"].slug.current`);
+
 const urls = [
   { loc: "/", changefreq: "weekly", priority: "1.0" },
   { loc: "/blog", changefreq: "weekly", priority: "0.8" },
-  ...DETAILED_BLOG_POSTS_DATA.map((post) => ({
-    loc: `/blog/${post.slug}`,
+  ...slugs.map((slug) => ({
+    loc: `/blog/${slug}`,
     changefreq: "monthly",
     priority: "0.6"
   }))

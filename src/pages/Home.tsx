@@ -6,7 +6,18 @@ import { SpaceBackground } from "../components/SpaceBackground";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { Seo } from "../components/Seo";
-import { FAQ_DATA, TEAM_MEMBERS_DATA } from "../data";
+import {
+  getSiteSettings,
+  getServices,
+  getTestimonials,
+  getFaqItems,
+  getTeamMembers,
+  type SiteSettings,
+  type Service,
+  type Testimonial,
+  type FaqEntry,
+  type TeamMember
+} from "../lib/content";
 
 const BRAND_PORTFOLIO_DATA = [
   {
@@ -91,11 +102,42 @@ const BRAND_PORTFOLIO_DATA = [
   }
 ];
 
-const HERO_BUILD_WORDS = ["Websites", "Software", "Brand Kits", "Automation", "Platforms"];
-const HERO_FOR_WORDS = ["Startups", "Schools", "Real Estate", "E-Commerce", "SMEs"];
+const DEFAULT_SITE_SETTINGS: SiteSettings = {
+  heroBuildWords: ["Websites", "Software", "Brand Kits", "Automation", "Platforms"],
+  heroForWords: ["Startups", "Schools", "Real Estate", "E-Commerce", "SMEs"],
+  aboutText:
+    "In 2026, we set out to fix a broken model. Most growing businesses juggle a website developer, a brand designer, and a handful of freelancers who disappear the moment the invoice clears. We built klvr to be the one team that stays, handling the build and the brand together, and sticking around long after launch.",
+  whyChooseUsEyebrow: "Why choose us",
+  whyChooseUsHeadingPrimary: "We build for outcomes",
+  whyChooseUsHeadingSecondary: "- not just launch day.",
+  whyChooseUsDescription:
+    "Direct founder access, weekly live builds, and systems built to compound are why partners stay long after the first launch.",
+  statOneNumber: "10+",
+  statOneLabel: "Successful projects completed",
+  statOneDescription:
+    "We've helped launch products and platforms that make growing businesses run smoother and look sharper.",
+  statTwoNumber: "100%",
+  statTwoLabel: "Customer satisfaction",
+  statTwoCaption: "Direct to the founders",
+  servicesHeading: "What We Do",
+  servicesSubheading: "One team, two divisions, and a partnership that doesn't end at launch.",
+  philosophyPart1: "Most agencies deliver and",
+  philosophyHighlight: "disappear.",
+  philosophyPart2: "We stay for the years that come after launch.",
+  testimonialsHeading: "Partner Feedback",
+  testimonialsSubheading:
+    "Don't just take our word for it. Here is what partners say after replacing their fragmented teams with our unified engine.",
+  teamHeading: "Team",
+  teamSubheading:
+    "We are Saviour, James, and our close strategic partners. We operate with zero layers of telephone or account-management overhead. When you deal with us, you deal directly with the hands doing the work.",
+  faqHeading: "Questions people usually ask first.",
+  faqSubheading: "If yours isn't here, that's exactly what the first message is for.",
+  contactHeading: "Tell us what you're building."
+};
 
-const SERVICES_DATA = [
+const DEFAULT_SERVICES_DATA: Service[] = [
   {
+    _id: "default-service-build",
     num: "01",
     anchorId: "pillar-build",
     title: "Engineering & Build",
@@ -109,6 +151,7 @@ const SERVICES_DATA = [
     ]
   },
   {
+    _id: "default-service-brand",
     num: "02",
     anchorId: "pillar-brand",
     title: "Brand & Creative",
@@ -121,6 +164,7 @@ const SERVICES_DATA = [
     ]
   },
   {
+    _id: "default-service-partnership",
     num: "03",
     anchorId: "pillar-partnership",
     title: "Ongoing Partnership",
@@ -134,8 +178,98 @@ const SERVICES_DATA = [
   }
 ];
 
+const DEFAULT_TESTIMONIALS_DATA: Testimonial[] = [
+  {
+    _id: "default-testimonial-rapid-alex",
+    quote: "Bro, they turned my site into something that actually feels like my sound. I didn't expect to love a website this much.",
+    author: "Rapid Alex",
+    role: "Musician"
+  },
+  {
+    _id: "default-testimonial-treasure",
+    quote: "My site finally looks like what's actually in my head. People stop and ask who built it, every time.",
+    author: "Treasure",
+    role: "Model"
+  },
+  {
+    _id: "default-testimonial-cece",
+    quote: "I'm a designer myself, so I notice everything. klvr nailed the details I usually have to fight other devs for.",
+    author: "Cece",
+    role: "Designer"
+  }
+];
+
+const DEFAULT_FAQ_DATA: FaqEntry[] = [
+  {
+    _id: "default-faq-cost",
+    question: "How much does this cost?",
+    answer: "It depends on scope, so we won't put a number here that would probably be wrong for your situation. We don't compete by being the cheapest option, our pricing reflects the value we create for your business, and we'd rather package a solution than nickel-and-dime you for every small piece. Say hello, tell us what you're building, and we'll scope it properly before quoting anything."
+  },
+  {
+    _id: "default-faq-speed",
+    question: "How fast can you start?",
+    answer: "Most projects can kick off within a week or two of scoping and a deposit. If something is genuinely urgent, tell us upfront, we can usually adjust."
+  },
+  {
+    _id: "default-faq-contract",
+    question: "Do we need to sign a contract?",
+    answer: "Yes, every project starts with a written scope and agreement. It protects you as much as it protects us, and it means nobody is guessing what was promised."
+  },
+  {
+    _id: "default-faq-one-thing",
+    question: "What if I only need one thing, not everything?",
+    answer: "That's completely fine. Most relationships start with one piece (a website, an app, a content system) and grow from there once the fit is obvious. Nothing here is all-or-nothing."
+  },
+  {
+    _id: "default-faq-outside-nigeria",
+    question: "Do you work with businesses outside Nigeria?",
+    answer: "Yes. We work with clients wherever they are, and price in whichever currency makes sense for the relationship."
+  },
+  {
+    _id: "default-faq-after-launch",
+    question: "What happens after the project launches?",
+    answer: "We don't disappear. Most clients move to a simple monthly plan so the system keeps running well and gets small improvements over time, with regular check-ins rather than radio silence."
+  }
+];
+
+const DEFAULT_TEAM_DATA: TeamMember[] = [
+  {
+    _id: "default-team-saviour",
+    name: "Saviour",
+    role: "Co-founder & Technical Lead",
+    image: "/team/saviour.jpg",
+    hoverTitle: "Hi There !",
+    hoverText: "I'm a hardcore software lead and systems architect dedicated to clean code."
+  },
+  {
+    _id: "default-team-james",
+    name: "James",
+    role: "Co-founder & Creative Director",
+    image: "/team/james.jpg",
+    hoverTitle: "Hello World",
+    hoverText: "I craft premium strategic brand systems and high-converting user interfaces."
+  }
+];
+
 export default function Home() {
   const location = useLocation();
+
+  // Content is seeded with the current hardcoded copy as defaults, then
+  // silently swapped for the live Sanity data once it arrives. This avoids
+  // a loading flash while still making the page fully CMS-editable.
+  const [siteSettings, setSiteSettings] = useState<SiteSettings>(DEFAULT_SITE_SETTINGS);
+  const [services, setServices] = useState<Service[]>(DEFAULT_SERVICES_DATA);
+  const [testimonials, setTestimonials] = useState<Testimonial[]>(DEFAULT_TESTIMONIALS_DATA);
+  const [faqItems, setFaqItems] = useState<FaqEntry[]>(DEFAULT_FAQ_DATA);
+  const [teamMembers, setTeamMembers] = useState<TeamMember[]>(DEFAULT_TEAM_DATA);
+
+  useEffect(() => {
+    getSiteSettings().then((data) => data && setSiteSettings(data));
+    getServices().then((data) => data.length && setServices(data));
+    getTestimonials().then((data) => data.length && setTestimonials(data));
+    getFaqItems().then((data) => data.length && setFaqItems(data));
+    getTeamMembers().then((data) => data.length && setTeamMembers(data));
+  }, []);
 
   // Scroll to the section named in the URL hash. Needed because arriving
   // here from another route (e.g. Link to="/#about") is a client-side
@@ -149,14 +283,14 @@ export default function Home() {
     }
   }, [location.hash]);
 
-  // FAQPage structured data, generated from FAQ_DATA so it can't drift out of sync
+  // FAQPage structured data, generated from live faqItems so it can't drift out of sync
   useEffect(() => {
     const script = document.createElement("script");
     script.type = "application/ld+json";
     script.text = JSON.stringify({
       "@context": "https://schema.org",
       "@type": "FAQPage",
-      mainEntity: FAQ_DATA.map((faq) => ({
+      mainEntity: faqItems.map((faq) => ({
         "@type": "Question",
         name: faq.question,
         acceptedAnswer: {
@@ -169,7 +303,7 @@ export default function Home() {
     return () => {
       document.head.removeChild(script);
     };
-  }, []);
+  }, [faqItems]);
 
   const [portfolioActiveIndex, setPortfolioActiveIndex] = useState(0);
 
@@ -265,8 +399,8 @@ export default function Home() {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <h1 className="font-space font-medium text-[34px] sm:text-[44px] md:text-[54px] lg:text-[60px] leading-[1.2] tracking-[-0.02em] text-white">
-              We build <RotatingWord words={HERO_BUILD_WORDS} colorClass="text-klvr" /><br />
-              for <RotatingWord words={HERO_FOR_WORDS} colorClass="text-white" />.
+              We build <RotatingWord words={siteSettings.heroBuildWords} colorClass="text-klvr" /><br />
+              for <RotatingWord words={siteSettings.heroForWords} colorClass="text-white" />.
             </h1>
           </motion.div>
         </div>
@@ -284,7 +418,7 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="font-serif text-ink text-[17px] sm:text-[19px] leading-relaxed max-w-3xl mx-auto text-justify first-letter:font-serif first-letter:font-bold first-letter:text-[40px] sm:first-letter:text-[48px] first-letter:text-ink"
           >
-            In 2026, we set out to fix a broken model. Most growing businesses juggle a website developer, a brand designer, and a handful of freelancers who disappear the moment the invoice clears. We built klvr to be the one team that stays, handling the build and the brand together, and sticking around long after launch.
+            {siteSettings.aboutText}
           </motion.p>
         </div>
       </section>
@@ -302,7 +436,7 @@ export default function Home() {
               transition={{ duration: 0.5 }}
               className="text-mist text-[13px] font-sans block lg:pt-2"
             >
-              Why choose us
+              {siteSettings.whyChooseUsEyebrow}
             </motion.span>
             <motion.h2
               initial={{ opacity: 0, y: 18 }}
@@ -311,8 +445,8 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="font-space font-semibold text-[28px] sm:text-[36px] md:text-[42px] leading-[1.15] tracking-tight"
             >
-              <span className="text-ink">We build for outcomes</span>{" "}
-              <span className="text-mist">- not just launch day.</span>
+              <span className="text-ink">{siteSettings.whyChooseUsHeadingPrimary}</span>{" "}
+              <span className="text-mist">{siteSettings.whyChooseUsHeadingSecondary}</span>
             </motion.h2>
           </div>
 
@@ -344,7 +478,7 @@ export default function Home() {
                 transition={{ duration: 0.6, delay: 0.1 }}
                 className="text-moss text-[15px] leading-relaxed max-w-sm mt-2 mb-12"
               >
-                Direct founder access, weekly live builds, and systems built to compound are why partners stay long after the first launch.
+                {siteSettings.whyChooseUsDescription}
               </motion.p>
 
               <div className="grid grid-cols-2 gap-3 lg:flex-1">
@@ -355,10 +489,10 @@ export default function Home() {
                   transition={{ duration: 0.6, delay: 0.1 }}
                   className="bg-white border border-line rounded-2xl p-6 flex flex-col lg:h-full"
                 >
-                  <div className="font-space font-bold text-[32px] text-ink tracking-tight leading-none mb-2">10+</div>
-                  <p className="text-ink text-[13.5px] font-semibold mb-3">Successful projects completed</p>
+                  <div className="font-space font-bold text-[32px] text-ink tracking-tight leading-none mb-2">{siteSettings.statOneNumber}</div>
+                  <p className="text-ink text-[13.5px] font-semibold mb-3">{siteSettings.statOneLabel}</p>
                   <p className="text-mist text-[12.5px] leading-relaxed mt-auto">
-                    We've helped launch products and platforms that make growing businesses run smoother and look sharper.
+                    {siteSettings.statOneDescription}
                   </p>
                 </motion.div>
 
@@ -369,14 +503,14 @@ export default function Home() {
                   transition={{ duration: 0.6, delay: 0.2 }}
                   className="bg-white border border-line rounded-2xl p-6 flex flex-col lg:h-full"
                 >
-                  <div className="font-space font-bold text-[32px] text-ink tracking-tight leading-none mb-2">100%</div>
-                  <p className="text-ink text-[13.5px] font-semibold mb-3">Customer satisfaction</p>
+                  <div className="font-space font-bold text-[32px] text-ink tracking-tight leading-none mb-2">{siteSettings.statTwoNumber}</div>
+                  <p className="text-ink text-[13.5px] font-semibold mb-3">{siteSettings.statTwoLabel}</p>
                   <div className="flex items-center gap-2.5 mt-auto">
                     <div className="flex -space-x-2 select-none">
                       <div className="w-7 h-7 rounded-full bg-ink text-paper font-space font-bold text-[10px] flex items-center justify-center border-2 border-white">S</div>
                       <div className="w-7 h-7 rounded-full bg-moss text-paper font-space font-bold text-[10px] flex items-center justify-center border-2 border-white">J</div>
                     </div>
-                    <span className="text-mist text-[11.5px] font-mono">Direct to the founders</span>
+                    <span className="text-mist text-[11.5px] font-mono">{siteSettings.statTwoCaption}</span>
                   </div>
                 </motion.div>
               </div>
@@ -399,16 +533,16 @@ export default function Home() {
             className="mb-16 max-w-xl"
           >
             <h2 className="font-space font-semibold text-[26px] sm:text-[34px] md:text-[38px] tracking-tight text-black leading-tight mb-3">
-              What We Do
+              {siteSettings.servicesHeading}
             </h2>
             <p className="text-neutral-500 text-[15px] leading-relaxed">
-              One team, two divisions, and a partnership that doesn't end at launch.
+              {siteSettings.servicesSubheading}
             </p>
           </motion.div>
 
           <div className="border-t border-neutral-200">
-            {SERVICES_DATA.map((service, idx) => (
-              <ServiceAccordionItem key={service.num} service={service} index={idx} />
+            {services.map((service, idx) => (
+              <ServiceAccordionItem key={service._id} service={service} index={idx} />
             ))}
           </div>
 
@@ -533,7 +667,7 @@ export default function Home() {
       <section className="py-24 bg-paper-dim border-b border-line" id="philosophy">
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row gap-8 items-start">
           <blockquote className="font-space font-medium text-[22px] sm:text-[30px] md:text-[34px] leading-snug tracking-tight max-w-3xl text-ink">
-            Most agencies deliver and <span className="text-moss">disappear.</span> We stay for the years that come after launch.
+            {siteSettings.philosophyPart1} <span className="text-moss">{siteSettings.philosophyHighlight}</span> {siteSettings.philosophyPart2}
           </blockquote>
         </div>
       </section>
@@ -543,33 +677,17 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="font-space font-semibold text-[26px] sm:text-[34px] md:text-[38px] leading-tight tracking-tight text-ink uppercase mb-3">
-              Partner Feedback
+              {siteSettings.testimonialsHeading}
             </h2>
             <p className="text-moss text-[15px] max-w-xl mx-auto leading-relaxed font-sans">
-              Don't just take our word for it. Here is what partners say after replacing their fragmented teams with our unified engine.
+              {siteSettings.testimonialsSubheading}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                quote: "Bro, they turned my site into something that actually feels like my sound. I didn't expect to love a website this much.",
-                author: "Rapid Alex",
-                role: "Musician",
-              },
-              {
-                quote: "My site finally looks like what's actually in my head. People stop and ask who built it, every time.",
-                author: "Treasure",
-                role: "Model",
-              },
-              {
-                quote: "I'm a designer myself, so I notice everything. klvr nailed the details I usually have to fight other devs for.",
-                author: "Cece",
-                role: "Designer",
-              }
-            ].map((t, idx) => (
+            {testimonials.map((t, idx) => (
               <motion.div
-                key={idx}
+                key={t._id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
@@ -596,17 +714,17 @@ export default function Home() {
 
           <div className="text-center mb-16">
             <h2 className="font-space font-semibold text-[26px] sm:text-[34px] md:text-[38px] leading-tight tracking-tight text-ink uppercase mb-3">
-              Team
+              {siteSettings.teamHeading}
             </h2>
             <p className="text-moss text-[15px] max-w-xl mx-auto leading-relaxed font-sans">
-              We are Saviour, James, and our close strategic partners. We operate with zero layers of telephone or account-management overhead. When you deal with us, you deal directly with the hands doing the work.
+              {siteSettings.teamSubheading}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {TEAM_MEMBERS_DATA.map((member, idx) => (
+            {teamMembers.map((member, idx) => (
               <motion.div
-                key={member.name}
+                key={member._id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
@@ -658,16 +776,16 @@ export default function Home() {
             className="max-w-xl mb-12"
           >
             <h2 className="font-space font-semibold text-[26px] sm:text-[34px] md:text-[36px] tracking-tight mb-2">
-              Questions people usually ask first.
+              {siteSettings.faqHeading}
             </h2>
             <p className="text-mist text-[15px] leading-relaxed">
-              If yours isn't here, that's exactly what the first message is for.
+              {siteSettings.faqSubheading}
             </p>
           </motion.div>
 
           <div className="max-w-3xl border-t border-line">
-            {FAQ_DATA.map((faq, i) => (
-              <FaqAccordionItem key={faq.id} faq={faq} index={i} />
+            {faqItems.map((faq, i) => (
+              <FaqAccordionItem key={faq._id} faq={faq} index={i} />
             ))}
           </div>
 
@@ -684,7 +802,7 @@ export default function Home() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="font-space font-bold text-[32px] sm:text-[48px] md:text-[56px] tracking-tight mb-8 text-ink">
-              Tell us what you're building.
+              {siteSettings.contactHeading}
             </h2>
             <a
               href="mailto:klvrcorp@gmail.com"
@@ -703,7 +821,7 @@ export default function Home() {
 }
 
 /* SERVICE ACCORDION ITEM */
-function ServiceAccordionItem({ service, index }: { service: typeof SERVICES_DATA[number]; index: number }) {
+function ServiceAccordionItem({ service, index }: { service: Service; index: number }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -795,7 +913,7 @@ function RotatingWord({ words, colorClass }: { words: string[]; colorClass: stri
 }
 
 /* ACCORDION FAQ ITEM WITH TRANSITION ANIMATION */
-function FaqAccordionItem({ faq, index }: { faq: typeof FAQ_DATA[number]; index: number }) {
+function FaqAccordionItem({ faq, index }: { faq: FaqEntry; index: number }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (

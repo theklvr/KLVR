@@ -11,12 +11,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.theklvr.com/blog/why-every-growing-business-needs-a-technology-partner</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.theklvr.com/blog/growth-strategy-framework-for-small-and-medium-businesses</loc>
+    <loc>https://www.theklvr.com/blog/why-boutique-technical-partners-outperform-freelance-teams</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -31,7 +26,12 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.theklvr.com/blog/why-boutique-technical-partners-outperform-freelance-teams</loc>
+    <loc>https://www.theklvr.com/blog/aligning-brand-tech-and-operations-for-sustainable-growth</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.theklvr.com/blog/growth-strategy-framework-for-small-and-medium-businesses</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -41,7 +41,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.theklvr.com/blog/aligning-brand-tech-and-operations-for-sustainable-growth</loc>
+    <loc>https://www.theklvr.com/blog/why-every-growing-business-needs-a-technology-partner</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
