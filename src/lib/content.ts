@@ -60,25 +60,45 @@ export interface TeamMember {
 }
 
 export async function getSiteSettings(): Promise<SiteSettings | null> {
-  return sanityClient.fetch(`*[_type == "siteSettings"][0]`);
+  try {
+    return await sanityClient.fetch(`*[_type == "siteSettings"][0]`);
+  } catch {
+    return null;
+  }
 }
 
 export async function getServices(): Promise<Service[]> {
-  return sanityClient.fetch(
-    `*[_type == "service"] | order(order asc) { _id, num, anchorId, title, description, categories }`
-  );
+  try {
+    return await sanityClient.fetch(
+      `*[_type == "service"] | order(order asc) { _id, num, anchorId, title, description, categories }`
+    );
+  } catch {
+    return [];
+  }
 }
 
 export async function getTestimonials(): Promise<Testimonial[]> {
-  return sanityClient.fetch(`*[_type == "testimonial"] | order(order asc) { _id, quote, author, role }`);
+  try {
+    return await sanityClient.fetch(`*[_type == "testimonial"] | order(order asc) { _id, quote, author, role }`);
+  } catch {
+    return [];
+  }
 }
 
 export async function getFaqItems(): Promise<FaqEntry[]> {
-  return sanityClient.fetch(`*[_type == "faqItem"] | order(order asc) { _id, question, answer }`);
+  try {
+    return await sanityClient.fetch(`*[_type == "faqItem"] | order(order asc) { _id, question, answer }`);
+  } catch {
+    return [];
+  }
 }
 
 export async function getTeamMembers(): Promise<TeamMember[]> {
-  return sanityClient.fetch(
-    `*[_type == "teamMember"] | order(order asc) { _id, name, role, image, hoverTitle, hoverText }`
-  );
+  try {
+    return await sanityClient.fetch(
+      `*[_type == "teamMember"] | order(order asc) { _id, name, role, image, hoverTitle, hoverText }`
+    );
+  } catch {
+    return [];
+  }
 }

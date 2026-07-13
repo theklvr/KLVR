@@ -22,14 +22,20 @@ const LIST_FIELDS = `_id, title, "slug": slug.current, category, description, re
 const FULL_FIELDS = `${LIST_FIELDS}, intro, sections[]{heading, paragraphs}`;
 
 export async function getAllPosts(): Promise<BlogPost[]> {
-  return sanityClient.fetch(
-    `*[_type == "post"] | order(date desc) { ${LIST_FIELDS} }`
-  );
+  try {
+    return await sanityClient.fetch(`*[_type == "post"] | order(date desc) { ${LIST_FIELDS} }`);
+  } catch {
+    return [];
+  }
 }
 
 export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
-  return sanityClient.fetch(
-    `*[_type == "post" && slug.current == $slug][0] { ${FULL_FIELDS} }`,
-    { slug }
-  );
+  try {
+    return await sanityClient.fetch(
+      `*[_type == "post" && slug.current == $slug][0] { ${FULL_FIELDS} }`,
+      { slug }
+    );
+  } catch {
+    return null;
+  }
 }
