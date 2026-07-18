@@ -8,7 +8,7 @@ const siteSettings = {
   heroBuildWords: ['Websites', 'Software', 'Brand Kits', 'Automation', 'Platforms'],
   heroForWords: ['Startups', 'Schools', 'Real Estate', 'E-Commerce', 'SMEs'],
   aboutText:
-    'In 2026, we set out to fix a broken model. Most growing businesses juggle a website developer, a brand designer, and a handful of freelancers who disappear the moment the invoice clears. We built klvr to be the one team that stays, handling the build and the brand together, and sticking around long after launch.',
+    'Most businesses do not actually know what they need first, a website , a brand , funding , or just someone with expirence telling them where to start.Klvr exists for that conversation. we are not here to seel you a package. We look at what you are building , tell you what actually matters right now,and bring in the right people from our own team, build, brand, growth, capital, whatever the moment calls for, to make it happen.  We started in 202 6because too many founders , business owners and soloprreneurs were getting sold services they did not need by people who had a reason to sell them. Klvr does not have that problem. we are not attached to one answer.',
   whyChooseUsEyebrow: 'Why choose us',
   whyChooseUsHeadingPrimary: 'We build for outcomes',
   whyChooseUsHeadingSecondary: '- not just launch day.',
@@ -102,7 +102,8 @@ const testimonials = [
   {
     _id: 'testimonial-treasure',
     _type: 'testimonial',
-    quote: "My site finally looks like what's actually in my head. People stop and ask who built it, every time.",
+    quote:
+      "My site finally looks like what's actually in my head. People stop and ask who built it, every time.",
     author: 'Treasure',
     role: 'Model',
     order: 2,
@@ -155,7 +156,8 @@ const faqItems = [
     _id: 'faq-outside-nigeria',
     _type: 'faqItem',
     question: 'Do you work with businesses outside Nigeria?',
-    answer: 'Yes. We work with clients wherever they are, and price in whichever currency makes sense for the relationship.',
+    answer:
+      'Yes. We work with clients wherever they are, and price in whichever currency makes sense for the relationship.',
     order: 5,
   },
   {
@@ -174,9 +176,10 @@ const teamMembers = [
     _type: 'teamMember',
     name: 'Saviour',
     role: 'Co-founder & Technical Lead',
-    image: '/team/saviour.jpg',
+    image: '/team/saviour.jpeg',
     hoverTitle: 'Hi There !',
-    hoverText: "I'm a hardcore software lead and systems architect dedicated to clean code.",
+    hoverText:
+      "I'm the Technical lead and I'm dedicated ensuring our cleint's get the best technology solutions in their space.",
     order: 1,
   },
   {
