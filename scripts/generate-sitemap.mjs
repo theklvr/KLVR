@@ -7,7 +7,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 config({ path: resolve(__dirname, "../.env") });
 
 const SITE_URL = "https://www.theklvr.com";
-const API_URL = "https://k2r-api.onrender.com";
+const API_URL = "https://k2r-api-fra.onrender.com";
 const projectId = process.env.VITE_K2R_PROJECT_ID;
 const apiKey = process.env.VITE_K2R_API_KEY;
 

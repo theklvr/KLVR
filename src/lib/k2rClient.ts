@@ -1,6 +1,6 @@
 const PROJECT_ID = import.meta.env.VITE_K2R_PROJECT_ID;
 const API_KEY = import.meta.env.VITE_K2R_API_KEY;
-const BASE_URL = "https://k2r-api.onrender.com/v1";
+const BASE_URL = "https://k2r-api-fra.onrender.com/v1";
 
 // Plain REST calls against K2R Studio's public content API, not the
 // @k2r/studio SDK package: the SDK isn't published to npm yet, and a
