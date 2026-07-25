@@ -1,19 +1,31 @@
 import { writeFileSync } from "fs";
 import { fileURLToPath } from "url";
 import { dirname, resolve } from "path";
-import { createClient } from "@sanity/client";
+import { config } from "dotenv";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
+config({ path: resolve(__dirname, "../.env") });
+
 const SITE_URL = "https://www.theklvr.com";
+const API_URL = "https://k2r-api.onrender.com";
+const projectId = process.env.VITE_K2R_PROJECT_ID;
+const apiKey = process.env.VITE_K2R_API_KEY;
 
-const sanity = createClient({
-  projectId: process.env.VITE_SANITY_PROJECT_ID || "bqhauaf6",
-  dataset: process.env.VITE_SANITY_DATASET || "production",
-  apiVersion: "2026-07-13",
-  useCdn: false
-});
-
-const slugs = await sanity.fetch(`*[_type == "post"].slug.current`);
+let slugs = [];
+if (projectId && apiKey) {
+  const res = await fetch(`${API_URL}/v1/projects/${projectId}/content/post`, {
+    headers: { Authorization: `Bearer ${apiKey}` },
+  });
+  if (res.ok) {
+    const body = await res.json();
+    const rows = Array.isArray(body) ? body : body.data;
+    slugs = rows.map((p) => p.slug).filter(Boolean);
+  } else {
+    console.warn(`Could not fetch post slugs from K2R Studio (${res.status}) — sitemap will omit blog posts.`);
+  }
+} else {
+  console.warn("VITE_K2R_PROJECT_ID/VITE_K2R_API_KEY not set — sitemap will omit blog posts.");
+}
 
 const urls = [
   { loc: "/", changefreq: "weekly", priority: "1.0" },

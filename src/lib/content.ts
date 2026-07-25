@@ -1,4 +1,4 @@
-import { sanityClient } from "./sanityClient";
+import { k2rClient } from "./k2rClient";
 
 export interface SiteSettings {
   heroBuildWords: string[];
@@ -59,9 +59,31 @@ export interface TeamMember {
   hoverText: string;
 }
 
+/**
+ * No `limit`/`cursor` passed deliberately — the currently-deployed API
+ * predates cursor pagination and rejects unrecognized query params
+ * outright (`property limit should not exist`), and content volumes here
+ * don't need it anyway. Handles both a bare-array response (today's
+ * deploy) and `{ data, nextCursor }` (once it catches up), so this stays
+ * correct either way. `_id` only ever needs to be a stable React key
+ * here, not a real entry id, so the array index is enough.
+ */
+async function listWithFallbackId<T extends object>(
+  contentType: string,
+): Promise<(T & { _id: string })[]> {
+  const result = (await k2rClient.list<Record<string, unknown>>(contentType)) as
+    | { data: Record<string, unknown>[] }
+    | Record<string, unknown>[];
+  const rows = Array.isArray(result) ? result : result.data;
+  return rows.map((row, index) => ({ ...(row as T), _id: `${contentType}-${index}` }));
+}
+
 export async function getSiteSettings(): Promise<SiteSettings | null> {
   try {
-    return await sanityClient.fetch(`*[_type == "siteSettings"][0]`);
+    return (await k2rClient.entry<Record<string, unknown>>(
+      "siteSettings",
+      "default",
+    )) as unknown as SiteSettings;
   } catch {
     return null;
   }
@@ -69,9 +91,7 @@ export async function getSiteSettings(): Promise<SiteSettings | null> {
 
 export async function getServices(): Promise<Service[]> {
   try {
-    return await sanityClient.fetch(
-      `*[_type == "service"] | order(order asc) { _id, num, anchorId, title, description, categories }`
-    );
+    return await listWithFallbackId<Omit<Service, "_id">>("service");
   } catch {
     return [];
   }
@@ -79,7 +99,7 @@ export async function getServices(): Promise<Service[]> {
 
 export async function getTestimonials(): Promise<Testimonial[]> {
   try {
-    return await sanityClient.fetch(`*[_type == "testimonial"] | order(order asc) { _id, quote, author, role }`);
+    return await listWithFallbackId<Omit<Testimonial, "_id">>("testimonial");
   } catch {
     return [];
   }
@@ -87,7 +107,7 @@ export async function getTestimonials(): Promise<Testimonial[]> {
 
 export async function getFaqItems(): Promise<FaqEntry[]> {
   try {
-    return await sanityClient.fetch(`*[_type == "faqItem"] | order(order asc) { _id, question, answer }`);
+    return await listWithFallbackId<Omit<FaqEntry, "_id">>("faqItem");
   } catch {
     return [];
   }
@@ -95,9 +115,7 @@ export async function getFaqItems(): Promise<FaqEntry[]> {
 
 export async function getTeamMembers(): Promise<TeamMember[]> {
   try {
-    return await sanityClient.fetch(
-      `*[_type == "teamMember"] | order(order asc) { _id, name, role, image, hoverTitle, hoverText }`
-    );
+    return await listWithFallbackId<Omit<TeamMember, "_id">>("teamMember");
   } catch {
     return [];
   }

@@ -1,4 +1,4 @@
-import { sanityClient } from "./sanityClient";
+import { k2rClient } from "./k2rClient";
 
 export interface BlogSection {
   heading: string;
@@ -18,12 +18,53 @@ export interface BlogPost {
   sections: BlogSection[];
 }
 
-const LIST_FIELDS = `_id, title, "slug": slug.current, category, description, readTime, date, image`;
-const FULL_FIELDS = `${LIST_FIELDS}, intro, sections[]{heading, paragraphs}`;
+// K2R Studio's `array` field type only supports scalar items, not nested
+// objects — Sanity's sections[]{heading, paragraphs} shape doesn't map to
+// a single field. Stored as JSON text on the way in (see the migration
+// script); parsed back out here so BlogPost.tsx never has to know.
+interface RawPost {
+  title: string;
+  category: string;
+  description: string;
+  readTime: string;
+  date: string;
+  image: string;
+  intro?: string;
+  sections?: string;
+  slug: string;
+}
+
+function toBlogPost(raw: RawPost, fallbackId: string): BlogPost {
+  let sections: BlogSection[] = [];
+  try {
+    sections = raw.sections ? JSON.parse(raw.sections) : [];
+  } catch {
+    sections = [];
+  }
+  return {
+    _id: fallbackId,
+    title: raw.title,
+    slug: raw.slug,
+    category: raw.category,
+    description: raw.description,
+    readTime: raw.readTime,
+    date: raw.date,
+    image: raw.image,
+    intro: raw.intro ?? "",
+    sections,
+  };
+}
 
 export async function getAllPosts(): Promise<BlogPost[]> {
   try {
-    return await sanityClient.fetch(`*[_type == "post"] | order(date desc) { ${LIST_FIELDS} }`);
+    const result = (await k2rClient.list<Record<string, unknown>>("post")) as
+      | { data: Record<string, unknown>[] }
+      | Record<string, unknown>[];
+    const rows = Array.isArray(result) ? result : result.data;
+    const posts = rows.map((row, index) =>
+      toBlogPost(row as unknown as RawPost, `post-${index}`),
+    );
+    return posts.sort((a, b) => (a.date < b.date ? 1 : -1));
   } catch {
     return [];
   }
@@ -31,10 +72,8 @@ export async function getAllPosts(): Promise<BlogPost[]> {
 
 export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
   try {
-    return await sanityClient.fetch(
-      `*[_type == "post" && slug.current == $slug][0] { ${FULL_FIELDS} }`,
-      { slug }
-    );
+    const raw = await k2rClient.entry<Record<string, unknown>>("post", slug);
+    return toBlogPost(raw as unknown as RawPost, slug);
   } catch {
     return null;
   }
