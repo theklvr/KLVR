@@ -60,7 +60,7 @@ export interface TeamMember {
 }
 
 /**
- * No `limit`/`cursor` passed deliberately — the currently-deployed API
+ * No `limit`/`cursor` passed deliberately. The currently-deployed API
  * predates cursor pagination and rejects unrecognized query params
  * outright (`property limit should not exist`), and content volumes here
  * don't need it anyway. Handles both a bare-array response (today's

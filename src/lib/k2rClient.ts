@@ -7,7 +7,7 @@ const apiKey = import.meta.env.VITE_K2R_API_KEY;
 // env var degrades to "use the hardcoded defaults" (see data.ts) rather
 // than crashing the whole app on the very first render.
 //
-// dangerouslyAllowBrowser: true — this key is scoped `read`-only to a
+// dangerouslyAllowBrowser: true. This key is scoped `read`-only to a
 // single project and can only ever fetch published content, the same
 // exposure a public Sanity dataset token already had. Not a secret in the
 // same sense as a database credential.

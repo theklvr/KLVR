@@ -19,7 +19,7 @@ export interface BlogPost {
 }
 
 // K2R Studio's `array` field type only supports scalar items, not nested
-// objects — Sanity's sections[]{heading, paragraphs} shape doesn't map to
+// objects. Sanity's sections[]{heading, paragraphs} shape doesn't map to
 // a single field. Stored as JSON text on the way in (see the migration
 // script); parsed back out here so BlogPost.tsx never has to know.
 interface RawPost {

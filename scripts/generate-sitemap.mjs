@@ -21,10 +21,10 @@ if (projectId && apiKey) {
     const rows = Array.isArray(body) ? body : body.data;
     slugs = rows.map((p) => p.slug).filter(Boolean);
   } else {
-    console.warn(`Could not fetch post slugs from K2R Studio (${res.status}) — sitemap will omit blog posts.`);
+    console.warn(`Could not fetch post slugs from K2R Studio (${res.status}), sitemap will omit blog posts.`);
   }
 } else {
-  console.warn("VITE_K2R_PROJECT_ID/VITE_K2R_API_KEY not set — sitemap will omit blog posts.");
+  console.warn("VITE_K2R_PROJECT_ID/VITE_K2R_API_KEY not set, sitemap will omit blog posts.");
 }
 
 const urls = [
