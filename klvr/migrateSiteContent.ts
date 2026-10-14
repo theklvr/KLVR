@@ -5,15 +5,24 @@ const client = getCliClient()
 const siteSettings = {
   _id: 'siteSettings',
   _type: 'siteSettings',
-  heroBuildWords: ['Websites', 'Software', 'Brand Kits', 'Automation', 'Platforms'],
-  heroForWords: ['Startups', 'Schools', 'Real Estate', 'E-Commerce', 'SMEs'],
+  heroBuildWords: [
+    'Digital Products',
+    'Brand Experiences',
+    'Growth Strategies',
+    'Creative Campaigns',
+    'Business Solutions',
+  ],
+  heroForWords: ['Startups', 'Businesses', 'Web3 Projects', 'Organizations', 'Entrepreneurs'],
+  heroSubheading:
+    'Creative thinking, powerful technology, strategic growth, and the right people to make it happen.',
+  aboutHeading: 'Different challenges. One partner. Endless possibilities.',
   aboutText:
-    'Most businesses do not actually know what they need first, a website , a brand , funding , or just someone with expirence telling them where to start.Klvr exists for that conversation. we are not here to seel you a package. We look at what you are building , tell you what actually matters right now,and bring in the right people from our own team, build, brand, growth, capital, whatever the moment calls for, to make it happen.  We started in 202 6because too many founders , business owners and soloprreneurs were getting sold services they did not need by people who had a reason to sell them. Klvr does not have that problem. we are not attached to one answer.',
+    "KLVR is a multidisciplinary company bringing creativity, technology, marketing and business expertise together to help ideas grow into meaningful ventures and ambitious projects become reality.\n\nWe work with founders, businesses, brands and organizations to solve problems, unlock opportunities and build for the future. From digital products and brand experiences to growth strategies, business advisory and specialized projects, we combine our team's expertise with a growing network of trusted partners to deliver the right solutions.\n\nBeyond client work, we develop our own products, explore new ventures and build strategic partnerships that expand what's possible.\n\nWe're not defined by one service or one industry. We're driven by the challenges we can solve, the value we create and the businesses we help move forward.",
   whyChooseUsEyebrow: 'Why choose us',
-  whyChooseUsHeadingPrimary: 'We build for outcomes',
-  whyChooseUsHeadingSecondary: '- not just launch day.',
+  whyChooseUsHeadingPrimary: 'More than a service provider.',
+  whyChooseUsHeadingSecondary: 'A partner in what comes next.',
   whyChooseUsDescription:
-    'Direct founder access, weekly live builds, and systems built to compound are why partners stay long after the first launch.',
+    'Different ambitions demand different solutions. We combine multidisciplinary thinking, hands-on execution and the right connections to help our partners navigate challenges and move forward with confidence.',
   statOneNumber: '10+',
   statOneLabel: 'Successful projects completed',
   statOneDescription:
@@ -22,70 +31,99 @@ const siteSettings = {
   statTwoLabel: 'Customer satisfaction',
   statTwoCaption: 'Direct to the founders',
   servicesHeading: 'What We Do',
-  servicesSubheading: "One team, two divisions, and a partnership that doesn't end at launch.",
-  philosophyPart1: 'Most agencies deliver and',
-  philosophyHighlight: 'disappear.',
-  philosophyPart2: 'We stay for the years that come after launch.',
+  servicesSubheading:
+    'From solving business challenges to developing our own products, we bring ideas, expertise and the right partnerships together to create lasting value.',
+  philosophyPart1: 'KLVR creates, builds, connects and',
+  philosophyHighlight: 'grows.',
+  philosophyPart2: 'The right solution depends on the challenge in front of us.',
   testimonialsHeading: 'Partner Feedback',
   testimonialsSubheading:
-    "Don't just take our word for it. Here is what partners say after replacing their fragmented teams with our unified engine.",
+    "Real feedback from people we've helped through websites, creative work, product thinking and digital execution.",
   teamHeading: 'Team',
   teamSubheading:
-    'We are Saviour, James, and our close strategic partners. We operate with zero layers of telephone or account-management overhead. When you deal with us, you deal directly with the hands doing the work.',
-  faqHeading: 'Questions people usually ask first.',
-  faqSubheading: "If yours isn't here, that's exactly what the first message is for.",
-  contactHeading: "Tell us what you're building.",
+    'We are Saviour, James, and a growing network of close strategic partners. KLVR stays lean, direct and hands-on while bringing in specialist expertise when a project needs it.',
+  faqHeading: 'Useful answers before we talk.',
+  faqSubheading: 'Clear answers about what KLVR is, how we work and where collaboration can start.',
+  contactHeading: "Have an idea, challenge or opportunity? Let's talk.",
+  contactSubheading:
+    "Whether you're building something new, growing an existing business, exploring a partnership or bringing an ambitious idea to life, we'd love to hear about it.",
 }
 
 const services = [
   {
-    _id: 'service-build',
+    _id: 'service-solutions',
     _type: 'service',
     num: '01',
-    anchorId: 'pillar-build',
-    title: 'Engineering & Build',
+    anchorId: 'pillar-solutions',
+    title: 'KLVR Solutions',
     description:
-      'We design and build the software a growing business runs on: websites, custom platforms, and the systems that keep everything moving.',
+      'Ideas into impact. We help businesses and organizations solve problems through creative thinking, technology, marketing and strategic expertise. From building digital platforms to shaping brands, improving operations and accelerating growth, we develop solutions around what each project actually needs.',
     categories: [
-      'Custom Software & CRM Systems',
-      'School & Business Management Platforms',
-      'High-Conversion Websites & E-Commerce',
-      'Workflow Automation & AI Integration',
-      'Secure API & Database Architecture',
+      'Software, web and platform development',
+      'AI integrations, automation and technical solutions',
+      'Brand identity, creative direction and design',
+      'Digital marketing, campaigns and growth strategy',
+      'Business consulting and operational solutions',
+      'Web3 ecosystem growth and advisory',
+      'Community development, partnerships and KOL collaborations',
+      'Digital transformation and project delivery',
     ],
     order: 1,
   },
   {
-    _id: 'service-brand',
+    _id: 'service-products',
     _type: 'service',
     num: '02',
-    anchorId: 'pillar-brand',
-    title: 'Brand & Creative',
+    anchorId: 'pillar-products',
+    title: 'KLVR Products',
     description:
-      'We turn what a business does into a brand people trust and remember, then keep it consistent everywhere it shows up.',
+      "Building what's next. We're not only building for others. We create and develop our own digital products, platforms and tools designed to solve real problems and open new opportunities. Blocly is part of this growing KLVR product ecosystem.",
     categories: [
-      'Brand Positioning & Visual Identity',
-      'Content, Photography & Videography',
-      'User Interface & Experience (UI/UX)',
-      'Marketing Strategy & Growth Campaigns',
+      'Proprietary software products',
+      'SaaS platforms',
+      'Digital tools and utilities',
+      'Product research and development',
+      'Scalable technology ventures',
     ],
     order: 2,
   },
   {
-    _id: 'service-partnership',
+    _id: 'service-partnerships',
     _type: 'service',
     num: '03',
-    anchorId: 'pillar-partnership',
-    title: 'Ongoing Partnership',
+    anchorId: 'pillar-partnerships',
+    title: 'KLVR Partnerships',
     description:
-      "We don't disappear after launch. We stay on as a long-term technology and creative partner, growing alongside the business.",
+      'Stronger together. Great ideas often require expertise beyond one team. We collaborate with specialist operators, industry professionals and strategic partners to bring ambitious projects to life, including drone light show experiences delivered through an independent operating partner.',
     categories: [
-      'Direct Founder-to-Founder Thread',
-      'Monthly Retainers & Growth Partnerships',
-      'Weekly Live Builds & Launch Readiness',
-      'Business & Technology Consulting',
+      'Strategic business collaborations',
+      'Specialized project execution',
+      'Creative experiences and event solutions',
+      'Drone light show experiences through our operating partner',
+      'Industry and ecosystem connections',
+      'Cross-industry partnerships',
+      'Collaborative growth opportunities',
     ],
     order: 3,
+  },
+  {
+    _id: 'service-ventures',
+    _type: 'service',
+    num: '04',
+    anchorId: 'pillar-ventures',
+    title: 'KLVR Ventures',
+    description:
+      'Creating new possibilities. Through research, product development, strategic collaborations and new business initiatives, KLVR explores ideas that can evolve into sustainable businesses and create long-term impact.',
+    categories: [
+      'Venture exploration',
+      'New business development',
+      'Internal product incubation',
+      'Joint venture opportunities',
+      'Strategic business development',
+      'Commercial partnerships',
+      'Innovation and market research',
+    ],
+    order: 4,
   },
 ]
 
@@ -121,52 +159,60 @@ const testimonials = [
 
 const faqItems = [
   {
-    _id: 'faq-cost',
+    _id: 'faq-what-is-klvr',
     _type: 'faqItem',
-    question: 'How much does this cost?',
+    question: 'What is KLVR?',
     answer:
-      "It depends on scope, so we won't put a number here that would probably be wrong for your situation. We don't compete by being the cheapest option, our pricing reflects the value we create for your business, and we'd rather package a solution than nickel-and-dime you for every small piece. Say hello, tell us what you're building, and we'll scope it properly before quoting anything.",
+      'KLVR is a creative, technology, marketing and business solutions company. We help organizations solve problems, build digital products, shape brands, grow communities and explore strategic opportunities.',
     order: 1,
   },
   {
-    _id: 'faq-speed',
+    _id: 'faq-services',
     _type: 'faqItem',
-    question: 'How fast can you start?',
+    question: 'What services does KLVR provide?',
     answer:
-      'Most projects can kick off within a week or two of scoping and a deposit. If something is genuinely urgent, tell us upfront, we can usually adjust.',
+      'KLVR provides software, web and platform development, AI integrations, automation, brand identity, creative direction, digital marketing, growth strategy, business consulting, Web3 ecosystem growth, community development and partnership support.',
     order: 2,
   },
   {
-    _id: 'faq-contract',
+    _id: 'faq-products',
     _type: 'faqItem',
-    question: 'Do we need to sign a contract?',
+    question: 'Does KLVR build its own products?',
     answer:
-      'Yes, every project starts with a written scope and agreement. It protects you as much as it protects us, and it means nobody is guessing what was promised.',
+      'Yes. KLVR develops its own digital products, platforms and tools. Blocly is one product within the KLVR ecosystem, and future products will be presented with real details as they develop.',
     order: 3,
   },
   {
-    _id: 'faq-one-thing',
+    _id: 'faq-partners',
     _type: 'faqItem',
-    question: 'What if I only need one thing, not everything?',
+    question: 'Does KLVR work with external partners?',
     answer:
-      "That's completely fine. Most relationships start with one piece (a website, an app, a content system) and grow from there once the fit is obvious. Nothing here is all-or-nothing.",
+      'Yes. KLVR collaborates with trusted specialist operators and strategic partners where a project needs expertise beyond our direct team. Partner-operated work is clearly distinguished from services delivered directly by KLVR.',
     order: 4,
   },
   {
-    _id: 'faq-outside-nigeria',
+    _id: 'faq-web3',
     _type: 'faqItem',
-    question: 'Do you work with businesses outside Nigeria?',
+    question: 'Does KLVR provide Web3 growth and business solutions?',
     answer:
-      'Yes. We work with clients wherever they are, and price in whichever currency makes sense for the relationship.',
+      'Yes. KLVR supports Web3 projects with ecosystem growth, community development, partnerships, KOL collaborations, marketing strategy and business advisory where those capabilities match the project need.',
     order: 5,
   },
   {
-    _id: 'faq-after-launch',
+    _id: 'faq-where',
     _type: 'faqItem',
-    question: 'What happens after the project launches?',
+    question: 'Where does KLVR operate?',
     answer:
-      "We don't disappear. Most clients move to a simple monthly plan so the system keeps running well and gets small improvements over time, with regular check-ins rather than radio silence.",
+      'KLVR is built from Nigeria and works with clients, founders, businesses and organizations wherever the right collaboration makes sense.',
     order: 6,
+  },
+  {
+    _id: 'faq-collaborate',
+    _type: 'faqItem',
+    question: 'How can businesses collaborate with KLVR?',
+    answer:
+      'Start by sharing the idea, challenge or opportunity. From there, KLVR can scope a solution, explore a strategic partnership, support growth, build a digital product or connect the right specialist partners around the work.',
+    order: 7,
   },
 ]
 
@@ -202,7 +248,7 @@ async function run() {
   for (const f of faqItems) tx.createOrReplace(f)
   for (const m of teamMembers) tx.createOrReplace(m)
   await tx.commit()
-  console.log('Migrated: siteSettings, 3 services, 3 testimonials, 6 faqItems, 2 teamMembers')
+  console.log('Migrated: siteSettings, 4 services, 3 testimonials, 7 faqItems, 2 teamMembers')
 }
 
 run().catch((err) => {

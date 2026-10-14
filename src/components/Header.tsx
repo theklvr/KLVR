@@ -110,34 +110,44 @@ export function Header() {
                     }`}
                   >
                     <a
-                      href={homeAnchor("#pillar-build")}
+                      href={homeAnchor("#pillar-solutions")}
                       className={`block p-3 rounded-lg transition-colors duration-200 ${
                         isPastHero ? "hover:bg-ink/5" : "hover:bg-white/5"
                       }`}
                       onClick={() => setServicesDropdownOpen(false)}
                     >
-                      <div className={`font-sans text-[13.5px] font-semibold ${isPastHero ? "text-ink" : "text-white"}`}>The Build</div>
-                      <div className={`font-mono text-[10.5px] ${isPastHero ? "text-[#59634B]" : "text-gray-400"} mt-0.5`}>Websites, apps, systems</div>
+                      <div className={`font-sans text-[13.5px] font-semibold ${isPastHero ? "text-ink" : "text-white"}`}>Solutions</div>
+                      <div className={`font-mono text-[10.5px] ${isPastHero ? "text-[#59634B]" : "text-gray-400"} mt-0.5`}>Creative, tech, growth</div>
                     </a>
                     <a
-                      href={homeAnchor("#pillar-brand")}
+                      href={homeAnchor("#pillar-products")}
                       className={`block p-3 rounded-lg transition-colors duration-200 ${
                         isPastHero ? "hover:bg-ink/5" : "hover:bg-white/5"
                       }`}
                       onClick={() => setServicesDropdownOpen(false)}
                     >
-                      <div className={`font-sans text-[13.5px] font-semibold ${isPastHero ? "text-ink" : "text-white"}`}>The Brand</div>
-                      <div className={`font-mono text-[10.5px] ${isPastHero ? "text-[#59634B]" : "text-gray-400"} mt-0.5`}>Content, social, KOLs, community</div>
+                      <div className={`font-sans text-[13.5px] font-semibold ${isPastHero ? "text-ink" : "text-white"}`}>Products</div>
+                      <div className={`font-mono text-[10.5px] ${isPastHero ? "text-[#59634B]" : "text-gray-400"} mt-0.5`}>Blocly and future tools</div>
                     </a>
                     <a
-                      href={homeAnchor("#pillar-partnership")}
+                      href={homeAnchor("#pillar-partnerships")}
                       className={`block p-3 rounded-lg transition-colors duration-200 ${
                         isPastHero ? "hover:bg-ink/5" : "hover:bg-white/5"
                       }`}
                       onClick={() => setServicesDropdownOpen(false)}
                     >
-                      <div className={`font-sans text-[13.5px] font-semibold ${isPastHero ? "text-ink" : "text-white"}`}>The Partnership</div>
-                      <div className={`font-mono text-[10.5px] ${isPastHero ? "text-[#59634B]" : "text-gray-400"} mt-0.5`}>Retainers, reviews, roadmaps</div>
+                      <div className={`font-sans text-[13.5px] font-semibold ${isPastHero ? "text-ink" : "text-white"}`}>Partnerships</div>
+                      <div className={`font-mono text-[10.5px] ${isPastHero ? "text-[#59634B]" : "text-gray-400"} mt-0.5`}>Operators, events, growth</div>
+                    </a>
+                    <a
+                      href={homeAnchor("#pillar-ventures")}
+                      className={`block p-3 rounded-lg transition-colors duration-200 ${
+                        isPastHero ? "hover:bg-ink/5" : "hover:bg-white/5"
+                      }`}
+                      onClick={() => setServicesDropdownOpen(false)}
+                    >
+                      <div className={`font-sans text-[13.5px] font-semibold ${isPastHero ? "text-ink" : "text-white"}`}>Ventures</div>
+                      <div className={`font-mono text-[10.5px] ${isPastHero ? "text-[#59634B]" : "text-gray-400"} mt-0.5`}>Research and new business</div>
                     </a>
                     <div className={`border-t my-1 ${isPastHero ? "border-ink/10" : "border-white/10"}`}></div>
                     <a
@@ -208,7 +218,7 @@ export function Header() {
                       onClick={() => setCompanyDropdownOpen(false)}
                     >
                       <div className={`font-sans text-[13.5px] font-semibold ${isPastHero ? "text-ink" : "text-white"}`}>Team</div>
-                      <div className={`font-mono text-[10.5px] ${isPastHero ? "text-[#59634B]" : "text-gray-400"} mt-0.5`}>Meet the founders and developers</div>
+                      <div className={`font-mono text-[10.5px] ${isPastHero ? "text-[#59634B]" : "text-gray-400"} mt-0.5`}>Meet the team and partners</div>
                     </a>
                     <Link
                       to="/blog"
@@ -290,25 +300,32 @@ export function Header() {
                   </span>
                   <div className="pl-4 space-y-2.5 mt-1">
                     <a
-                      href={homeAnchor("#pillar-build")}
+                      href={homeAnchor("#pillar-solutions")}
                       className="block text-white/60 hover:text-white transition-colors"
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      The Build
+                      Solutions
                     </a>
                     <a
-                      href={homeAnchor("#pillar-brand")}
+                      href={homeAnchor("#pillar-products")}
                       className="block text-white/60 hover:text-white transition-colors"
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      The Brand
+                      Products
                     </a>
                     <a
-                      href={homeAnchor("#pillar-partnership")}
+                      href={homeAnchor("#pillar-partnerships")}
                       className="block text-white/60 hover:text-white transition-colors"
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      The Partnership
+                      Partnerships
+                    </a>
+                    <a
+                      href={homeAnchor("#pillar-ventures")}
+                      className="block text-white/60 hover:text-white transition-colors"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Ventures
                     </a>
                   </div>
                 </div>

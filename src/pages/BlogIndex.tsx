@@ -16,8 +16,8 @@ export default function BlogIndex() {
   return (
     <div className="min-h-screen bg-paper text-ink selection:bg-klvr selection:text-ink relative overflow-x-hidden">
       <Seo
-        title="Theklvr Blog"
-        description="Notes on growth, technology, and brand from the team at klvr. Practical, no-fluff articles for anyone building a business."
+        title="KLVR Insights | Creative, Technology & Growth Thinking"
+        description="Insights from KLVR on creative strategy, technology, marketing, business growth, products and strategic partnerships."
         canonical="https://www.theklvr.com/blog"
         image="https://www.theklvr.com/og-image.png"
       />
@@ -33,7 +33,7 @@ export default function BlogIndex() {
             Growth, technology, and brand, written for anyone building a business.
           </h1>
           <p className="text-moss text-[15px] sm:text-[16px] max-w-xl leading-relaxed">
-            Not just for our clients. Practical thinking on the systems, strategy, and decisions behind businesses that actually scale.
+            Practical thinking on the systems, strategy, creative work and partnerships behind ideas that grow.
           </p>
         </div>
       </section>

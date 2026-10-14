@@ -6,6 +6,7 @@ interface SeoProps {
   canonical: string;
   image?: string;
   jsonLd?: object;
+  robots?: string;
 }
 
 function upsertMeta(attr: "name" | "property", key: string, content: string) {
@@ -28,12 +29,22 @@ function upsertCanonical(href: string) {
   el.setAttribute("href", href);
 }
 
-export function Seo({ title, description, canonical, image, jsonLd }: SeoProps) {
+export function Seo({
+  title,
+  description,
+  canonical,
+  image,
+  jsonLd,
+  robots = "index, follow",
+}: SeoProps) {
   useEffect(() => {
     document.title = title;
     upsertMeta("name", "description", description);
+    upsertMeta("name", "robots", robots);
     upsertCanonical(canonical);
 
+    upsertMeta("property", "og:type", "website");
+    upsertMeta("property", "og:site_name", "KLVR");
     upsertMeta("property", "og:title", title);
     upsertMeta("property", "og:description", description);
     upsertMeta("property", "og:url", canonical);
@@ -41,6 +52,8 @@ export function Seo({ title, description, canonical, image, jsonLd }: SeoProps) 
       upsertMeta("property", "og:image", image);
       upsertMeta("name", "twitter:image", image);
     }
+    upsertMeta("name", "twitter:card", image ? "summary_large_image" : "summary");
+    upsertMeta("name", "twitter:site", "@theKlvr");
     upsertMeta("name", "twitter:title", title);
     upsertMeta("name", "twitter:description", description);
 
@@ -55,7 +68,7 @@ export function Seo({ title, description, canonical, image, jsonLd }: SeoProps) 
     return () => {
       if (script) document.head.removeChild(script);
     };
-  }, [title, description, canonical, image, jsonLd]);
+  }, [title, description, canonical, image, jsonLd, robots]);
 
   return null;
 }

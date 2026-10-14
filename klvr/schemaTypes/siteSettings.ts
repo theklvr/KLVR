@@ -20,6 +20,19 @@ export const siteSettings = defineType({
       group: 'hero',
     }),
     defineField({
+      name: 'heroSubheading',
+      title: 'Hero supporting paragraph',
+      type: 'text',
+      rows: 2,
+      group: 'hero',
+    }),
+    defineField({
+      name: 'aboutHeading',
+      title: 'About Heading',
+      type: 'string',
+      group: 'about',
+    }),
+    defineField({
       name: 'aboutText',
       title: 'About Paragraph',
       description: 'Shown just below the hero, with a large drop-cap first letter',
@@ -166,6 +179,13 @@ export const siteSettings = defineType({
       title: 'Contact: Heading',
       description: 'e.g. "Tell us what you\'re building."',
       type: 'string',
+      group: 'contact',
+    }),
+    defineField({
+      name: 'contactSubheading',
+      title: 'Contact: Supporting copy',
+      type: 'text',
+      rows: 2,
       group: 'contact',
     }),
   ],

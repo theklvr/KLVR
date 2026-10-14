@@ -36,7 +36,7 @@ export default function BlogPost() {
   return (
     <div className="min-h-screen bg-paper text-ink selection:bg-klvr selection:text-ink relative overflow-x-hidden">
       <Seo
-        title={`${post.title} | Theklvr Blog`}
+        title={`${post.title} | KLVR Insights`}
         description={post.description}
         canonical={canonical}
         image={post.image}
@@ -47,8 +47,8 @@ export default function BlogPost() {
           description: post.description,
           image: post.image,
           datePublished: post.date,
-          author: { "@type": "Organization", name: "klvr", url: "https://www.theklvr.com/" },
-          publisher: { "@type": "Organization", name: "klvr", url: "https://www.theklvr.com/" },
+          author: { "@type": "Organization", name: "KLVR", url: "https://www.theklvr.com/" },
+          publisher: { "@type": "Organization", name: "KLVR", url: "https://www.theklvr.com/" },
           mainEntityOfPage: canonical
         }}
       />
@@ -122,12 +122,12 @@ export default function BlogPost() {
                 J
               </div>
             </div>
-            <span className="text-[13px] font-mono text-moss">Written by Saviour &amp; James • klvr</span>
+            <span className="text-[13px] font-mono text-moss">Written by Saviour &amp; James • KLVR</span>
           </div>
 
           <div className="mt-10 bg-paper-dim border border-line rounded-2xl p-8 text-center">
-            <h3 className="font-space font-bold text-[20px] text-ink mb-2">Tell us what you're building.</h3>
-            <p className="text-moss text-[14px] mb-6">One team for your website, software, brand, and growth. Say hello.</p>
+            <h3 className="font-space font-bold text-[20px] text-ink mb-2">Have an idea, challenge or opportunity?</h3>
+            <p className="text-moss text-[14px] mb-6">Talk to KLVR about creative, technology, marketing, business or partnership work.</p>
             <a
               href="mailto:klvrcorp@gmail.com"
               className="bg-ink text-paper hover:bg-moss text-[14px] px-6 py-3 rounded-full inline-flex items-center gap-2 transition-all duration-200 hover:-translate-y-[1.5px] font-mono group shadow-md"

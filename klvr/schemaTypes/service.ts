@@ -9,7 +9,7 @@ export const service = defineType({
     defineField({
       name: 'anchorId',
       title: 'Anchor ID',
-      description: 'Used for header dropdown links, e.g. "pillar-build". Do not change without updating the header links.',
+      description: 'Used for header dropdown links, e.g. "pillar-solutions". Do not change without updating the header links.',
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),

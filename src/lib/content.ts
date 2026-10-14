@@ -3,6 +3,8 @@ import { k2rClient } from "./k2rClient";
 export interface SiteSettings {
   heroBuildWords: string[];
   heroForWords: string[];
+  heroSubheading: string;
+  aboutHeading: string;
   aboutText: string;
   whyChooseUsEyebrow: string;
   whyChooseUsHeadingPrimary: string;
@@ -26,6 +28,7 @@ export interface SiteSettings {
   faqHeading: string;
   faqSubheading: string;
   contactHeading: string;
+  contactSubheading: string;
 }
 
 export interface Service {

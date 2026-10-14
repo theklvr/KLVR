@@ -1,20 +1,17 @@
-# klvr
+# KLVR
 
-> klvr is a web development, software, and brand agency serving startups, schools, real estate firms, e-commerce brands, and professional service businesses worldwide. We are one team that replaces the freelancers a growing business usually needs (website developer, app developer, social media manager, and more), and we stay on as a long-term technology and creative partner after launch.
+> KLVR is a creative, technology, marketing and business solutions company that creates, builds, connects and grows. KLVR helps founders, businesses, brands and organizations solve problems through digital products, software, automation, branding, marketing, business advisory, Web3 ecosystem growth and strategic partnerships.
 
 ## What we do
 
-- Custom software, CRM, and school/business management systems
-- Website design and development, including e-commerce
-- Workflow automation and AI integration
-- Brand identity, positioning, and visual design
-- Content, photography, and videography
-- Marketing strategy and growth campaigns
-- Ongoing monthly retainers and growth partnerships
+- KLVR Solutions: software, web and platform development, AI integrations, automation, brand identity, creative direction, digital marketing, growth strategy, business consulting and Web3 ecosystem support
+- KLVR Products: owned digital products, platforms and tools, including Blocly
+- KLVR Partnerships: strategic collaborations with specialist operators and industry partners, including partner-operated drone light show experiences
+- KLVR Ventures: emerging research, product development, new business initiatives and commercial partnership exploration
 
 ## Who we serve
 
-Small and medium-sized businesses (5-200 employees), venture-backed startups, private schools, real estate companies, and automotive dealerships, worldwide. Secondary: churches and faith-based organizations, e-commerce brands, logistics companies, and professional service firms (law, accounting, consulting, healthcare).
+Startups, businesses, Web3 projects, organizations, entrepreneurs and partners in Nigeria and worldwide where the collaboration is a strong fit.
 
 ## Contact
 
