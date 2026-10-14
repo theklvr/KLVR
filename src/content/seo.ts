@@ -145,7 +145,7 @@ export const landingPageSeo: RouteSeo[] = landingPages.map((page) => ({
                   "@type": "ListItem",
                   position: 2,
                   name: "Solutions",
-                  item: `${SITE_URL}/#services`,
+                  item: `${SITE_URL}/solutions/technology`,
                 },
               ]
             : []),

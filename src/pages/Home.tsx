@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 import {
   ArrowLeft,
@@ -122,6 +122,7 @@ const DEFAULT_TEAM_DATA = teamMembers;
 
 export default function Home() {
   const location = useLocation();
+  const navigate = useNavigate();
 
   const siteSettings = DEFAULT_SITE_SETTINGS;
   const services = DEFAULT_SERVICES_DATA;
@@ -129,17 +130,22 @@ export default function Home() {
   const faqItems = DEFAULT_FAQ_DATA;
   const teamMembers = DEFAULT_TEAM_DATA;
 
-  // Scroll to the section named in the URL hash. Needed because arriving
-  // here from another route (e.g. Link to="/#about") is a client-side
-  // navigation, and the browser's native hash-scroll only fires on full loads.
   useEffect(() => {
-    if (location.hash) {
-      const el = document.querySelector(location.hash);
+    const state = location.state as { scrollTo?: string } | null;
+    const hashTarget = location.hash ? location.hash.replace(/^#/, "") : "";
+    const target = state?.scrollTo ?? hashTarget;
+
+    if (target) {
+      const el = document.getElementById(target);
       if (el) {
         requestAnimationFrame(() => el.scrollIntoView({ behavior: "smooth" }));
       }
+
+      if (state?.scrollTo) {
+        navigate("/", { replace: true, state: null });
+      }
     }
-  }, [location.hash]);
+  }, [location.hash, location.state, navigate]);
 
   const [portfolioActiveIndex, setPortfolioActiveIndex] = useState(0);
 
@@ -189,7 +195,7 @@ export default function Home() {
       <Header />
 
       {/* HERO SECTION */}
-      <section className="h-screen min-h-[700px] sm:min-h-[780px] md:min-h-[850px] bg-[#020504] text-white relative overflow-hidden flex flex-col justify-center pt-24 pb-12">
+      <section id="top" className="h-screen min-h-[700px] sm:min-h-[780px] md:min-h-[850px] bg-[#020504] text-white relative overflow-hidden flex flex-col justify-center pt-24 pb-12">
         <SpaceBackground />
 
         <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] rounded-full bg-emerald-950/20 blur-[150px] pointer-events-none select-none z-0" />
@@ -444,13 +450,14 @@ export default function Home() {
           </div>
 
           <div className="mt-12">
-            <a
-              href="#contact"
+            <button
+              type="button"
+              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
               className="bg-black text-white hover:bg-neutral-800 text-[13px] px-6 py-3 rounded-full font-space font-bold tracking-wide inline-flex items-center gap-2 transition-all duration-300 hover:-translate-y-[1.5px]"
             >
               Get in contact
               <ArrowUpRight className="w-4 h-4" />
-            </a>
+            </button>
           </div>
         </div>
       </section>

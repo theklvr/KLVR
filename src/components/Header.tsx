@@ -1,12 +1,12 @@
 import { useState, useEffect, useRef } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowRight, ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
 
 export function Header() {
   const location = useLocation();
+  const navigate = useNavigate();
   const isHome = location.pathname === "/";
-  const homeAnchor = (hash: string) => (isHome ? hash : `/${hash}`);
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
@@ -40,6 +40,19 @@ export function Header() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isHome]);
+
+  const goToHomeSection = (sectionId: string) => {
+    setServicesDropdownOpen(false);
+    setCompanyDropdownOpen(false);
+    setMobileMenuOpen(false);
+
+    if (isHome) {
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+      return;
+    }
+
+    navigate("/", { state: { scrollTo: sectionId } });
+  };
 
   return (
     <>
@@ -150,19 +163,19 @@ export function Header() {
                       <div className={`font-mono text-[10.5px] ${isPastHero ? "text-[#59634B]" : "text-gray-400"} mt-0.5`}>Ecosystem growth</div>
                     </a>
                     <div className={`border-t my-1 ${isPastHero ? "border-ink/10" : "border-white/10"}`}></div>
-                    <a
-                      href={homeAnchor("#projects")}
+                    <button
+                      type="button"
                       className={`block p-3 rounded-lg transition-colors duration-200 text-center ${
                         isPastHero ? "hover:bg-ink/5" : "hover:bg-white/5"
                       }`}
-                      onClick={() => setServicesDropdownOpen(false)}
+                      onClick={() => goToHomeSection("projects")}
                     >
                       <span className={`font-mono text-[11.5px] font-medium hover:underline inline-flex items-center gap-1 ${
                         isPastHero ? "text-ink" : "text-white"
                       }`}>
                         Recent Work <ArrowRight className="w-3 h-3" />
                       </span>
-                    </a>
+                    </button>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -200,26 +213,26 @@ export function Header() {
                         : "bg-[#0A0D0B] border-white/20 text-white"
                     }`}
                   >
-                    <a
-                      href={homeAnchor("#about")}
+                    <button
+                      type="button"
                       className={`block p-3 rounded-lg transition-colors duration-200 ${
                         isPastHero ? "hover:bg-ink/5" : "hover:bg-white/5"
                       }`}
-                      onClick={() => setCompanyDropdownOpen(false)}
+                      onClick={() => goToHomeSection("about")}
                     >
                       <div className={`font-sans text-[13.5px] font-semibold ${isPastHero ? "text-ink" : "text-white"}`}>About Us</div>
                       <div className={`font-mono text-[10.5px] ${isPastHero ? "text-[#59634B]" : "text-gray-400"} mt-0.5`}>Who we are and our mission</div>
-                    </a>
-                    <a
-                      href={homeAnchor("#team")}
+                    </button>
+                    <button
+                      type="button"
                       className={`block p-3 rounded-lg transition-colors duration-200 ${
                         isPastHero ? "hover:bg-ink/5" : "hover:bg-white/5"
                       }`}
-                      onClick={() => setCompanyDropdownOpen(false)}
+                      onClick={() => goToHomeSection("team")}
                     >
                       <div className={`font-sans text-[13.5px] font-semibold ${isPastHero ? "text-ink" : "text-white"}`}>Team</div>
                       <div className={`font-mono text-[10.5px] ${isPastHero ? "text-[#59634B]" : "text-gray-400"} mt-0.5`}>Meet the team and partners</div>
-                    </a>
+                    </button>
                     <Link
                       to="/blog"
                       className={`block p-3 rounded-lg transition-colors duration-200 ${
@@ -246,8 +259,9 @@ export function Header() {
 
             <div className={`h-4 w-[1px] mx-2 ${isPastHero ? "bg-ink/20" : "bg-white/20"}`} />
 
-            <a
-              href={homeAnchor("#contact")}
+            <button
+              type="button"
+              onClick={() => goToHomeSection("contact")}
               className={`text-[12.5px] font-sans font-semibold pl-4.5 pr-1.5 py-1.5 rounded-full transition-all duration-300 flex items-center gap-2 group ${
                 isPastHero
                   ? "bg-ink/10 hover:bg-ink/20 text-ink"
@@ -262,7 +276,7 @@ export function Header() {
               }`}>
                 <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
               </span>
-            </a>
+            </button>
           </nav>
 
           {/* Hamburger Menu Icon */}
@@ -335,20 +349,20 @@ export function Header() {
                     Company
                   </span>
                   <div className="pl-4 space-y-2.5 mt-1">
-                    <a
-                      href={homeAnchor("#about")}
+                    <button
+                      type="button"
                       className="block text-white/60 hover:text-white transition-colors"
-                      onClick={() => setMobileMenuOpen(false)}
+                      onClick={() => goToHomeSection("about")}
                     >
                       About Us
-                    </a>
-                    <a
-                      href={homeAnchor("#team")}
+                    </button>
+                    <button
+                      type="button"
                       className="block text-white/60 hover:text-white transition-colors"
-                      onClick={() => setMobileMenuOpen(false)}
+                      onClick={() => goToHomeSection("team")}
                     >
                       Team
-                    </a>
+                    </button>
                     <Link
                       to="/blog"
                       className="block text-white/60 hover:text-white transition-colors"
@@ -359,21 +373,21 @@ export function Header() {
                   </div>
                 </div>
 
-                <a
-                  href="/products"
+                <Link
+                  to="/products"
                   className="block py-2 border-b border-white/5 hover:text-white transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Products
-                </a>
+                </Link>
 
-                <a
-                  href={homeAnchor("#contact")}
+                <button
+                  type="button"
                   className="block text-center py-3 bg-white text-[#020504] rounded-full font-semibold text-sm transition-all duration-200 hover:bg-klvr"
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={() => goToHomeSection("contact")}
                 >
                   Get in contact
-                </a>
+                </button>
               </div>
             </motion.div>
           )}

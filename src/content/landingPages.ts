@@ -78,7 +78,7 @@ export const landingPages: LandingPageData[] = [
     internalLinks: [
       { label: "Explore technology solutions", href: "/solutions/technology" },
       { label: "Explore partnerships and experiences", href: "/partnerships" },
-      { label: "See the showcase", href: "/#projects" },
+      { label: "See products and work", href: "/products" },
     ],
     cta: "Talk about a brand or creative project",
   },
@@ -150,7 +150,7 @@ export const landingPages: LandingPageData[] = [
     internalLinks: [
       { label: "Explore Strategy, Growth & Advisory", href: "/solutions/strategy-growth" },
       { label: "Explore technology solutions", href: "/solutions/technology" },
-      { label: "Discuss a Web3 project", href: "/#contact" },
+      { label: "Discuss a Web3 project", href: "mailto:klvrcorp@gmail.com" },
     ],
     cta: "Talk about Web3 growth",
   },
@@ -182,7 +182,7 @@ export const landingPages: LandingPageData[] = [
     internalLinks: [
       { label: "Visit Blocly", href: "https://blocly.click" },
       { label: "Explore technology solutions", href: "/solutions/technology" },
-      { label: "Explore KLVR Ventures", href: "/#pillar-ventures" },
+      { label: "Explore partnerships", href: "/partnerships" },
     ],
     cta: "Discuss product collaboration",
   },
@@ -216,7 +216,7 @@ export const landingPages: LandingPageData[] = [
     internalLinks: [
       { label: "Explore creative solutions", href: "/solutions/creative" },
       { label: "Explore products", href: "/products" },
-      { label: "Start a partnership conversation", href: "/#contact" },
+      { label: "Start a partnership conversation", href: "mailto:klvrcorp@gmail.com" },
     ],
     cta: "Explore a partnership",
   },

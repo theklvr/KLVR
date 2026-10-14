@@ -1,14 +1,22 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export function Footer() {
   const location = useLocation();
+  const navigate = useNavigate();
   const isHome = location.pathname === "/";
-  const homeAnchor = (hash: string) => (isHome ? hash : `/${hash}`);
 
   const [footerEmail, setFooterEmail] = useState("");
   const [footerMessage, setFooterMessage] = useState("");
+
+  const goToHomeSection = (sectionId: string) => {
+    if (isHome) {
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+      return;
+    }
+
+    navigate("/", { state: { scrollTo: sectionId } });
+  };
 
   return (
     <footer className="border-t border-line bg-white pt-20 pb-10">
@@ -62,11 +70,11 @@ export function Footer() {
                 Company
               </h5>
               <ul className="space-y-3 text-[13.5px] text-moss font-sans">
-                <li><a href={homeAnchor("#services")} className="hover:text-ink transition-colors">What We Do</a></li>
+                <li><button type="button" onClick={() => goToHomeSection("services")} className="hover:text-ink transition-colors">What We Do</button></li>
                 <li><Link to="/solutions/technology" className="hover:text-ink transition-colors">Technology</Link></li>
                 <li><Link to="/solutions/strategy-growth" className="hover:text-ink transition-colors">Strategy & Growth</Link></li>
                 <li><Link to="/partnerships" className="hover:text-ink transition-colors">Partnerships</Link></li>
-                <li><a href={homeAnchor("#why-choose-us")} className="hover:text-ink transition-colors">Approach</a></li>
+                <li><button type="button" onClick={() => goToHomeSection("why-choose-us")} className="hover:text-ink transition-colors">Approach</button></li>
                 <li><Link to="/products" className="hover:text-ink transition-colors">Products & Work</Link></li>
                 <li><Link to="/blog" className="hover:text-ink transition-colors">Blog</Link></li>
               </ul>
@@ -86,7 +94,7 @@ export function Footer() {
 
         <div className="border-t border-line/60 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-[12px] text-mist font-sans">
           <span>&copy; {new Date().getFullYear()} KLVR. All rights reserved.</span>
-          <a href={homeAnchor("#top")} className="hover:text-ink transition-colors font-medium tracking-wide">Back to top ↑</a>
+          <button type="button" onClick={() => goToHomeSection("top")} className="hover:text-ink transition-colors font-medium tracking-wide">Back to top ↑</button>
         </div>
       </div>
     </footer>

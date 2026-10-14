@@ -19,7 +19,7 @@ export function LandingPage({ slug }: { slug: string }) {
   const breadcrumbs = [
     { label: "Home", href: "/" },
     ...(page.slug.startsWith("/solutions/")
-      ? [{ label: "Solutions", href: "/#services" }]
+      ? [{ label: "Solutions", href: "/solutions/technology" }]
       : []),
     { label: page.h1, href: page.slug },
   ];
@@ -178,12 +178,12 @@ export function LandingPage({ slug }: { slug: string }) {
               </span>
               <div className="flex flex-wrap gap-3">
                 {page.internalLinks.map((link) =>
-                  link.href.startsWith("http") ? (
+                  link.href.startsWith("http") || link.href.startsWith("mailto:") ? (
                     <a
                       key={link.href}
                       href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      target={link.href.startsWith("http") ? "_blank" : undefined}
+                      rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
                       className="text-[13px] font-space font-bold text-ink border border-line rounded-full px-4 py-2 hover:bg-white transition-colors"
                     >
                       {link.label}
