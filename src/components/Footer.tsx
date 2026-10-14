@@ -63,8 +63,11 @@ export function Footer() {
               </h5>
               <ul className="space-y-3 text-[13.5px] text-moss font-sans">
                 <li><a href={homeAnchor("#services")} className="hover:text-ink transition-colors">What We Do</a></li>
+                <li><Link to="/solutions/technology" className="hover:text-ink transition-colors">Technology</Link></li>
+                <li><Link to="/solutions/strategy-growth" className="hover:text-ink transition-colors">Strategy & Growth</Link></li>
+                <li><Link to="/partnerships" className="hover:text-ink transition-colors">Partnerships</Link></li>
                 <li><a href={homeAnchor("#why-choose-us")} className="hover:text-ink transition-colors">Approach</a></li>
-                <li><a href={homeAnchor("#projects")} className="hover:text-ink transition-colors">Products & Work</a></li>
+                <li><Link to="/products" className="hover:text-ink transition-colors">Products & Work</Link></li>
                 <li><Link to="/blog" className="hover:text-ink transition-colors">Blog</Link></li>
               </ul>
             </div>

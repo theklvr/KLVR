@@ -9,6 +9,16 @@
 - KLVR Partnerships: strategic collaborations with specialist operators and industry partners, including partner-operated drone light show experiences
 - KLVR Ventures: emerging research, product development, new business initiatives and commercial partnership exploration
 
+## Public pages
+
+- Technology solutions: https://www.theklvr.com/solutions/technology
+- Creative solutions: https://www.theklvr.com/solutions/creative
+- Strategy, Growth & Advisory: https://www.theklvr.com/solutions/strategy-growth
+- Web3 marketing, partnerships and ecosystem growth: https://www.theklvr.com/solutions/web3
+- Products: https://www.theklvr.com/products
+- Partnerships: https://www.theklvr.com/partnerships
+- Insights: https://www.theklvr.com/blog
+
 ## Who we serve
 
 Startups, businesses, Web3 projects, organizations, entrepreneurs and partners in Nigeria and worldwide where the collaboration is a strong fit.

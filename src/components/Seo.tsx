@@ -29,6 +29,23 @@ function upsertCanonical(href: string) {
   el.setAttribute("href", href);
 }
 
+function upsertJsonLd(jsonLd?: object) {
+  let el = document.head.querySelector<HTMLScriptElement>(
+    'script[data-klvr-jsonld="true"]',
+  );
+  if (!jsonLd) {
+    if (el) document.head.removeChild(el);
+    return;
+  }
+  if (!el) {
+    el = document.createElement("script");
+    el.type = "application/ld+json";
+    el.dataset.klvrJsonld = "true";
+    document.head.appendChild(el);
+  }
+  el.text = JSON.stringify(jsonLd);
+}
+
 export function Seo({
   title,
   description,
@@ -56,18 +73,9 @@ export function Seo({
     upsertMeta("name", "twitter:site", "@theKlvr");
     upsertMeta("name", "twitter:title", title);
     upsertMeta("name", "twitter:description", description);
+    upsertJsonLd(jsonLd);
 
-    let script: HTMLScriptElement | null = null;
-    if (jsonLd) {
-      script = document.createElement("script");
-      script.type = "application/ld+json";
-      script.text = JSON.stringify(jsonLd);
-      document.head.appendChild(script);
-    }
-
-    return () => {
-      if (script) document.head.removeChild(script);
-    };
+    return undefined;
   }, [title, description, canonical, image, jsonLd, robots]);
 
   return null;

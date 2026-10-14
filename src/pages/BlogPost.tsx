@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import { motion } from "motion/react";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
@@ -9,26 +8,13 @@ import { getPostBySlug, getAllPosts, type BlogPost } from "../lib/blog";
 
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
-  const [post, setPost] = useState<BlogPost | null | undefined>(undefined);
-  const [otherPosts, setOtherPosts] = useState<BlogPost[]>([]);
-
-  useEffect(() => {
-    if (!slug) return;
-    setPost(undefined);
-    getPostBySlug(slug).then(setPost);
-    getAllPosts().then((all) => setOtherPosts(all.filter((p) => p.slug !== slug).slice(0, 3)));
-  }, [slug]);
+  const post = slug ? getPostBySlug(slug) : null;
+  const otherPosts: BlogPost[] = getAllPosts()
+    .filter((p) => p.slug !== slug)
+    .slice(0, 3);
 
   if (post === null) {
     return <Navigate to="/blog" replace />;
-  }
-
-  if (post === undefined) {
-    return (
-      <div className="min-h-screen bg-paper text-ink flex items-center justify-center">
-        <p className="text-moss text-[14px] font-mono">Loading article...</p>
-      </div>
-    );
   }
 
   const canonical = `https://www.theklvr.com/blog/${post.slug}`;
