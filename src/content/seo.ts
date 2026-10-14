@@ -1,5 +1,6 @@
 import { blogPosts } from "./blog";
 import { landingPages } from "./landingPages";
+import { projects, projectCanonical, projectPath } from "./projects";
 
 const SITE_URL = "https://www.theklvr.com";
 const DEFAULT_IMAGE = `${SITE_URL}/og-image.png`;
@@ -170,6 +171,123 @@ export const landingPageSeo: RouteSeo[] = landingPages.map((page) => ({
   },
 }));
 
+export const projectsIndexSeo: RouteSeo = {
+  path: "/products",
+  title: "Projects & Work | KLVR",
+  description:
+    "Explore selected KLVR products, client projects and digital work through live website previews and project case studies.",
+  canonical: `${SITE_URL}/products`,
+  image: DEFAULT_IMAGE,
+  robots: "index, follow",
+  jsonLd: {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "@id": `${SITE_URL}/products#webpage`,
+        url: `${SITE_URL}/products`,
+        name: "Projects & Work | KLVR",
+        description:
+          "Selected KLVR products, client projects and digital work with internal project case studies.",
+        isPartOf: { "@id": `${SITE_URL}/#website` },
+        about: { "@id": `${SITE_URL}/#organization` },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${SITE_URL}/products#breadcrumbs`,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Projects & Work",
+            item: `${SITE_URL}/products`,
+          },
+        ],
+      },
+      {
+        "@type": "ItemList",
+        "@id": `${SITE_URL}/products#projects`,
+        name: "KLVR Projects & Work",
+        itemListElement: projects.map((project, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          url: `${SITE_URL}${projectPath(project)}`,
+          name: project.name,
+        })),
+      },
+    ],
+  },
+};
+
+export const projectDetailSeo: RouteSeo[] = projects.map((project) => {
+  const canonical = projectCanonical(project);
+  const structuredWorkType =
+    project.relationshipToKLVR === "owned-product"
+      ? "SoftwareApplication"
+      : "CreativeWork";
+
+  return {
+    path: projectPath(project),
+    title: project.seoTitle,
+    description: project.seoDescription,
+    canonical,
+    image: `${SITE_URL}${project.previewImage}`,
+    robots: "index, follow",
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": `${canonical}#webpage`,
+          url: canonical,
+          name: project.seoTitle,
+          description: project.seoDescription,
+          isPartOf: { "@id": `${SITE_URL}/#website` },
+          about: { "@id": `${SITE_URL}/#organization` },
+          primaryImageOfPage: `${SITE_URL}${project.previewImage}`,
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": `${canonical}#breadcrumbs`,
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "Projects & Work",
+              item: `${SITE_URL}/products`,
+            },
+            {
+              "@type": "ListItem",
+              position: 3,
+              name: project.name,
+              item: canonical,
+            },
+          ],
+        },
+        {
+          "@type": structuredWorkType,
+          "@id": `${canonical}#project`,
+          name: project.name,
+          url: project.liveUrl,
+          image: `${SITE_URL}${project.previewImage}`,
+          description: project.fullDescription,
+          creator:
+            project.relationshipToKLVR === "owned-product"
+              ? { "@id": `${SITE_URL}/#organization` }
+              : undefined,
+          provider: { "@id": `${SITE_URL}/#organization` },
+          applicationCategory:
+            structuredWorkType === "SoftwareApplication"
+              ? project.category
+              : undefined,
+        },
+      ],
+    },
+  };
+});
+
 export const blogPostSeo: RouteSeo[] = blogPosts.map((post) => ({
   path: `/blog/${post.slug}`,
   title: `${post.title} | KLVR Insights`,
@@ -201,7 +319,9 @@ export const notFoundSeo: RouteSeo = {
 
 export const publicRoutes: RouteSeo[] = [
   homeSeo,
-  ...landingPageSeo,
+  ...landingPageSeo.filter((route) => route.path !== "/products"),
+  projectsIndexSeo,
+  ...projectDetailSeo,
   blogIndexSeo,
   ...blogPostSeo,
 ];

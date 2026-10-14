@@ -26,12 +26,42 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.theklvr.com/partnerships</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.theklvr.com/products</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.theklvr.com/partnerships</loc>
+    <loc>https://www.theklvr.com/projects/blocly</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.theklvr.com/projects/questify</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.theklvr.com/projects/lasemaroni</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.theklvr.com/projects/purifix-photography</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.theklvr.com/projects/treasurense</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.theklvr.com/projects/cece-the-designer</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

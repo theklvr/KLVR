@@ -3,6 +3,8 @@ import Home from "./pages/Home";
 import BlogIndex from "./pages/BlogIndex";
 import BlogPost from "./pages/BlogPost";
 import { LandingPage } from "./pages/LandingPage";
+import { ProjectDetail } from "./pages/ProjectDetail";
+import { ProjectsPage } from "./pages/ProjectsPage";
 import NotFound from "./pages/NotFound";
 
 export function AppRoutes() {
@@ -13,7 +15,8 @@ export function AppRoutes() {
       <Route path="/solutions/creative" element={<LandingPage slug="/solutions/creative" />} />
       <Route path="/solutions/strategy-growth" element={<LandingPage slug="/solutions/strategy-growth" />} />
       <Route path="/solutions/web3" element={<LandingPage slug="/solutions/web3" />} />
-      <Route path="/products" element={<LandingPage slug="/products" />} />
+      <Route path="/products" element={<ProjectsPage />} />
+      <Route path="/projects/:slug" element={<ProjectDetail />} />
       <Route path="/partnerships" element={<LandingPage slug="/partnerships" />} />
       <Route path="/blog" element={<BlogIndex />} />
       <Route path="/blog/:slug" element={<BlogPost />} />

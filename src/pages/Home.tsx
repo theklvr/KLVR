@@ -1,11 +1,8 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 import {
-  ArrowLeft,
-  ArrowRight,
   ArrowUpRight,
-  ExternalLink,
   Plus,
   Minus,
   Twitter,
@@ -15,6 +12,7 @@ import { SpaceBackground } from "../components/SpaceBackground";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { Seo } from "../components/Seo";
+import { ProjectMarquee } from "../components/ProjectMarquee";
 import { homeSeo } from "../content/seo";
 import {
   faqItems,
@@ -25,94 +23,6 @@ import {
   type FaqEntry,
   type Service,
 } from "../lib/content";
-
-const BRAND_PORTFOLIO_DATA = [
-  {
-    id: "w7",
-    title: "Vallot",
-    description: "Premium visual solutions and digital interface agency.",
-    tag: "Digital Agency",
-    href: "https://vallot.vercel.app/",
-    url: "https://vallot.vercel.app/",
-    logoText: "VL",
-    logoBg: "bg-sky-500/10 border-sky-500/20 text-sky-400",
-  },
-  {
-    id: "w2",
-    title: "Blocly",
-    description: "Automated funnel and marketing block builder platform.",
-    tag: "SaaS Automation",
-    href: "https://blocly.click",
-    url: "https://blocly.click",
-    logoText: "B",
-    logoBg: "bg-amber-500/10 border-amber-500/20 text-amber-400",
-  },
-  {
-    id: "w4",
-    title: "Rapid Alex",
-    description:
-      "A bold personal site for musician Rapid Alex, built to showcase his music, visuals, and updates in one place.",
-    tag: "Musician Website",
-    href: "https://rapid-alex.vercel.app/",
-    url: "https://rapid-alex.vercel.app/",
-    logoText: "⚡",
-    logoBg: "bg-teal-500/10 border-teal-500/20 text-teal-400",
-  },
-  {
-    id: "w1",
-    title: "Cloverhimself",
-    description:
-      "An immersive developer CV showcasing interactive skills and timeline logs.",
-    tag: "Developer CV",
-    href: "https://cloverhimself.cv",
-    url: "https://cloverhimself.cv",
-    logoText: "♣",
-    logoBg: "bg-[#C6F135]/10 border-[#C6F135]/30 text-[#C6F135]",
-  },
-  {
-    id: "w5",
-    title: "Treasurense",
-    description:
-      "A striking personal portfolio for model Treasure, designed to showcase her portfolio and bookings.",
-    tag: "Model Website",
-    href: "https://treasurense.vercel.app/",
-    url: "https://treasurense.vercel.app/",
-    logoText: "TR",
-    logoBg: "bg-purple-500/10 border-purple-500/20 text-purple-400",
-  },
-  {
-    id: "w6",
-    title: "Cece the Designer",
-    description:
-      "An editorial portfolio site for designer Cece, showcasing her creative and visual identity work.",
-    tag: "Designer Portfolio",
-    href: "https://cece-the-desinger.vercel.app/",
-    url: "https://cece-the-desinger.vercel.app/",
-    logoText: "CC",
-    logoBg: "bg-orange-500/10 border-orange-500/20 text-orange-400",
-  },
-  {
-    id: "w8",
-    title: "Events by Kandella",
-    description:
-      "Bespoke event layout with dynamic booking and curated galleries.",
-    tag: "Luxury Planner",
-    href: "https://eventsby-kandella.vercel.app/",
-    url: "https://eventsby-kandella.vercel.app/",
-    logoText: "EK",
-    logoBg: "bg-fuchsia-500/10 border-fuchsia-500/20 text-fuchsia-400",
-  },
-  {
-    id: "w9",
-    title: "Samurai Beryl",
-    description: "A futuristic retro terminal style Web3 gaming portal.",
-    tag: "Web3 Gaming",
-    href: "https://samurai-beryl.vercel.app/",
-    url: "https://samurai-beryl.vercel.app/",
-    logoText: "Ber",
-    logoBg: "bg-emerald-500/10 border-[#10b981]/20 text-[#10b981]",
-  },
-];
 
 const DEFAULT_SITE_SETTINGS = siteSettings;
 const DEFAULT_SERVICES_DATA = services;
@@ -146,41 +56,6 @@ export default function Home() {
       }
     }
   }, [location.hash, location.state, navigate]);
-
-  const [portfolioActiveIndex, setPortfolioActiveIndex] = useState(0);
-
-  // Only mount the live-preview iframe once the showcase section is actually
-  // scrolled into view. Third-party sites can call window.focus() on load,
-  // which makes the browser auto-scroll the parent page to reveal the iframe.
-  // Deferring the mount until the user is already there neutralizes that.
-  const showcaseRef = useRef<HTMLDivElement>(null);
-  const [showcaseInView, setShowcaseInView] = useState(false);
-  useEffect(() => {
-    const el = showcaseRef.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setShowcaseInView(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.15 },
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  const handlePrevSlide = () => {
-    setPortfolioActiveIndex(
-      (prev) =>
-        (prev - 1 + BRAND_PORTFOLIO_DATA.length) % BRAND_PORTFOLIO_DATA.length,
-    );
-  };
-
-  const handleNextSlide = () => {
-    setPortfolioActiveIndex((prev) => (prev + 1) % BRAND_PORTFOLIO_DATA.length);
-  };
 
   return (
     <div className="min-h-screen bg-paper text-ink selection:bg-klvr selection:text-ink relative overflow-x-hidden">
@@ -464,110 +339,21 @@ export default function Home() {
 
       {/* PRODUCT SHOWCASE CAROUSEL */}
       <section
-        ref={showcaseRef}
         className="relative py-24 bg-[#D4ED31] border-b border-line overflow-hidden"
         id="projects"
       >
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-left mb-16 select-none max-w-2xl">
+        <div className="max-w-6xl mx-auto px-6 mb-14">
+          <div className="text-left select-none max-w-2xl">
             <h2 className="font-space font-semibold text-[32px] md:text-[42px] tracking-tight text-ink mb-3">
               Product Showcase
             </h2>
             <p className="text-moss text-[15px] font-sans leading-relaxed">
-              Experience our custom brand concepts paired with their live
-              deployments in our interactive split-screen studio. Use the arrows
-              to navigate through our live work.
+              Selected KLVR products, client projects and digital work shown as
+              live website previews.
             </p>
           </div>
-
-          <div className="relative w-full h-auto md:h-[380px] rounded-3xl overflow-hidden border border-ink/10 bg-white flex flex-col md:flex-row shadow-[0_20px_50px_rgba(20,23,15,0.08)]">
-            <div className="w-full md:w-[40%] bg-white p-6 md:p-8 flex flex-col justify-between text-left h-auto md:h-full order-2 md:order-1 border-t md:border-t-0 md:border-r border-line/50">
-              <div className="max-w-md pb-6 md:pb-12 text-left">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={portfolioActiveIndex}
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -12 }}
-                    transition={{ duration: 0.3, ease: "easeOut" }}
-                  >
-                    <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-moss font-bold inline-block mb-2">
-                      {BRAND_PORTFOLIO_DATA[portfolioActiveIndex].tag}
-                    </span>
-                    <h3 className="font-space font-bold text-[24px] md:text-[30px] text-ink leading-tight mb-2">
-                      {BRAND_PORTFOLIO_DATA[portfolioActiveIndex].title}
-                    </h3>
-                    <p className="text-[13.5px] text-moss leading-relaxed">
-                      {BRAND_PORTFOLIO_DATA[portfolioActiveIndex].description}
-                    </p>
-                  </motion.div>
-                </AnimatePresence>
-              </div>
-
-              <div className="mt-4 md:mt-0 select-none">
-                <a
-                  href={BRAND_PORTFOLIO_DATA[portfolioActiveIndex].href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-ink font-space font-bold text-[12px] tracking-wider uppercase hover:text-moss transition-colors duration-200 border-b-2 border-ink/30 hover:border-ink pb-0.5 cursor-pointer"
-                >
-                  Explore the Live Website
-                  <ExternalLink className="w-3.5 h-3.5 stroke-[2.5]" />
-                </a>
-              </div>
-            </div>
-
-            <div className="w-full md:w-[60%] h-[240px] sm:h-[300px] md:h-full bg-paper-dim relative overflow-hidden order-1 md:order-2">
-              <div className="absolute inset-0 w-[166.66%] h-[166.66%] origin-top-left scale-[0.6]">
-                {showcaseInView ? (
-                  <iframe
-                    key="showcase-iframe"
-                    title={`${BRAND_PORTFOLIO_DATA[portfolioActiveIndex].title} live view`}
-                    src={`${BRAND_PORTFOLIO_DATA[portfolioActiveIndex].url}?muted=1`}
-                    loading="lazy"
-                    className="w-full h-full border-0 bg-white"
-                    sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
-                  />
-                ) : (
-                  <div className="w-full h-full bg-paper-dim animate-pulse" />
-                )}
-              </div>
-            </div>
-          </div>
-
-          <div className="flex justify-center items-center gap-6 mt-8 select-none">
-            <button
-              onClick={handlePrevSlide}
-              aria-label="Previous project"
-              className="w-9 h-9 rounded-full border border-ink/20 bg-white flex items-center justify-center text-ink hover:bg-ink hover:text-white hover:border-ink transition-all duration-200 cursor-pointer"
-            >
-              <ArrowLeft className="w-4 h-4" />
-            </button>
-
-            <div className="flex justify-center gap-2">
-              {BRAND_PORTFOLIO_DATA.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setPortfolioActiveIndex(idx)}
-                  className={`w-2.5 h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
-                    idx === portfolioActiveIndex
-                      ? "w-8 bg-ink"
-                      : "bg-ink/25 hover:bg-ink/50"
-                  }`}
-                  title={`Go to Slide ${idx + 1}`}
-                />
-              ))}
-            </div>
-
-            <button
-              onClick={handleNextSlide}
-              aria-label="Next project"
-              className="w-9 h-9 rounded-full border border-ink/20 bg-white flex items-center justify-center text-ink hover:bg-ink hover:text-white hover:border-ink transition-all duration-200 cursor-pointer"
-            >
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
         </div>
+        <ProjectMarquee />
       </section>
 
       {/* PHILOSOPHY STRIP */}
