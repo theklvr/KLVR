@@ -155,6 +155,38 @@ export const landingPages: LandingPageData[] = [
     cta: "Talk about Web3 growth",
   },
   {
+    slug: "/solutions/drone-experiences",
+    title: "Drone Light Shows, Butterfly Drones & Drone Gift Boxes in Nigeria | TYS by KLVR",
+    metaDescription:
+      "TYS (Tell Your Story) is KLVR's drone experiences service: story-led drone light shows, butterfly drones and drone gift boxes for weddings, launches and celebrations across Nigeria.",
+    eyebrow: "KLVR Solutions / Drone Experiences",
+    h1: "Drone experiences that tell the story behind the celebration.",
+    intro:
+      "TYS, short for Tell Your Story, is KLVR's drone experiences service for events across Nigeria. It brings the same thinking we use for brands to celebrations: start with the purpose, then design the moment that serves it. A wedding is two families becoming one. A launch is a name the market should remember. Every TYS show is designed so the shapes in the sky carry that meaning.",
+    capabilities: [
+      "Drone light shows: names, logos, portraits and messages drawn in the night sky",
+      "Butterfly drones: glowing butterflies for entrances, first dances and stage moments",
+      "Drone gift boxes: rings, keys and gifts delivered from the air",
+      "Story and sequence design built around the purpose of the event",
+      "Approvals, safety checks and coordination with planners and venues",
+      "Brand launch and activation reveals designed to be filmed and shared",
+    ],
+    serves:
+      "Couples, families, event planners, PR and event agencies, venues, brands, churches, schools and public institutions in Lagos, Abuja and across Nigeria, with events elsewhere in Africa on request.",
+    approach:
+      "We ask who the event is for, what it should achieve and how guests should feel, then build a sequence with a beginning, a middle and an end. Light shows are flown by a licensed operating partner with the required approvals; KLVR and TYS lead the idea, design and coordination.",
+    examples: [
+      "TYS (tellyourstory.theklvr.com): wedding, proposal, birthday, launch and public celebration drone experiences.",
+      "Story-led brand reveals that pair a drone moment with KLVR campaign and content work.",
+    ],
+    internalLinks: [
+      { label: "Visit TYS, Tell Your Story", href: "https://tellyourstory.theklvr.com" },
+      { label: "Read: why drone shows should tell a story", href: "/blog/story-led-drone-shows-tys" },
+      { label: "Explore partnerships", href: "/partnerships" },
+    ],
+    cta: "Plan a drone experience",
+  },
+  {
     slug: "/products",
     title: "Products & Digital Ventures Built by KLVR | KLVR",
     metaDescription:

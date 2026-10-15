@@ -15,6 +15,7 @@ export function AppRoutes() {
       <Route path="/solutions/creative" element={<LandingPage slug="/solutions/creative" />} />
       <Route path="/solutions/strategy-growth" element={<LandingPage slug="/solutions/strategy-growth" />} />
       <Route path="/solutions/web3" element={<LandingPage slug="/solutions/web3" />} />
+      <Route path="/solutions/drone-experiences" element={<LandingPage slug="/solutions/drone-experiences" />} />
       <Route path="/products" element={<ProjectsPage />} />
       <Route path="/projects/:slug" element={<ProjectDetail />} />
       <Route path="/partnerships" element={<LandingPage slug="/partnerships" />} />

@@ -37,6 +37,19 @@ export const homeSeo: RouteSeo = {
           "KLVR is a creative, technology, marketing and business solutions company building products, delivering solutions and creating opportunities through strategic partnerships.",
         email: "klvrcorp@gmail.com",
         sameAs: ["https://x.com/theKlvr"],
+        brand: { "@type": "Brand", name: "TYS (Tell Your Story)", url: "https://tellyourstory.theklvr.com" },
+        subOrganization: {
+          "@type": "LocalBusiness",
+          "@id": "https://tellyourstory.theklvr.com/#organization",
+          name: "TYS (Tell Your Story)",
+          alternateName: ["TYS", "Tell Your Story", "TYS Drones"],
+          url: "https://tellyourstory.theklvr.com",
+          description:
+            "TYS designs story-led drone light shows, butterfly drones and drone gift boxes for weddings, proposals, birthdays, launches and celebrations across Nigeria, based in Lagos.",
+          address: { "@type": "PostalAddress", addressLocality: "Lagos", addressCountry: "NG" },
+          areaServed: ["Nigeria", "Africa"],
+          sameAs: ["https://instagram.com/tellyourstory.drones"],
+        },
         areaServed: ["Nigeria", "Worldwide"],
         knowsAbout: [
           "Creative technology",

@@ -26,6 +26,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.theklvr.com/solutions/drone-experiences</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.theklvr.com/partnerships</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -74,6 +79,11 @@
     <loc>https://www.theklvr.com/blog</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.theklvr.com/blog/story-led-drone-shows-tys</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.theklvr.com/blog/why-every-growing-business-needs-a-technology-partner</loc>

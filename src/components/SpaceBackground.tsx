@@ -9,7 +9,12 @@ export function SpaceBackground() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    let animationFrameId: number;
+    let animationFrameId = 0;
+    let running = false;
+    let inView = true;
+    let lastFrame = 0;
+    const FRAME_MS = 1000 / 30; // twinkling looks the same at 30fps and costs half
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let width = (canvas.width = canvas.offsetWidth || window.innerWidth);
     let height = (canvas.height = canvas.offsetHeight || 600);
 
@@ -182,13 +187,45 @@ export function SpaceBackground() {
         }
       }
 
-      animationFrameId = requestAnimationFrame(draw);
+      if (running) animationFrameId = requestAnimationFrame(loop);
     }
 
-    animationFrameId = requestAnimationFrame(draw);
+    // Throttled loop that only runs while the hero is visible and the tab is active
+    function loop(time: number) {
+      if (!running) return;
+      if (time - lastFrame >= FRAME_MS) {
+        lastFrame = time;
+        draw(time);
+        return;
+      }
+      animationFrameId = requestAnimationFrame(loop);
+    }
+    function start() {
+      if (running || reduceMotion || !inView || document.hidden) return;
+      running = true;
+      animationFrameId = requestAnimationFrame(loop);
+    }
+    function stop() {
+      running = false;
+      cancelAnimationFrame(animationFrameId);
+    }
+
+    const io = new IntersectionObserver(([entry]) => {
+      inView = entry.isIntersecting;
+      if (inView) start();
+      else stop();
+    });
+    io.observe(canvas);
+    const onVisibility = () => (document.hidden ? stop() : start());
+    document.addEventListener("visibilitychange", onVisibility);
+
+    if (reduceMotion) draw(0); // one still frame of stars
+    else start();
 
     return () => {
-      cancelAnimationFrame(animationFrameId);
+      stop();
+      io.disconnect();
+      document.removeEventListener("visibilitychange", onVisibility);
       resizeObserver.disconnect();
     };
   }, []);

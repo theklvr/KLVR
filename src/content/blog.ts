@@ -2,6 +2,48 @@ import type { BlogPost } from "./types";
 
 export const blogPosts: BlogPost[] = [
   {
+    _id: "blog-tys-story-led-drone-shows",
+    slug: "story-led-drone-shows-tys",
+    title: "Why We Built TYS: Drone Shows That Tell a Story, Not Just a Pattern",
+    category: "DRONE EXPERIENCES / BRAND",
+    description:
+      "Lights in the sky are easy to admire and easy to forget. TYS, KLVR's drone experiences service, designs drone light shows, butterfly drones and gift boxes around the meaning of the event.",
+    readTime: "5 min read",
+    date: "2026-10-15",
+    image: "https://www.theklvr.com/Assets/tys/home-hero.jpg",
+    intro:
+      "Most drone shows are judged on how they look. We think they should be judged on whether they did their job. That idea is why KLVR built TYS, short for Tell Your Story: a drone experiences service for weddings, proposals, birthdays, launches and public celebrations across Nigeria.",
+    sections: [
+      {
+        heading: "Every Event Has a Purpose",
+        paragraphs: [
+          "A wedding is two families publicly becoming one. A product launch exists so people remember a name. A milestone birthday honours a life and the people who shaped it. The purpose is the brief, even when nobody writes it down.",
+          "At KLVR we spend our days helping brands say one clear thing. TYS applies the same discipline to celebrations: before choosing a single shape, we ask who the moment is for, what it should achieve and how guests should feel.",
+        ],
+      },
+      {
+        heading: "From Patterns to Stories",
+        paragraphs: [
+          "A heart in the sky is pretty. Two sets of initials moving together into one monogram, followed by a thank you to both families, is a story. The difference is structure: a beginning, a middle and an end, with symbols only that couple, that family or that brand could own.",
+          "That might be a hometown landmark, a line from a vow, a greeting in Yoruba, Igbo or Hausa, a company's founding year or the outline of a new product.",
+        ],
+      },
+      {
+        heading: "Three Experiences, One Approach",
+        paragraphs: [
+          "Drone light shows write names, logos and messages across the night sky. Butterfly drones bring glowing butterflies into the room for entrances and first dances. Drone gift boxes deliver rings, keys and gifts from the air. All three are designed around the same question: what does this moment need to say?",
+          "Light shows are flown by a licensed operating partner with the required approvals. TYS leads the idea, the design and the coordination with planners and venues.",
+        ],
+      },
+      {
+        heading: "Where to Find TYS",
+        paragraphs: [
+          "TYS is based in Lagos and plans events across Nigeria, with events elsewhere in Africa on request. Explore the experiences, ideas by occasion and planning guides at tellyourstory.theklvr.com.",
+        ],
+      },
+    ],
+  },
+  {
     _id: "blog-tech-partner",
     slug: "why-every-growing-business-needs-a-technology-partner",
     title: "Why Every Growing Business Needs a Technology Partner (Not Just a Freelancer)",

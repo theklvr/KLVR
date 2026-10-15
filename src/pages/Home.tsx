@@ -98,9 +98,10 @@ export default function Home() {
                   whileHover={{ scaleY: 1.05, y: -10 }}
                   className={`w-14 md:w-20 lg:w-24 ${slab.height} rounded-2xl relative overflow-hidden shadow-[30px_40px_70px_-15px_rgba(0,0,0,0.98)] border-l border-t border-white/10`}
                   style={{
+                    // No backdrop blur: the slab is near-opaque, and blurring a canvas that
+                    // redraws every frame was the main cause of hero lag.
                     background:
-                      "linear-gradient(135deg, rgba(8,30,22,0.9) 0%, rgba(2,5,4,0.98) 100%)",
-                    backdropFilter: "blur(16px)",
+                      "linear-gradient(135deg, rgba(8,30,22,0.94) 0%, rgba(2,5,4,0.99) 100%)",
                   }}
                 >
                   <div

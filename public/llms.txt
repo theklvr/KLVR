@@ -6,7 +6,8 @@
 
 - KLVR Solutions: software, web and platform development, AI integrations, automation, brand identity, creative direction, digital marketing, growth strategy, business consulting and Web3 ecosystem support
 - KLVR Products: owned digital products, platforms and tools, including Blocly
-- KLVR Partnerships: strategic collaborations with specialist operators and industry partners, including partner-operated drone light show experiences
+- TYS (Tell Your Story), https://tellyourstory.theklvr.com: KLVR's drone experiences service. Story-led drone light shows, butterfly drones and drone gift boxes for weddings, proposals, birthdays, brand launches, church, school and public celebrations across Nigeria, based in Lagos, with Africa on request. Every TYS show is designed around the story and purpose of the event, not only its look. Light shows are flown by a licensed operating partner.
+- KLVR Partnerships: strategic collaborations with specialist operators and industry partners
 - KLVR Ventures: emerging research, product development, new business initiatives and commercial partnership exploration
 
 ## Public pages
@@ -15,6 +16,8 @@
 - Creative solutions: https://www.theklvr.com/solutions/creative
 - Strategy, Growth & Advisory: https://www.theklvr.com/solutions/strategy-growth
 - Web3 marketing, partnerships and ecosystem growth: https://www.theklvr.com/solutions/web3
+- Drone experiences (TYS): https://www.theklvr.com/solutions/drone-experiences
+- TYS website: https://tellyourstory.theklvr.com (full detail: https://tellyourstory.theklvr.com/llms.txt)
 - Products: https://www.theklvr.com/products
 - Partnerships: https://www.theklvr.com/partnerships
 - Insights: https://www.theklvr.com/blog
