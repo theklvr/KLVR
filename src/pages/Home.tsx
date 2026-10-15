@@ -160,13 +160,13 @@ export default function Home() {
             <h2 className="font-space font-semibold text-[26px] sm:text-[34px] md:text-[38px] tracking-tight text-ink leading-tight mb-8">
               {siteSettings.aboutHeading}
             </h2>
-            <div className="space-y-5 font-serif text-ink text-[17px] sm:text-[19px] leading-relaxed text-justify">
+            <div className="space-y-5 font-sans text-ink/85 text-[17px] sm:text-[18px] leading-[1.75]">
               {siteSettings.aboutText.split("\n\n").map((paragraph, index) => (
                 <p
                   key={paragraph}
                   className={
                     index === 0
-                      ? "first-letter:font-serif first-letter:font-bold first-letter:text-[40px] sm:first-letter:text-[48px] first-letter:text-ink"
+                      ? "first-letter:font-space first-letter:font-bold first-letter:text-[52px] sm:first-letter:text-[60px] first-letter:leading-[0.8] first-letter:float-left first-letter:mr-3 first-letter:mt-1.5 first-letter:text-ink"
                       : undefined
                   }
                 >
@@ -314,13 +314,9 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="border-t border-neutral-200">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {services.map((service, idx) => (
-              <ServiceAccordionItem
-                key={service._id}
-                service={service}
-                index={idx}
-              />
+              <ServiceCard key={service._id} service={service} index={idx} />
             ))}
           </div>
 
@@ -541,84 +537,78 @@ export default function Home() {
   );
 }
 
-/* SERVICE ACCORDION ITEM */
-function ServiceAccordionItem({
-  service,
-  index,
-}: {
-  service: Service;
-  index: number;
-}) {
-  const [isOpen, setIsOpen] = useState(false);
-
+/* SERVICE CARD: every service visible at a glance. The drone card plays TYS footage. */
+function ServiceCard({ service, index }: { service: Service; index: number }) {
+  const isDrone = service.anchorId === "drone-experiences";
   return (
-    <motion.div
+    <motion.article
       id={service.anchorId}
-      initial={{ opacity: 0, y: 16 }}
+      initial={{ opacity: 0, y: 18 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.5, delay: index * 0.06 }}
-      className="border-b border-neutral-200 scroll-mt-28"
+      transition={{ duration: 0.5, delay: (index % 3) * 0.08 }}
+      className={`group relative scroll-mt-28 overflow-hidden rounded-2xl border p-7 flex flex-col min-h-[360px] transition-all duration-300 hover:-translate-y-1 ${
+        isDrone
+          ? "border-transparent bg-[#0B1026] text-white shadow-lg"
+          : "border-neutral-200 bg-white hover:border-neutral-300 hover:shadow-[0_18px_40px_-24px_rgba(0,0,0,0.25)]"
+      }`}
     >
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-full text-left py-8 md:py-10 grid grid-cols-[40px_1fr_auto] md:grid-cols-[80px_1fr_auto] gap-4 md:gap-10 items-center cursor-pointer focus:outline-none group"
-      >
-        <span className="font-mono text-[13px] text-neutral-400">
-          {service.num}
-        </span>
-        <h3 className="font-space font-bold text-[20px] md:text-[26px] text-black leading-tight group-hover:text-neutral-500 transition-colors">
-          {service.title}
-        </h3>
-        <span className="w-9 h-9 rounded-full border border-neutral-300 flex items-center justify-center text-black flex-shrink-0 group-hover:border-black/40 transition-colors">
-          {isOpen ? (
-            <Minus className="w-4 h-4" />
-          ) : (
-            <Plus className="w-4 h-4" />
-          )}
-        </span>
-      </button>
-
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="overflow-hidden"
-          >
-            <div className="pt-1 pb-8 md:pb-10 grid grid-cols-[40px_1fr] md:grid-cols-[80px_1fr] gap-4 md:gap-10">
-              <div aria-hidden="true" />
-              <div className="min-w-0 pr-4 md:pr-16 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
-                <p className="text-neutral-500 text-[14px] leading-relaxed min-w-0">
-                  {service.description}
-                </p>
-                <div className="min-w-0">
-                  <span className="text-neutral-400 text-[11px] font-mono uppercase tracking-wider block mb-3">
-                    Categories
-                  </span>
-                  <div className="flex flex-wrap gap-2">
-                    {service.categories.map((cat) => (
-                      <span
-                        key={cat}
-                        className="text-[12px] font-sans text-black bg-white border border-neutral-300 rounded-full px-3.5 py-1.5 whitespace-nowrap"
-                      >
-                        {cat}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+      {isDrone && (
+        <>
+          <video
+            src="/Assets/tys/home-hero.mp4"
+            poster="/Assets/tys/home-hero.jpg"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="none"
+            aria-hidden="true"
+            className="absolute inset-0 h-full w-full object-cover opacity-45 transition-opacity duration-500 group-hover:opacity-60"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0B1026] via-[#0B1026]/70 to-[#0B1026]/20" aria-hidden="true" />
+        </>
+      )}
+      <div className="relative flex items-center justify-between mb-8">
+        <span className={`font-mono text-[12px] ${isDrone ? "text-white/60" : "text-neutral-400"}`}>{service.num}</span>
+        {isDrone ? (
+          <span className="font-mono text-[10px] uppercase tracking-widest rounded-full bg-[#D4ED31] text-black px-2.5 py-1">New</span>
+        ) : (
+          <span className="h-2 w-2 rounded-full bg-[#D4ED31] ring-4 ring-[#D4ED31]/20" aria-hidden="true" />
         )}
-      </AnimatePresence>
-    </motion.div>
+      </div>
+      <h3 className={`relative font-space font-bold text-[21px] leading-tight mb-3 ${isDrone ? "text-white" : "text-black"}`}>
+        {service.title}
+      </h3>
+      <p className={`relative text-[14px] leading-relaxed mb-6 ${isDrone ? "text-white/80" : "text-neutral-500"}`}>
+        {service.description}
+      </p>
+      <ul className="relative mt-auto flex flex-wrap gap-1.5">
+        {service.categories.map((cat) => (
+          <li
+            key={cat}
+            className={`text-[11.5px] rounded-full px-3 py-1 ${
+              isDrone ? "border border-white/25 text-white/90" : "border border-neutral-200 text-neutral-700 bg-neutral-50"
+            }`}
+          >
+            {cat}
+          </li>
+        ))}
+      </ul>
+      {isDrone && (
+        <a
+          href="https://tellyourstory.theklvr.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="relative mt-6 inline-flex items-center gap-2 self-start rounded-full bg-white text-black text-[13px] font-space font-bold px-5 py-2.5 transition-transform hover:-translate-y-0.5"
+        >
+          Visit TYS <ArrowUpRight className="w-4 h-4" />
+        </a>
+      )}
+    </motion.article>
   );
 }
 
-/* ROTATING WORD (auto-cycling hero headline slot) */
 function RotatingWord({
   words,
   colorClass,

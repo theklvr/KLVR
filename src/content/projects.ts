@@ -26,6 +26,36 @@ const SITE_URL = "https://www.theklvr.com";
 
 export const projects: Project[] = [
   {
+    id: "project-tys",
+    slug: "tys-tell-your-story",
+    name: "TYS: Tell Your Story",
+    liveUrl: "https://tellyourstory.theklvr.com",
+    previewImage: "/images/projects/tys.webp",
+    category: "Drone experiences website",
+    shortDescription:
+      "TYS is KLVR's drone experiences service for events: light shows, butterfly drones and drone gift boxes, presented through a luxury, video-led website.",
+    fullDescription:
+      "TYS (Tell Your Story) is a KLVR service that creates drone experiences for weddings, birthdays, proposals, brand launches and public celebrations across Nigeria. KLVR built the brand and the multi-page website, from the dotted constellation logo to the booking flow.",
+    overview: [
+      "TYS was created around one idea: the best celebrations are remembered for a single moment, so the business sells the moment, not the technology. The brand uses a dotted constellation logo in which every dot is a drone, with one amber lead drone where the arms of the Y meet.",
+      "The website is designed to feel like a luxury events brand rather than a tech company: serif headings with a script accent, full-bleed video on every page, an imagine-it-at-your-event section for each experience, an opt-in soundtrack and an enquiry form that saves bookings securely. It covers three experiences: drone light shows (flown with a licensed operating partner), butterfly drones and drone gift boxes.",
+    ],
+    services: [
+      "Brand identity and logo",
+      "Website design and development",
+      "Copywriting and content",
+      "Video editing and media optimisation",
+      "Booking and enquiry system",
+    ],
+    technologies: ["Next.js", "Tailwind CSS", "Supabase", "Vercel"],
+    year: 2026,
+    industry: "Events and experiences",
+    relationshipToKLVR: "owned-product",
+    seoTitle: "TYS: Tell Your Story | Projects & Work | KLVR",
+    seoDescription:
+      "TYS is a KLVR service creating drone light shows, butterfly drones and drone gift boxes for events in Nigeria. See the brand, the website and the live site.",
+  },
+  {
     id: "project-blocly",
     slug: "blocly",
     name: "Blocly",

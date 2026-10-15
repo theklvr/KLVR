@@ -54,7 +54,7 @@ export const homeSeo: RouteSeo = {
           "Community development",
           "Strategic partnerships",
           "Business advisory",
-          "Drone light show partnerships",
+          "Drone light shows and drone experiences (TYS)",
         ],
       },
       {

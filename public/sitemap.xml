@@ -36,6 +36,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.theklvr.com/projects/tys-tell-your-story</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.theklvr.com/projects/blocly</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

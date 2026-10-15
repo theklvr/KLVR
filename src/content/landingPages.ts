@@ -202,14 +202,14 @@ export const landingPages: LandingPageData[] = [
       "Collaborative project delivery",
       "Commercial partnerships and joint opportunities",
       "Industry and ecosystem connections",
-      "Drone light show experiences through an independent operating partner",
+      "TYS drone experiences: light shows, butterfly drones and gift boxes",
     ],
     serves:
       "Partnerships are for companies, event organizers, brands, founders and operators interested in combining capabilities, reaching new audiences or delivering specialized projects together.",
     approach:
       "KLVR identifies the opportunity, clarifies who is responsible for what and brings the right people around the work. Where an independent operator delivers a specialized capability, we describe that relationship clearly and avoid presenting partner-owned resources as KLVR-owned.",
     examples: [
-      "Drone light show experiences delivered through an independent operator partnership.",
+      "TYS (tellyourstory.theklvr.com): drone experiences for events, with light shows flown by a licensed operating partner.",
       "Creative and event-adjacent collaborations that combine strategy, production and digital support.",
       "Commercial partnership exploration for products, ventures and cross-industry opportunities.",
     ],

@@ -60,70 +60,95 @@ export const siteSettings: SiteSettings = {
 
 export const services: Service[] = [
   {
-    _id: "service-solutions",
+    _id: "service-digital-presence",
     num: "01",
-    anchorId: "pillar-solutions",
-    title: "KLVR Solutions",
+    anchorId: "digital-presence",
+    title: "Websites & Digital Presence",
     description:
-      "Ideas into impact. We help businesses and organizations solve problems through creative thinking, technology, marketing and strategic expertise. From building digital platforms to shaping brands, improving operations and accelerating growth, we develop solutions around what each project actually needs.",
+      "A credible online presence that wins trust and brings in customers. We design, build, host and look after websites that look the part and do the work, from a single landing page to a full corporate or e-commerce site.",
     categories: [
-      "Software, web and platform development",
-      "AI integrations, automation and technical solutions",
-      "Brand identity, creative direction and design",
-      "Strategy, growth and advisory",
-      "Business consulting and operational solutions",
-      "Web3 ecosystem growth and advisory",
-      "Community development, partnerships and KOL collaborations",
-      "Digital transformation and project delivery",
+      "Website design and development",
+      "Landing pages",
+      "Corporate and portfolio websites",
+      "E-commerce websites",
+      "Hosting, maintenance and optimisation",
     ],
   },
   {
-    _id: "service-products",
+    _id: "service-business-systems",
     num: "02",
-    anchorId: "pillar-products",
-    title: "KLVR Products",
+    anchorId: "business-systems",
+    title: "Software, Systems & AI",
     description:
-      "Building what's next. We're not only building for others. We create and develop our own digital products, platforms and tools designed to solve real problems and open new opportunities. Blocly is part of this growing KLVR product ecosystem.",
+      "Less manual work, better decisions. We build the custom software and internal tools businesses run on, and use automation and AI to take repetitive work off your team's plate.",
     categories: [
-      "Proprietary software products",
-      "SaaS platforms",
-      "Digital tools and utilities",
-      "Product research and development",
-      "Scalable technology ventures",
+      "Custom software and web apps",
+      "School, hospital, HR and inventory systems",
+      "CRM, ERP and internal dashboards",
+      "Workflow and business process automation",
+      "AI integration, chatbots and internal AI tools",
+      "API integrations",
     ],
   },
   {
-    _id: "service-partnerships",
+    _id: "service-brand-content",
     num: "03",
-    anchorId: "pillar-partnerships",
-    title: "KLVR Partnerships",
+    anchorId: "brand-content",
+    title: "Brand, Content & Media",
     description:
-      "Stronger together. Great ideas often require expertise beyond one team. We collaborate with specialist operators, industry professionals and strategic partners to bring ambitious projects to life, including drone light show experiences delivered through an independent operating partner.",
+      "Brands people recognise, trust and remember. We shape the strategy and identity, then create the content that carries it across every touchpoint.",
     categories: [
-      "Strategic business collaborations",
-      "Specialized project execution",
-      "Creative experiences and event solutions",
-      "Drone light show experiences through our operating partner",
-      "Industry and ecosystem connections",
-      "Cross-industry partnerships",
-      "Collaborative growth opportunities",
+      "Brand strategy and positioning",
+      "Logo, visual identity and brand guidelines",
+      "Copywriting and content strategy",
+      "Social media content",
+      "Photography, videography and motion graphics",
+      "Graphic design",
     ],
   },
   {
-    _id: "service-ventures",
+    _id: "service-marketing-growth",
     num: "04",
-    anchorId: "pillar-ventures",
-    title: "KLVR Ventures",
+    anchorId: "marketing-growth",
+    title: "Marketing, Growth & Consulting",
     description:
-      "Creating new possibilities. Through research, product development, strategic collaborations and new business initiatives, KLVR explores ideas that can evolve into sustainable businesses and create long-term impact.",
+      "Awareness that turns into revenue, and decisions made before money is spent. We plan the campaigns, the funnels and the launches, and advise on growth, digital transformation and technology choices.",
     categories: [
-      "Venture exploration",
-      "New business development",
-      "Internal product incubation",
-      "Joint venture opportunities",
-      "Strategic business development",
-      "Commercial partnerships",
-      "Innovation and market research",
+      "Marketing strategy and campaign planning",
+      "Digital marketing, SEO and email",
+      "Sales funnels and product launches",
+      "Business growth strategy",
+      "Digital transformation and technology planning",
+      "Web3 ecosystem growth, community and KOLs",
+    ],
+  },
+  {
+    _id: "service-drone-experiences",
+    num: "05",
+    anchorId: "drone-experiences",
+    title: "Drone Experiences: TYS",
+    description:
+      "TYS (Tell Your Story) is KLVR's drone experiences service for events across Nigeria: drone light shows in the sky, glowing butterfly drones in the room and gift boxes delivered from the air. Light shows are flown with a licensed operating partner.",
+    categories: [
+      "Drone light shows",
+      "Butterfly drones",
+      "Drone gift boxes",
+      "Weddings, launches and celebrations",
+      "tellyourstory.theklvr.com",
+    ],
+  },
+  {
+    _id: "service-products-partnerships",
+    num: "06",
+    anchorId: "products-partnerships",
+    title: "Products, Partnerships & Growth Retainers",
+    description:
+      "Beyond one-off projects. We build our own products like Blocly, partner with specialist operators on ambitious work, and stay alongside businesses long term with growth partnerships that combine tech, marketing, content and strategy.",
+    categories: [
+      "KLVR products (Blocly)",
+      "Growth partnerships and retainers",
+      "Strategic and specialist collaborations",
+      "Venture exploration and incubation",
     ],
   },
 ];
@@ -163,7 +188,7 @@ export const faqItems: FaqEntry[] = [
     _id: "faq-services",
     question: "What services does KLVR provide?",
     answer:
-      "KLVR provides software, web and platform development, AI integrations, automation, brand identity, creative direction, digital marketing, growth strategy, business consulting, Web3 ecosystem growth, community development and partnership support.",
+      "KLVR builds websites, custom software and business systems, automation and AI tools; develops brands, content and media; runs marketing and growth campaigns; advises on strategy and digital transformation; and, through TYS, creates drone experiences for events: light shows, butterfly drones and drone gift boxes.",
   },
   {
     _id: "faq-products",
@@ -219,6 +244,12 @@ export const teamMembers: TeamMember[] = [
 ];
 
 export const products = [
+  {
+    name: "TYS: Tell Your Story",
+    href: "https://tellyourstory.theklvr.com",
+    description:
+      "TYS is KLVR's drone experiences service for events: drone light shows, butterfly drones and drone gift boxes across Nigeria.",
+  },
   {
     name: "Blocly",
     href: "https://blocly.click",
